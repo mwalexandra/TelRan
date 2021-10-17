@@ -1,0 +1,120 @@
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Regular.woff2') format('woff2'),
+        url('/fonts/Poppins-Regular.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Bold.woff2') format('woff2'),
+        url('/fonts/Poppins-Bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('/fonts/Poppins-Medium.woff2') format('woff2'),
+        url('/fonts/Poppins-Medium.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+:root {
+    --color-white: #ffffff;
+    --color-light-grey: #f6f6f6;
+    --color-grey-ed: #ededed;
+    --color-grey-main-headings: #999999;
+    --color-grey-7e: #7e7c7c;
+    --color-grey-6d: #6d6d6d;
+    --color-grey-6: #666666;
+    --color-grey-footer-bg: #d8d8d8;
+    --color-light-pink: #ffe8e8;
+    --color-black-links: #2e2e2e;
+    --color-black: #000000;
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    font-family: 'Poppins', Helvetica, sans-serif;
+    background-color: var(--color-white);
+}
+
+button, input {
+    font: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+h1, h2, h3, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* container */
+
+.container {
+    margin: 0 auto;
+    max-width: 1300px;
+    padding: 0 3em;
+}
+
+section {
+    margin-bottom: 6.25em;
+} 
+
+.section_heading {
+    margin-bottom: 0.65em;
+    color: var(--color-grey-main-headings);
+    font-size: 80px;
+    font-weight: 700;
+    line-height: 1.5;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 0 2.5em;
+    } 
+}
+
+@media (max-width: 650px) {
+    .container {
+        padding: 0 1.5em;
+    }
+}
+
+@media (max-width: 410px) {
+    .section-heading {
+        font-size: 24px;
+    }
+}

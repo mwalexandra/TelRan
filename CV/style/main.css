@@ -1,0 +1,47 @@
+/* .main {
+    position: relative;
+} */
+.study_list_item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.study_list_item:not(:last-child) {
+    margin-bottom: 3.5em;
+}
+
+.study_item_name {
+    color: var(--color-grey-6d);
+    font-size: 30px;
+    line-height: 1.1;
+    font-weight: 500;
+}
+
+.study_item_date {
+    color: var(--color-grey-7e);
+    text-transform: uppercase;
+    font-size: 18px;
+    line-height: 2;
+}
+
+.study_item_dcrptn {
+    color: var(--color-grey-6d);
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+.study_dscrptn_stack_span {
+    padding: 0.2em 0.5em;
+    color: var(--color-grey-6);
+    background-color: var(--color-grey-ed);
+    border-radius: 16px;
+}
+
+/* Projects */
+
+.projects_item_content::before {
+    content:"";
+    width: 55%;
+    background-color: #666666 ;
+}

@@ -1,0 +1,41 @@
+body {
+    font-family: 'Oxygen', sans-serif;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+.table {
+    margin: 0 auto;
+    width: 320px;
+    background-color: #772f1a;
+    border-spacing: 10px;
+}
+.centered_tr {
+    width: 90%;
+    text-align: center;
+}
+
+td {
+    height: 40px;
+    border: 1px solid #ffffff;
+}
+
+.th {
+    padding-top: 10px;
+}
+
+.th_image {
+    width: 80px;
+    border-radius: 50%;
+}
+
+.heading_text {
+    color: blanchedalmond;
+}
+
+.main_link {
+    text-transform: uppercase;
+}

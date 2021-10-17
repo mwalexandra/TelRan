@@ -1,0 +1,40 @@
+.task2_container {
+    margin-top: 50px;
+    max-width: 800px;
+}
+
+.multicolor_table,
+.multicolor_table_td {
+    border: 2px dashed #8289ab;
+    border-collapse: collapse;
+}
+
+.multicolor_table {
+    width: 100%;
+    height: 300px;
+}
+
+.red {
+    background-color: #ed462f;
+}
+
+.blue {
+    background-color: #204afb;
+}
+
+.green {
+    background-color: #3b8015;
+}
+
+.aquamarine {
+    width: 60%;
+    background-color: #6cf8fb;
+}
+
+.violet {
+    background-color: #e963fb;
+}
+
+.yellow {
+    background-color: #fef738;
+}

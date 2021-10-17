@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>Table</title>
+  <link rel="stylesheet" href="table1.css">
+  <link rel="stylesheet" href="table2.css">
+</head>
+<body>
+ <!-- 1. Исправьте ошибки в приведенном коде. -->
+  <h3>Task 1 - Fixed HTML</h3>
+  <table celpadding="0" celspacing="0" border="2">
+    <tr>
+      <td valign="top">Ut aliquip ex ea commodo.</td>
+      <td valign="top">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</td>
+    </tr>
+    <tr>
+      <td valign="botom" colspan="2">Lobortis nisl.</td>
+      <td valign="top">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</td>
+    </tr>
+  </table>
+
+<!--  2. реализовать таблицу -->
+  <div class="task2_container">
+    <h3>Task 2 - Table 1</h3>
+    <table class="multicolor_table">
+      <tr class="multicolor_table_row">
+        <td class="multicolor_table_td red" rowspan="3"></td>
+        <td class="multicolor_table_td blue" colspan="2"></td>
+        <td class="multicolor_table_td yellow" rowspan="2"></td>
+      </tr>
+      <tr class="multicolor_table_row">
+        <td class="multicolor_table_td green" rowspan="2"></td>
+        <td class="multicolor_table_td aquamarine"></td>
+      </tr>
+      <tr class="multicolor_table_row">
+        <td class="multicolor_table_td violet" colspan="2"></td>
+      </tr>
+    </table>
+  </div> 
+
+ <!--  3. Свертстать таблицу номер 2 -->
+
+  <div class="table2_container">
+    <table class="table2">
+      <thead class="table2_header">
+        <tr class="table2_bod_row">
+          <th class="table2_header_td table2_td" colspan="4">1</th>
+        </tr>  
+      </thead>
+      <tbody class="table2_body">  
+        <tr class="table2_body_row">
+          <td class="table2_td td_2" rowspan="2">2</td>
+          <td class="table2_td td_3" colspan="2">3</td>
+          <td class="table2_td td_5" rowspan="2">5</td>
+        </tr>
+        <tr class="table2_body_row">
+          <td class="table2_td td_4" colspan="2">4</td>
+        </tr>
+        <tr class="table2_body_row">
+          <td class="table2_td td_6" colspan="4">6</td>
+        </tr>
+        <tr class="table2_body_row">
+          <td class="table2_td td_7" colspan="2">7</td>
+          <td class="table2_td td_8" colspan="2">8</td>
+        </tr>
+        <tr class="table2_body_row wide_row">
+          <td class="table2_td td_9">9</td>
+          <td class="table2_td td_10">10</td>
+          <td class="table2_td td_11">11</td>
+          <td class="table2_td td_12">12</td>
+        </tr>
+        <tr class="table2_body_row wide_row">
+          <td colspan="4">
+            <table class="table2 table2_2">      
+              <tr class="table2_body_row">
+                <td class="table2_td td_13">13</td>
+                <td class="table2_td td_14">14</td>
+                <td class="table2_td td_15">15</td>
+              </tr>
+            </table> 
+          </td>
+        </tr>
+      </tbody> 
+      <tfoot class="table2_footer">
+        <tr class="table2_footer_row">
+          <td class="table2_footer_td table2_td" colspan="4">16</td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+
+  <!-- 4. Добавьте три фотографии в html-файл Можно ли не используя стили сделать рамку у фотографии? -->
+  <div class="berlin_container" style="margin-top: 50px;">
+    <h3 class="berlin_heading">Районы, кварталы, жиылый массивы</h3>
+  </div>
+  <table class="berlin_photo_table" border="1">
+    <tr class="berlin_photo_table_row">
+      <td class="berlin_photo_table_td">
+        <img src="img/02-berlin-01.jpeg" alt="Berlin photo" width="150px" 
+        style="padding: 5px;">
+      </td>
+      <td class="berlin_photo_table_td">
+        <img src="img/02-berlin-02.jpeg" alt="Berlin photo" width="150px" 
+        style="padding: 5px;">
+      </td>
+      <td class="berlin_photo_table_td">
+        <img src="img/02-berlin-03.jpeg" alt="Berlin photo" width="150px" 
+        style="padding: 5px;">
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
