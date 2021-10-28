@@ -4,26 +4,45 @@ public class App {
 
     public static void main(String[] args) {
         int[] taskArray = new int[] {5,4,3,2,1,0};
-        int[] arrayForConvert = new int[6];
+        int[] arrayForConvert = new int[9];
         int[] arrayForLastTask = new int[]{-3, -5, -96};
-        convertArray(arrayForConvert);
+
+        fillArrayReversed(arrayForConvert);
+        printArray(arrayForConvert);
+
         System.out.println(isNegative(taskArray)); 
+
         System.out.println(isOddNumber(taskArray)); 
+
         System.out.println(isANumber(taskArray, 6));
-        System.out.println(getASumOfEvenNums(taskArray));
-        returnArray(taskArray);
+
         writeInArray(arrayForConvert);
-        replaceNumsForAbsolute(arrayForLastTask);
+        printArray(arrayForConvert);
+
+        returnArray(arrayForLastTask);
+        printArray(arrayForLastTask);
+
+        // System.out.println(getASumOfEvenNums(taskArray));
+        // returnArray(taskArray);
+        // writeInArray(arrayForConvert);
+        // replaceNumsForAbsolute(arrayForLastTask);
     }
 
-        static void convertArray (int[] array) {
-            for (int i = array.length - 1; i >= 0; i--) {
-                array[i] = i;
+        // ф-ция, которая распечатывает массив
+        static void printArray (int[] array) {
+            for (int i = 0; i < array.length; i++) {
+                System.out.print(array[i] + " ");
             }
-            System.out.println(Arrays.toString(array));
+            System.out.println();
         }
 
-        static boolean isNegative (int[] array) {
+        static void fillArrayReversed (int[] array) {  // не решила
+            for (int j = 0; j < array.length; j++) {
+                array[j] = array.length - 1 - j;
+            }
+        }
+
+        static boolean isNegative (int[] array) { 
             for (int i = 0; i < array.length; i++) {
                 if (array[i] < 0) {
                     return true;
@@ -34,7 +53,7 @@ public class App {
 
         static boolean isOddNumber (int[] array) {
             for (int i = 0; i < array.length; i++) {
-                if (array[i] % 2 == 0) {
+                if (array[i] % 2 != 0) {
                     return true;
                 }
             }
@@ -60,24 +79,24 @@ public class App {
             return sumOfEvenNums;
         }
 
-        static void returnArray (int[] array) {
-            for (int i = array.length - 1; i >= 0; i--) {
-                System.out.print(array[i]);
+        static void returnArray (int[] array) {  // не решила
+            for (int i = 0; i < array.length / 2; i++) {
+                int temp = array[i];
+                array[i] = array[array.length - 1- i];
+                array[array.length - 1 - i] = temp;
             }
-            System.out.println();
         }
         
-        static void writeInArray (int[] array) {
+        static void writeInArray (int[] array) {  //вопрос насчет вывода ????? было 8 7 6 5 4 3 2 1 0 стало 0 3 6 9 12 15 18 21 24 
             for (int i = 0; i < array.length; i++) {
                 array[i] = i * 3;
             }
-            System.out.println(Arrays.toString(array));
         }
 
         static void replaceNumsForAbsolute (int[] array) {
             for (int i = 0; i < array.length; i++) {
-                array[i] = Math.abs(array[i]);
+                    if (array[i] < 0)
+                        array[i] = -array[i];
             }
-            System.out.println(Arrays.toString(array));
         }
 }

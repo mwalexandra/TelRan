@@ -6,7 +6,7 @@ public class App {
     }
 
     static boolean vasiaInTrouble(boolean isLoudMusic, int time) {
-        return isLoudMusic && time < 7 || time > 20;
+        return isLoudMusic && (time < 7 || time > 20);
     }
 
 }

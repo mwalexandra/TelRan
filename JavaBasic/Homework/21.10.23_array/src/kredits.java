@@ -1,22 +1,28 @@
 public class kredits {
     
     public static void main(String[] args) {
-        totalSumOfCreditsFor18Months(50, 40, 50);
+        totalSumOfCreditsFor18Months(50, 40, 50, 18);
     }
 
-    static void totalSumOfCreditsFor18Months (int mashaIn1Month, int petyaIn1Month, int vasyaIn1Month) {
-        int vasyaInLast8Month = 50 * 8;
+    static void totalSumOfCreditsFor18Months (int mashaInMonth, int petyaInMonth, int vasyaInMonth, int monthNumber) {
+        int res = 0;
 
-        for (int month = 1; month <= 18; month++) {
-            mashaIn1Month++;
-        }
-        for (int month = 1; month <= 18; month += 2) {
-            petyaIn1Month ++;
-        }
-        for (int month = 1; month <= 10; month++) {
-            vasyaIn1Month--;
+        for (int i = 1; i <= monthNumber; i++) {
+           res += mashaInMonth + petyaInMonth + vasyaInMonth;
+
+           mashaInMonth++;
+
+           if (i % 2 ==0) {
+               petyaInMonth++;
+           }
+
+           if (i < 10) {
+               vasyaInMonth--;
+           } else {
+               vasyaInMonth = 50;
+           }
         }
 
-        System.out.println("Общее количество кредитов за 18 месяцев: " + (mashaIn1Month + petyaIn1Month + vasyaIn1Month + vasyaInLast8Month));
+        System.out.println("Общее количество кредитов за 18 месяцев: " + res);
     }
 }
