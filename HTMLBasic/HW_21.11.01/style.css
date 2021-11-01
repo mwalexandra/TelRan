@@ -1,0 +1,88 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-image: url('img/bg-new.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 70%;
+}
+
+/* FOOTER */
+
+.footer {
+    padding: 30px 0;
+}
+
+.footer-nav {
+    text-transform: uppercase;
+}
+
+.footer-nav-item {
+    float: left;
+    margin-right: 20px;
+}
+
+.clear {
+    clear: both;
+}
+
+/* MAIN */
+
+.main-heading {
+    margin-bottom: 50px;
+    font-size: 35px;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.hero-btn {
+    margin-bottom: 50px;
+    padding: 15px 40px;
+    font-size: larger;
+    color: inherit;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.modules-item {
+    display: inline-block;
+    max-width: 20%;
+    padding: 20px 5px;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+
+.modules-item:not(:last-child) {
+    margin-right: 20px;
+}
+
+.modules-item-img {
+    display: block;
+    margin: 0 auto;
+    max-width: 55px;
+}
+
+.modules-item-heading,
+.modules-item-text {
+    text-align: center;
+}
+
