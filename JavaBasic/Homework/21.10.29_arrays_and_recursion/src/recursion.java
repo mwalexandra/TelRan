@@ -15,7 +15,7 @@ public class recursion {
     // (*) Найти НОД двух целых положительных чисел (алгоритм Эвклида) - рекурсивно или нет
 
     public static long gcd(long a, long b) {
-        if (b==0) 
+        if (b == 0)  // на уроке преподаватель подтвердил условие (a % b == 0)
           return a;
         else
           return gcd(b, a % b);

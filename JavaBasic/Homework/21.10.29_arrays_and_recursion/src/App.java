@@ -21,7 +21,7 @@ public class App {
                 8, 4, 0
             },
         };
-    //    System.out.println(getANumOfArrayWithoutNegatives(dimArray));
+        System.out.println(getANumOfArrayWithoutNegatives(dimArray));
         System.out.println(sumOfArrayWithoutNegatives(dimArray));
     }
     // 
@@ -43,10 +43,10 @@ public class App {
         for (int i = 0; i < array.length; i++) {
             for (int j = 0; j < array[i].length; j++) {
                 if (array[i][j] < 0) {
-                    numOfArraysWithNegatives++;
                     continue outerFor;
                 }
             }
+            numOfArraysWithNegatives++;
         }
         return numOfArraysWithNegatives;
     }
@@ -59,7 +59,6 @@ public class App {
             int sum = 0;
             for (int j = 0; j < array[i].length; j++) {
                 if(array[i][j] < 0) {
-                    sum = 0;
                     continue outFor;
                 } else {
                     sum += array[i][j];

@@ -8,15 +8,15 @@ public class selectSort {
 
     static void selectSortAnArray (int[] array) {
         for (int i = 0; i < array.length; i++) {
-            int index = i;
+            int minNumIndex = i;
             for (int j = i + 1; j < array.length; j++) {
-                if (array[j] < array[index]) {
-                    index = j;
+                if (array[j] < array[minNumIndex]) {
+                    minNumIndex = j;
                 }
             }
-            int buffer = array[index];
-            array[index] = array[i];
-            array[i] = buffer;
+            int temp = array[minNumIndex];
+            array[minNumIndex] = array[i];
+            array[i] = temp;
         }
     }
 
