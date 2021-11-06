@@ -23,17 +23,17 @@ ul, li {
     max-width: 70%;
 }
 
-/* FOOTER */
+/* header */
 
-.footer {
+.header {
     padding: 30px 0;
 }
 
-.footer-nav {
+.header-nav {
     text-transform: uppercase;
 }
 
-.footer-nav-item {
+.header-nav-item {
     float: left;
     margin-right: 20px;
 }

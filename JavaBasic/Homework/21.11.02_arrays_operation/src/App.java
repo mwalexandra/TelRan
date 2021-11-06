@@ -1,9 +1,9 @@
 public class App {
     public static void main(String[] args) {
         int[][] dimArray = new int[][] {
-            { -8, 4, 2, 4, -6, -9 },
+            { -1, 4, 2 },
             { -9, -2, -5, -9, -97 },
-            { -8, 4, 10, 1 },
+            { -2, 4, 1 },
         };
 
         int result = sumOfElementsOfSubarraysWithPositives(dimArray);

@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+
+body { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #565655;
+    background: linear-gradient(207deg, rgba(220,119,231,1) 0%, rgba(28,221,242,1) 97%) no-repeat;
+    background-size: cover;
+}
+
+input,
+button {
+    box-sizing: inherit;
+    font-family: inherit;
+    color: inherit;
+}
+
+a {
+    text-decoration: none;
+}
+
+.form-container {
+    padding: 20px 60px;
+    width: 80%;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.form-heading {
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.form-btn {
+    margin-bottom: 30px;
+    padding: 15px 0 15px 15px;
+    width: calc(100%/2 - 10px);
+    border: none;
+    border-radius: 10px;
+    background-repeat: no-repeat;
+    background-position: 25% 47%;
+    box-shadow: 1px 1px 3px 0px #c9c4c5;
+}
+
+.facebook-btn {
+    margin-right: 10px;
+    color: #ffffff;
+    background-color: #3f5b95;
+    background-image: url('img/facebook.svg');
+}
+
+.google-btn {
+    background-color: transparent;
+    background-image: url('img/google.svg');
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.form-label {
+    margin-bottom: 5px;
+    font-size: smaller;
+}
+
+.form-input,
+.form-submit-btn {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-input {
+    margin-bottom: 15px;
+    background-color: #f7f7f7;
+    border: #efefef;
+}
+
+.form-submit-btn {
+    color: #ffffff;
+    text-transform: capitalize;
+    background-color: #333333;
+}
+
+.link {
+    color: #c9c4c5;
+    border-bottom: 1px solid #c9c4c5;
+}
+
+.form-label-link {
+    margin-left: 5px;
+    font-size: smaller;
+}
+
+.form-text {
+    text-align: center;
+    font-size: smaller;
+    color: #c9c4c5;
+}

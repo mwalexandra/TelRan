@@ -16,14 +16,12 @@ public class elementFinder {
 
     static int findAnElementOrIndex (int[]array, int num) {
         for (int i = 0; i < array.length; i++) {
-            if (array[i] == num) {
+            if (array[i] == num)
                 return i;
-            }    
+            
+            if (array[i] > num) 
+                return -(i + 1);  
         }
-        int index = 0;
-        while (array[index] < num) {
-            index++;
-        }
-        return -(index + 1);
+        return -(array.length + 1);
     }
 }

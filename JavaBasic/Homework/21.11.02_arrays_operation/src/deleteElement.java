@@ -2,8 +2,8 @@ import java.util.Arrays;
 
 public class deleteElement {
     public static void main(String[] args) {
-        int[] startArray = new int[] { -8, 4, 10, 1 };
-        startArray = deleteElementOfArray(startArray, 2);
+        int[] startArray = new int[] { -8, 4, 10, 1, 6, 13 };
+        startArray = deleteElementOfArray(startArray, 4);
         System.out.println(Arrays.toString(startArray));
 
     }
@@ -11,7 +11,7 @@ public class deleteElement {
     //который принимает массив и возвращает ссылку на новый массив, 
     //являющийся копией старого, но без элемента по индексу index
     static int[] deleteElementOfArray (int[] array, int index) {
-        int [] newArray = new int[array.length - 1];
+        int[] newArray = new int[array.length - 1];
 
         for (int i = 0; i < index; i++) {
             newArray[i] = array[i];

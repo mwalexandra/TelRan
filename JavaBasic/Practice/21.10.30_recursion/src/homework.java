@@ -27,10 +27,6 @@ public class homework {
                     numOfRepeat++;
                 }
             }
-            if (n * numOfRepeat == m) {
-                return true;
-            } else {
-                return false;
-            }
+            return n * numOfRepeat == m;
         }
 }

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Запись на курсы программирования</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        .form-heading {
+            padding-bottom: 10px;
+            border-bottom: 1px solid black;
+        }
+
+        .input {
+            margin-bottom: 20px;
+        }
+
+        .radio-fieldset {
+            margin-bottom: 20px;
+            padding: 0;
+            border: none;
+        }
+
+        .footer {
+            margin-top: 20px;
+            border-top: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h2 class="form-heading">Запись на курсы программирования</h2>
+    <form action="#">
+        <label for="name">Имя:</label><br>
+        <input class="input" type="text" id="name" name="name"><br>
+
+        <fieldset class="radio-fieldset">            
+            <input type="radio" id="Java" name="lang" value="Java" checked>
+            <label for="Java">Java</label>
+            <input type="radio" id="Cplusplus" name="lang" value="Cplusplus">
+            <label for="Cplusplus">C++</label>
+            <input type="radio" id="Python" name="lang" value="Python">
+            <label for="Python">Python</label>
+            <input type="radio" id="PHP" name="lang" value="PHP">
+            <label for="PHP">PHP</label>
+            <input type="radio" id="JavaScript" name="lang" value="JavaScript">
+            <label for="JavaScript">JavaScript</label>
+        </fieldset>
+
+        <label for="info">Дополнительная информация:</label><br>
+        <textarea class="input" rows="4" cols="25" id="info" name="info" value="" placeholder="Есть опыт программирования на Java"></textarea><br>
+
+        <label for="secretWord">Секретное слово:</label><br>
+        <input class="input" type="password" id="secretWord" name="secretWord" value=""><br>
+
+        <input class="input" type="checkbox" id="rulesAgree" name="rulesAgree" value="" required>
+        <label for="rulesAgree">С правилами ознакомился и согласен</label> <br>
+
+        <button type="submit">Отправить</button>
+        <button type="reset">Очистить</button>
+    </form> 
+    <footer class="footer">
+        <p>Made by Alexandra Makeewa</p>
+    </footer>
+</body>
+</html>
