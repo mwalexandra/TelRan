@@ -1,0 +1,86 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+h1,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hero-section {
+    margin: 0 auto;
+    padding: 20px;
+    max-width: 90%;
+}
+
+.background-red {
+    position: relative;
+    top: -38rem;
+    height: 250px;
+    background-color: #ee3442;
+    z-index: -1;
+}
+
+.background-img {
+    margin-bottom: 30px;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+.main-heading {
+    margin-bottom: 30px;
+    font-size: 30px;
+}
+
+.main-description {
+    margin-bottom: 30px;
+    max-width: 70%;
+    font-family: sans-serif;
+    font-size: 14px;
+    line-height: 2;
+    text-align: center;
+}
+
+.image-comment{
+    margin-bottom: 30px;
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.image-comment-link {
+    color: #ee3442;
+    border-bottom: 1px solid #ee3442;
+}
+
+.more-btn {
+    padding: 10px 20px;
+    background-color: transparent;
+    border: 2px solid #ee3442;
+    font-weight: 600;
+    transition: background-color color 600ms ease-in-out;
+}
+
+.more-btn:hover,
+.more-btn:focus {
+    background-color: #ee3442;
+    color: white;
+}

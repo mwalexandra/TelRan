@@ -16,18 +16,17 @@ public class LoanIssuer {
     // Если работник не ленивый и добрый, то он оформит кредит, если зп больше 20000 и клиенту не больше 70 лет
     // Если работник не ленивый и злой, он выдаст кредит тогда, когда зп больше 20000 и клиенту не больше 50
     public boolean toProvide (LoanUser user){
-        if(!isLazy) {
-            if(isKind) {
-                if(user.annualSalary > 20000 && user.age <= 70)
-                    return true;
-            } else { //!isKind
-                if(user.annualSalary > 20000 && user.age <= 50)
-                    return true;
-            }
-        } else { //isLazy
-                if(user.annualSalary > 20000)
-                    return true;
-        }
+        if(user.annualSalary < 20000)
+            return false;
+
+        if(this.isLazy)    
+            return true;
+
+        if(user.age <= 50)
+            return true;
+
+        if(this.isKind && user.age <= 70)
+            return true;
+
         return false;
-    }
 }
