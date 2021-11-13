@@ -1,0 +1,156 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(255, 255, 255, .8);
+    background: url('img/b-interior.jpeg') no-repeat;
+    background-size: cover;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+a,
+button {
+    font-family: inherit;
+    color: inherit;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+/* header */
+
+.header {
+    padding: 5px 0;
+    background-color: rgb(0, 0, 0, .5);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo-img {
+    width: 2rem;
+}
+
+.header-nav-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-nav-item-link {
+    padding: .5rem 1rem;
+    text-decoration: none;
+    font-size: 0.6rem;
+    transition: background-color 600ms ease-in-out;
+}
+
+.header-nav-projects-list {
+    display: none;
+    position: absolute;
+    transition: display 600ms ease-in-out;
+}
+
+.projects {
+    position: relative;
+}
+
+.projects:hover .header-nav-projects-list {
+    display: block;
+}
+
+.header-nav-projects-item {
+    margin-top: 1rem;
+}
+
+.header-nav-projects-link {
+    padding: .5rem .7rem;
+    text-decoration: none;
+    font-size: 0.6rem;
+    transition: background-color 600ms ease-in-out;
+}
+
+.header-nav-item-link:hover,
+.header-nav-projects-link:hover {
+    background-color: rgba(254, 207, 195, 0.8);
+}
+
+/* main */
+
+.main {
+    padding-top: 4rem;
+}
+
+.main-heading {
+    font-size: 1.2rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.hero-description-text {
+    margin: 1rem auto;
+    width: 75%;
+    text-align: center;
+    font-size: .7rem;
+}
+
+.hero-btn-container {
+    text-align: center;
+}
+
+.btn {
+    padding: 6px 13px;
+    font-size: .5rem;
+    text-transform: uppercase;
+    background-color: transparent;
+    border: 1px solid rgb(255, 255, 255, .8);
+    border-radius: 15px;
+}
+
+.more-btn {
+    margin-right: 1rem;
+    background-color: rgba(254, 207, 195, 0.8);
+    cursor: pointer;
+}
+
+.video-btn {
+    padding-left: 1.3rem;
+    background: url('img/icon_play_circle.png') no-repeat;
+    background-position: 10% 50%;
+    background-size: 10px;
+    cursor: pointer;
+    transition: background-color 600ms ease-in-out;
+}
+
+.video-btn:hover {
+    background-color: rgba(254, 207, 195, 0.8);
+}
+
+.floating-btn {
+    position: fixed;
+    bottom: .5rem;
+    right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    background: url('img/icon_envelope.png') no-repeat;
+    background-position: 50% 50%;
+    background-size: 45%;
+    background-color: rgba(254, 207, 195, 0.8);
+    border: 2px solid #ffffff;
+    border-radius: 15%;
+    cursor: pointer;
+}
