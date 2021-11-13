@@ -92,20 +92,19 @@ button {
 /* main */
 
 .main {
-    padding-top: 4rem;
+    padding-top: 10rem;
 }
 
 .main-heading {
-    font-size: 1.2rem;
+    font-size: 2rem;
     text-align: center;
     text-transform: uppercase;
 }
 
 .hero-description-text {
-    margin: 1rem auto;
-    width: 75%;
+    margin: 2rem auto;
+    width: 65%;
     text-align: center;
-    font-size: .7rem;
 }
 
 .hero-btn-container {
@@ -113,8 +112,7 @@ button {
 }
 
 .btn {
-    padding: 6px 13px;
-    font-size: .5rem;
+    padding: 10px 25px;
     text-transform: uppercase;
     background-color: transparent;
     border: 1px solid rgb(255, 255, 255, .8);
@@ -128,10 +126,10 @@ button {
 }
 
 .video-btn {
-    padding-left: 1.3rem;
+    padding-left: 2.3rem;
     background: url('img/icon_play_circle.png') no-repeat;
-    background-position: 10% 50%;
-    background-size: 10px;
+    background-position: 12% 50%;
+    background-size: 15px;
     cursor: pointer;
     transition: background-color 600ms ease-in-out;
 }
