@@ -1,0 +1,54 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+ul, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+a,
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: 85%;
+}
+
+.narrow-container {
+  margin: 0 auto;
+  padding: 0 10px;
+  max-width: 75%;
+}
+
+/* header */
+
+.header {
+  padding-top: 20px;
+  background: url('images/Tomatoes_Pasta.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.header-logo-img {
+  padding: 8px;
+  width: 50px;
+  background-color: rgb(255, 0, 0, .7);
+  border-radius: 50%;
+}
+
+.header-nav {
+  display: flex;
+  justify-content: space-between;
+}
