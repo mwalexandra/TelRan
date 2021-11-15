@@ -2,15 +2,16 @@
 *::after,
 *::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 ul, li {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
 body {
+  color: #ffffff;
   font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -51,4 +52,140 @@ button {
 .header-nav {
   display: flex;
   justify-content: space-between;
+}
+
+.header-nav-list {
+  display: flex;
+  align-items: center;
+}
+
+.header-nav-item:not(:last-child) {
+  margin-right: 10px;
+}
+
+.header-nav-item-link {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 10px;
+  opacity: .7;
+}
+
+.burger {
+  display: block;
+  width: 15px;
+  height: 10px;
+  background-image: url('images/btn_burger.png');
+}
+
+.hero-container {
+  margin: 0 auto;
+  padding: 50px 0 100px;
+  width: 70%;
+  text-align: center;
+}
+
+.header-hero-cursive {
+  margin-bottom: 1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.main-heading {
+  margin-bottom: 1rem;
+  font-size: 3em;
+  text-transform: uppercase;
+}
+
+.header-hero-btn {
+  margin-bottom: 1rem;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  font-size: .7em;
+  background-color: transparent;
+  border: 1px solid #ffffff;
+}
+
+.header-hero-text {
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: .5em;
+}
+
+.header-hero-text a {
+  color: rgba(255, 255, 255, 1);
+}
+
+/* main */
+
+.main {
+  padding: 25px 0;
+}
+
+.section-heading {
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+  color: #000000;
+  font-size: .7em;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 45%;
+  width: 55px;
+  height: 1px;
+  background-color: orange;
+}
+
+.cousine-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cousine-list-item {
+  background-size: cover;
+  background-position: center center;
+}
+
+.italian {
+  background-image: url('images/italian.png');
+}
+
+.american {
+  background-image: url('images/american.png');
+}
+
+.chinese {
+  background-image: url('images/chinese.png');
+}
+
+.french {
+  background-image: url('images/french.png');
+}
+
+.indian {
+  background-image: url('images/indian.png');
+}
+
+.mexican {
+  background-image: url('images/mexican.png');
+}
+
+.seafood {
+  background-image: url('images/sea_food.png');
+}
+
+.steak {
+  background-image: url('images/steak.png');
+}
+
+.sushi {
+  background-image: url('images/sushi.png');
+}
+
+.pizza {
+  background-image: url('images/pizza.png');
 }
