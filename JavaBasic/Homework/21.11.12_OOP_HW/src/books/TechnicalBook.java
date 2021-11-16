@@ -11,5 +11,9 @@ public class TechnicalBook extends Book {
     public String getScientificField() {
         return scientificField;
     }
-    
+
+    @Override
+    public int computePrice() {
+        return getPrice();
+    }
 }

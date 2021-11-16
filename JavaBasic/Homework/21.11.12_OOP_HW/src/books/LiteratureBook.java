@@ -8,6 +8,6 @@ public class LiteratureBook extends Book {
     
     @Override
     public int computePrice() {
-        return super.computePrice() + 10;
+        return getPrice() + 10;
     }
 }

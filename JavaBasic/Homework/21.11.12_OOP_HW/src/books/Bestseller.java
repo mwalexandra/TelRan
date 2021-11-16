@@ -8,6 +8,10 @@ public class Bestseller extends LiteratureBook {
         this.coef = coef;
     }
 
+    public double getCoef() {
+        return coef;
+    }
+
     @Override
     public int computePrice() {
         return (int) (super.computePrice() * coef);

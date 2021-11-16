@@ -1,9 +1,10 @@
 package books;
-
-public class Book {
-    private int id;
-    private String title;
-    private String author;
+// Абстрактный класс не подразумевает создания собственных представителей (создание объектов этого класса)
+// В него можно выносить общую функциональность
+public abstract class Book {
+    private final int id;
+    private final String title;
+    private final String author;
     private int price;
 
     public Book(int id, String title, String author, int price){
@@ -25,7 +26,17 @@ public class Book {
         return author;
     }
 
-    public int computePrice() {
+    public int getPrice() {
         return price;
     }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public abstract int computePrice();
+    //{
+        //return price;
+        // теперь этот метод должен быть описан во всех дочерних НЕАБСТРАКТНЫХ классах
+    //}
 }
