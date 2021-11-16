@@ -30,7 +30,7 @@ button {
 .narrow-container {
   margin: 0 auto;
   padding: 0 10px;
-  max-width: 75%;
+  max-width: 80%;
 }
 
 /* header */
@@ -43,9 +43,9 @@ button {
 }
 
 .header-logo-img {
-  padding: 8px;
-  width: 50px;
-  background-color: rgb(255, 0, 0, .7);
+  padding: 1rem;
+  width: 6rem;
+  background-color: rgb(255, 0, 0, .6);
   border-radius: 50%;
 }
 
@@ -60,13 +60,13 @@ button {
 }
 
 .header-nav-item:not(:last-child) {
-  margin-right: 10px;
+  margin-right: 1rem;
 }
 
 .header-nav-item-link {
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 10px;
+  font-size: .9rem;
   opacity: .7;
 }
 
@@ -79,37 +79,35 @@ button {
 
 .hero-container {
   margin: 0 auto;
-  padding: 50px 0 100px;
-  width: 70%;
+  padding: 50px 0 200px;
   text-align: center;
 }
 
 .header-hero-cursive {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
   font-family: Georgia, 'Times New Roman', Times, serif;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.6);
 }
 
 .main-heading {
-  margin-bottom: 1rem;
-  font-size: 3em;
+  margin-bottom: 2rem;
+  font-size: 7em;
   text-transform: uppercase;
 }
 
 .header-hero-btn {
-  margin-bottom: 1rem;
-  padding: 10px 30px;
+  margin-bottom: 2rem;
+  padding: 1.2rem 4.5rem;
   text-transform: uppercase;
-  font-size: .7em;
   background-color: transparent;
   border: 1px solid #ffffff;
 }
 
 .header-hero-text {
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.8);
-  font-size: .5em;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .header-hero-text a {
@@ -119,35 +117,35 @@ button {
 /* main */
 
 .main {
-  padding: 25px 0;
+  padding: 2rem 0;
 }
 
 .section-heading {
   position: relative;
+  margin-bottom: 3rem;
   text-align: center;
   text-transform: uppercase;
   color: #000000;
-  font-size: .7em;
 }
 
 .section-heading::after {
   content: '';
   position: absolute;
-  bottom: -5px;
+  bottom: -10px;
   left: 45%;
-  width: 55px;
-  height: 1px;
+  width: 10rem;
+  height: 2px;
   background-color: orange;
 }
 
 .cousine-list {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .cousine-list-item {
-  background-size: cover;
-  background-position: center center;
+  width: 300px
 }
 
 .italian {
@@ -179,7 +177,7 @@ button {
 }
 
 .steak {
-  background-image: url('images/steak.png');
+  background-image: url('images/steak_house.png');
 }
 
 .sushi {
@@ -188,4 +186,22 @@ button {
 
 .pizza {
   background-image: url('images/pizza.png');
+}
+
+.cousine-item-link {
+  display: block;
+  margin: 0.2rem;
+  padding:  3rem 0;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 2rem;
+  font-weight: 600;
+  background-size: cover;
+  background-position: center center;
+}
+
+.cousine-item-link span {
+  font-size: 1rem;
+  font-weight: 400;
 }
