@@ -204,7 +204,7 @@ section {
 }
 
 .cousine-list-item {
-  width: 300px
+  width: calc(100% / 5);
 }
 
 .italian {
@@ -254,14 +254,15 @@ section {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
   background-size: cover;
   background-position: center center;
 }
 
 .cousine-item-link span {
-  font-size: 1rem;
+  font-size: .7rem;
+  font-style: italic;
   font-weight: 400;
 }
 
@@ -286,6 +287,10 @@ section {
   .services-item-description {
     font-size: .7rem;
   }
+
+  .cousine-list-item {
+    width: calc(100% / 3);
+  }
 }
 
 @media (max-width: 620px) {
@@ -301,6 +306,7 @@ section {
   .main-heading {
     font-size: 4rem;
   }
+}  
 
   @media (max-width: 470px) {
     .header {
@@ -323,5 +329,8 @@ section {
     .services-item:not(:last-child) {
       margin-bottom: 2rem;
     }
+
+    .cousine-list-item {
+      width: calc(100% / 2);
+    }
   }
-}
