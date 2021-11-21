@@ -36,8 +36,10 @@ button {
 /* header */
 
 .header {
+  margin-bottom: 5rem;
   padding-top: 20px;
-  background: url('images/Tomatoes_Pasta.jpg') no-repeat;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .2) 70%, rgba(0, 0, 0, 1) 100%),
+              url('images/Tomatoes_Pasta.jpg') no-repeat;
   background-size: cover;
   background-position: center center;
 }
@@ -45,7 +47,7 @@ button {
 .header-logo-img {
   padding: 1rem;
   width: 6rem;
-  background-color: rgb(255, 0, 0, .6);
+  background-color: rgba(255, 0, 0, .6);
   border-radius: 50%;
 }
 
@@ -120,23 +122,80 @@ button {
   padding: 2rem 0;
 }
 
+section {
+  margin-bottom: 5rem;
+}
+
 .section-heading {
-  position: relative;
-  margin-bottom: 3rem;
   text-align: center;
   text-transform: uppercase;
   color: #000000;
 }
 
-.section-heading::after {
-  content: '';
-  position: absolute;
-  bottom: -10px;
-  left: 45%;
-  width: 10rem;
-  height: 2px;
-  background-color: orange;
+.divider {
+  margin: 1rem auto 3rem;
+  width: 7rem;
+  height: 1.5px;
+  background-color: rgb(255, 68, 0);
 }
+
+/* services-section */
+
+.services-list {
+  display: flex;
+}
+
+.services-item {
+  padding: 0 3rem;
+  max-width: calc(100% / 3);
+  text-align: center;
+  color: #000000;
+}
+
+.services-item-span {
+  margin: 0 auto;
+  display: block;
+  width: 5rem;
+  height: 5rem;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70%;
+  border: 2px solid #6c6b6b;
+  border-radius: 50%;
+}
+
+.cheeseburger {
+  background-image: url('/images/cheeseburger.png');
+}
+
+.books {
+  background-image: url('/images/books.png');
+}
+
+.kochen {
+  background-image: url('/images/kochen.png');
+}
+
+.services-item-img {
+  margin-bottom: 1rem;
+  padding: .8rem;
+  width: 7rem;
+  border: 2px solid #000000;
+  border-radius: 50%;
+}
+
+.item-heading {
+  margin-top: 2rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.services-item-description {
+  color: #6c6b6b;
+  line-height: 2;
+}
+
+/* cousine-section */
 
 .cousine-list {
   display: flex;
@@ -204,4 +263,65 @@ button {
 .cousine-item-link span {
   font-size: 1rem;
   font-weight: 400;
+}
+
+@media (max-width: 910px) {
+
+  .header-hero-text{
+    display: none;
+  }
+
+  .services-item {
+    padding: 0 1rem;
+  }
+
+  .item-heading {
+    font-size: .7rem;
+  }
+
+  .services-item .divider {
+    margin-bottom: 1rem;
+  }
+
+  .services-item-description {
+    font-size: .7rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .container,
+  .narrow-container  {
+    max-width: 95%;
+  }
+  
+  .header-hero-cursive {
+    font-size: 1.5rem;
+  }
+
+  .main-heading {
+    font-size: 4rem;
+  }
+
+  @media (max-width: 470px) {
+    .header {
+      margin-bottom: 0;
+    }
+
+    .hero-container {
+      padding: 50px 0 100px;
+    }
+
+    .services-list{
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .services-item {
+      max-width: 85%;
+    }
+
+    .services-item:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  }
 }
