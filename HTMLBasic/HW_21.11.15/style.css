@@ -298,6 +298,16 @@ section {
   .narrow-container  {
     max-width: 95%;
   }
+
+  .header-nav {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .header-nav-list {
+    align-self: flex-end;
+    margin-bottom: 3rem;
+  }
   
   .header-hero-cursive {
     font-size: 1.5rem;
