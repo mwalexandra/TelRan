@@ -1,5 +1,5 @@
 package list;
-// TODO complete
+
 public class AdvancedArrayList implements CustomList {
 
     private int[] source;
@@ -51,13 +51,7 @@ public class AdvancedArrayList implements CustomList {
 
     @Override
     public void add(int value) {
-        int[] newSource = new int[source.length + 1];
-
-        for (int i = 0; i < source.length; i++) {
-            newSource[i] = source[i];
-        }
-        newSource[newSource.length - 1] = value;
-        source = newSource;        
+        insert(source.length, value);      
     }
 
     @Override
