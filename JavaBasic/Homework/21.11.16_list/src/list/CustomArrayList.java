@@ -37,8 +37,8 @@ public class CustomArrayList implements CustomList {
 
     @Override
     public void removeById(int index) {
-        for (int i = index; i < size; i++) {
-            source[i] = source[i + 1];
+        for (int i = index + 1; i < size; i++) {
+            source[i - 1] = source[i];
         }
         size--;
     }
@@ -55,14 +55,11 @@ public class CustomArrayList implements CustomList {
     public void insert(int index, int value) {
         if(size == source.length)
             increaseCapacity(); 
-        
-        int temp = source[index];
-        source[index] = value;
-        source[index + 1] = temp;
 
-        for (int i = index + 2; i < size; i++) {
+        for (int i = size; i < index; i--) {
             source[i] = source[i - 1];
-        }   
+        }
+        source[index] = value;
         size++;  
     }
 
