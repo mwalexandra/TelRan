@@ -28,7 +28,7 @@ public class CustomArrayList implements CustomList {
 
     @Override
     public boolean contains(int value) {
-        for (int i = 0; i < source.length; i++) {
+        for (int i = 0; i < size; i++) {
             if (source[i] == value)
                 return true;
         }
@@ -38,7 +38,7 @@ public class CustomArrayList implements CustomList {
     @Override
     public void removeById(int index) {
         for (int i = index; i < size; i++) {
-            source[i] = source[i - 1];
+            source[i] = source[i + 1];
         }
         size--;
     }
@@ -61,7 +61,7 @@ public class CustomArrayList implements CustomList {
         source[index + 1] = temp;
 
         for (int i = index + 2; i < size; i++) {
-            source[i] = source[i + 1];
+            source[i] = source[i - 1];
         }   
         size++;  
     }
@@ -80,7 +80,6 @@ public class CustomArrayList implements CustomList {
         for (int i = 0; i < source.length; i++) {
             newSource[i] = source[i];
         }
-
         source = newSource;
     }
     
