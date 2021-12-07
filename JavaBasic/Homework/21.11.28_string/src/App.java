@@ -4,7 +4,7 @@ public class App {
         String str2 = "Anna";
         String str3 = "Hello, worllod!";
 
-        System.out.println(isPolindrom(str2));
+        System.out.println(isPalindrom(str2));
         System.out.println(numberOfPatternInString(str1, "llo"));
         System.out.println(numberOfPatternInString(str3, "llo"));
         System.out.println(stringFromNChars(str1, 13)); // Hello world
@@ -16,7 +16,7 @@ public class App {
 // (игнорируя регистр). 
 // Пример: Алла. "А роза упала на лапу Азора" - не палиндром в рамках указанной задачи. 
 // Пробелы не игнорируются. (Использовать метод с урока по развороту строки)
-    public static boolean isPolindrom (String str){
+    public static boolean isPalindrom (String str){
         char[] chars = new char[str.length()];
         for (int i = 0; i < chars.length; i++) {
             chars[i] = str.charAt(chars.length - 1 - i);
@@ -41,6 +41,19 @@ public class App {
         return counter;
     }
 
+    // решение с урока
+    public static int numberOfPatternInString2(String str, String pattern){
+        int counter = 0;
+        int index = str.indexOf(pattern);
+
+        while(index > -1){
+            counter++;
+            index++;
+            index = str.indexOf(pattern, index);
+        }
+        return counter;
+    }
+
     // 3. (*) Дана строка, состоящая только из слов и пробелов, и число N. 
     // Вернуть новую строку максимальной длины, состоящую из начала исходной строки, содержащую ТОЛЬКО слова целиком, 
     // при этом длины не больше чем N. 
@@ -50,7 +63,7 @@ public class App {
         String[] stringArray = str.split(" ");
         int indexWithoutSpaces = index - stringArray.length - 1;
 
-        if(stringArray[0].length() <= indexWithoutSpaces){
+        if(stringArray[0].length() < indexWithoutSpaces){
             for (int i = 0; i < stringArray.length; i++) {
                 if(indexWithoutSpaces >= stringArray[i].length()) {
                     newString = newString.concat(stringArray[i]).concat(" ");
@@ -58,8 +71,21 @@ public class App {
                 }    
             }
             return newString;
-        }
-        return "First word is bigger than " + index + " letters";
+        } else
+            return "First word is bigger than " + index + " letters";
     }
 
+    // решение с урока
+    public static String stringFromNChars2(String str, int index){
+        if(index >= str.length())
+            return str;
+
+        String cut = str.substring(0, n + 1);
+        
+        int lastSpaceIndex = cut.lastIndexOf(" ");
+        if(lastSpaceIndex < 0)
+            return "First word is bigger than " + index + " letters";
+
+        return cut.substring(0, lastSpaceIndex);
+    }
 }

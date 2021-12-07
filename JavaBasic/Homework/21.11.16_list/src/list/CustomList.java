@@ -3,6 +3,7 @@ package list;
 /**
  * The interface describes the List data structure
  */
+
 public interface CustomList {
     //Все абстрактные методы интерфейса всегда public, поэтому его можно не писать
 
@@ -10,6 +11,7 @@ public interface CustomList {
      * The method swaps the value at the index position
      * @param index the position
      * @param value a new value for the index position
+     * @throws CustomOutOfBoundsException if index is < 0 or index >= size
      */
     public void set(int index, int value);
 
@@ -17,6 +19,7 @@ public interface CustomList {
      * The method gets the value on the index position
      * @param index the position, whose value to be returned
      * @return the value by its position
+     * @throws CustomOutOfBoundsException if index is < 0 or index >= size
      */
     public int get(int index);
 
@@ -36,6 +39,7 @@ public interface CustomList {
     /**
      * removes the value by its position. The elements which are after the index move to the left by 1 position
      * @param index of the value to remove
+     * @throws CustomOutOfBoundsException if index is < 0 or index >= size
      */
     public void removeById(int index);
 
@@ -49,6 +53,7 @@ public interface CustomList {
      * Inserts the value to the index place. All the elements which are after the index move to the right by 1 position
      * @param index the place to insert
      * @param value the element to insert
+     * @throws CustomOutOfBoundsException if index is < 0 or index > size
      */
     public void insert(int index, int value);
 

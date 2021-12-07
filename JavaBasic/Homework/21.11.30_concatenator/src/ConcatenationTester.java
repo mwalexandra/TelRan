@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class ConcatenationTester {
 
     /**
@@ -10,16 +12,18 @@ public class ConcatenationTester {
      */
 
     public long test(Concatenator concatenator, String string, int number){
-        long currentTimeMillis = System.currentTimeMillis();
         String[] strings = composeStrings(string, number);
+
+        long currentTimeMillis = System.currentTimeMillis();
+        concatenator.concatenate(strings);
         return System.currentTimeMillis() - currentTimeMillis;
     }
 
     private String[] composeStrings(String string, int number) {
         String[] newStringArray = new String[number];
-        for (int i = 0; i < number; i++) {
-            newStringArray[i] = string;
-        }
+
+        Arrays.fill(newStringArray, string);
+
         return newStringArray;
     }
 }

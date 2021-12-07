@@ -13,11 +13,17 @@ public class CustomArrayList implements CustomList {
 
     @Override
     public void set(int index, int value) {
+        if(index < 0 || index >= size)
+            throw new CustomOutOfBoundsException();
+
         source[index] = value;    
     }
 
     @Override
     public int get(int index) {
+        if(index < 0 || index >= size)
+            throw new CustomOutOfBoundsException();
+            
         return source[index];
     }
 
@@ -37,6 +43,9 @@ public class CustomArrayList implements CustomList {
 
     @Override
     public void removeById(int index) {
+        if(index < 0 || index >= size)
+            throw new CustomOutOfBoundsException();
+            
         for (int i = index + 1; i < size; i++) {
             source[i - 1] = source[i];
         }
@@ -53,6 +62,9 @@ public class CustomArrayList implements CustomList {
 
     @Override
     public void insert(int index, int value) {
+        if(index < 0 || index >= size)
+            throw new CustomOutOfBoundsException();
+
         if(size == source.length)
             increaseCapacity(); 
 

@@ -1,7 +1,7 @@
 package shapes;
 
 public class Line extends Shape {
-    int length;
+    final int length;
 
     public Line(char symbol, int length) {
         super(symbol);
@@ -12,7 +12,7 @@ public class Line extends Shape {
     @Override
     public void draw() {
         for (int i = 0; i < length; i++) {
-            System.out.print(symbol);
+            System.out.print(symbol + " ");
         }
         System.out.println();
     }

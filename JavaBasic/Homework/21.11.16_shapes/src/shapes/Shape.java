@@ -1,7 +1,7 @@
 package shapes;
 
 public abstract class Shape {
-    char symbol;
+    final char symbol;
 
     public Shape(char symbol){
         this.symbol = symbol;

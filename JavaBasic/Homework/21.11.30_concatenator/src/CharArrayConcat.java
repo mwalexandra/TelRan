@@ -11,14 +11,13 @@ public class CharArrayConcat implements Concatenator {
         }
 
         char[] charArray = new char[totalCharNumber];
-        int numOfChars = 0;
+        int index = 0;
 
         for (int i = 0; i < strings.length; i++) {
-            char[] tempCharArray = strings[i].toCharArray();
-            for (int j = 0; j < tempCharArray.length; j++) {
-                charArray[numOfChars + j] = tempCharArray[j];
+            for (int j = 0; j < strings[i].length(); j++) {
+                charArray[index] = strings[i].charAt(j);
+                index++;
             }
-            numOfChars += (tempCharArray.length - 1);
         }
         return charArray.toString();
     }

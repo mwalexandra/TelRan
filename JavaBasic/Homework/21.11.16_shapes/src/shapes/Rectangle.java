@@ -1,22 +1,30 @@
 package shapes;
 
 public class Rectangle extends Shape {
-    int height;
-    int width;
+    final int height;
+    final int width;
+
+    final Line line;
 
     public Rectangle(char symbol, int height, int width) {
         super(symbol);
         this.height = height;
         this.width = width;
+        line = new Line(symbol, width);
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
     }
 
     @Override
     public void draw() {
         for (int i = 0; i < height; i++) {
-            for (int j = 0; j < width; j++) {
-                System.out.print(symbol);
+            line.draw();
             }
-            System.out.println();
-        }
     }
 }
