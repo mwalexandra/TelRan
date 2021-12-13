@@ -18,7 +18,7 @@ public class App {
         // - contains
 
     public static void main(String[] args) {
-        CustomList myList = new CustomArrayList();
+        CustomList<Integer> myList = new CustomArrayList<>();
 
         myList.add(10);
         myList.add(5);
