@@ -56,17 +56,11 @@ public class CustomArrayList<T> implements CustomList<T> {
 
     @Override
     public boolean removeByValue(T value) {
-        if(contains(value)){
-            int indexOfValue = 0;
-            for (int i = 0; i < source.length; i++) {
-                if (source[i].equals(value))
-                    indexOfValue = i;
+        for (int i = 0; i < size; i++) {
+            if (source[i].equals(value)) {
+                removeById(i);
+                return true;
             }
-            for (int i = indexOfValue + 1; i < size; i++) {
-                source[i - 1] = source[i];
-            }
-            size--;
-            return true;
         }
         return false;
     }

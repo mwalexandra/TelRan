@@ -63,7 +63,7 @@ public class AdvancedArrayList<T> implements CustomList<T> {
 
     @Override
     public boolean removeByValue(T value) {
-        if(contains(value)) {
+        if(contains(value, i++)) {
             int indexOfValue = 0;
             for (int i = 0; i < source.length; i++) {
                 if (value.equals(source[i]))
