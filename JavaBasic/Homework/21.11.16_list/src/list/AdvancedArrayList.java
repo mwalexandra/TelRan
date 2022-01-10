@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Iterator;
+
 public class AdvancedArrayList<T> implements CustomList<T> {
 
     private T[] source;
@@ -63,7 +65,7 @@ public class AdvancedArrayList<T> implements CustomList<T> {
 
     @Override
     public boolean removeByValue(T value) {
-        if(contains(value, i++)) {
+        if(contains(value)) {
             int indexOfValue = 0;
             for (int i = 0; i < source.length; i++) {
                 if (value.equals(source[i]))
@@ -112,5 +114,33 @@ public class AdvancedArrayList<T> implements CustomList<T> {
             System.out.print(source[i] + " ");
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new BasicIterator<>(source);
+    }
+
+    private static class BasicIterator<E> implements Iterator<E>{
+
+        private final E[] array;
+        private int currentIndex = 0;
+        
+
+        public BasicIterator(E[] source) {
+            array = source;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < array.length;
+        }
+
+        @Override
+        public E next() {
+            E res = array[currentIndex];
+            currentIndex++;
+            return res;
+        }
     }
 }

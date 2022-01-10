@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Iterator;
+
 public class CustomArrayList<T> implements CustomList<T> {
 
     private static final int INITIAL_CAPACITY = 4;
@@ -104,5 +106,36 @@ public class CustomArrayList<T> implements CustomList<T> {
             newSource[i] = source[i];
         }
         source = newSource;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new BasicIterator<>(source, size);
+    }
+
+    private static class BasicIterator<E> implements Iterator<E>{
+
+        private final E[] array;
+        private final int size;
+        private int currentIndex = 0;
+        
+
+        public BasicIterator(E[] source, int size) {
+            array = source;
+            this.size = size;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentIndex < size;
+        }
+
+        @Override
+        public E next() {
+            E res = array[currentIndex];
+            currentIndex++;
+            return res;
+        }
+
     }
 }

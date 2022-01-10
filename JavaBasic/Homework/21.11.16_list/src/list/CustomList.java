@@ -1,10 +1,11 @@
 package list;
 
+
 /**
  * The interface describes the List data structure
  */
 
-public interface CustomList<T> {
+public interface CustomList<T> extends Iterable<T>{
     //Все абстрактные методы интерфейса всегда public, поэтому его можно не писать
 
     /**

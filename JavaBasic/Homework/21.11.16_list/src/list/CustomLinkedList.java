@@ -1,5 +1,7 @@
 package list;
 
+import java.util.Iterator;
+
 public class CustomLinkedList<T> implements CustomList<T> {
 
     Node<T> first;
@@ -24,7 +26,7 @@ public class CustomLinkedList<T> implements CustomList<T> {
     }
 
     private Node<T> getNodeByIndex(int index){
-        if(index < 0 || index > size)
+        if(index < 0 || index >= size)
             throw new CustomOutOfBoundsException();
 
         Node<T> currentNode = first;
@@ -53,38 +55,73 @@ public class CustomLinkedList<T> implements CustomList<T> {
 
     @Override
     public boolean contains(T value) {
+        Node<T> node = findNodeByValue(value);
+        return node != null;
+    }
+
+
+    /**
+     * The method finds the most left node containing the value
+     * @param value
+     * @return node with the value or null
+     */
+    private Node<T> findNodeByValue(T value) {
         Node<T> currentNode = first;
 
         for (int i = 0; i < size; i++) {
-            if(currentNode.equals(value)) 
-                return true;
+            if(currentNode.value.equals(value)) 
+                return currentNode;
+
         currentNode = currentNode.next;
         }
-        return false;
+        return null;
     }
 
     @Override
     public T removeById(int index) {
         Node<T> node = getNodeByIndex(index);
-        node.prev.next = node.next;
-        node.next.prev = node.prev;
-        
+        T res = node.value;
+        removeNode(node);
+
+        return res;
+    }
+
+    /**
+     * remove node
+     * @param node must be non-null
+     */
+    private void removeNode(Node<T> node) {
+        Node<T> left = node.prev;
+        Node<T> right = node.next;
+
+        if(left == null){
+            first = right;
+        } else {
+            left.next = right;
+        }
+
+        if(right == null){
+            last = left;
+        } else {
+            right.prev = left;
+        }
+
+        node.next = null;
+        node.prev = null;
+        node.value = null;
+
         size--;
-        return node.value;
+
     }
 
     @Override
     public boolean removeByValue(T value) {
-        Node<T> currentNode = first;
-
-        for (int i = 0; i < size; i++) {
-            if(currentNode.equals(value)) {
-                removeById(i);
-                return true;
-            }    
-        currentNode = currentNode.next;
-        }
-        return false;
+        Node<T> currentNode = findNodeByValue(value);
+        if (currentNode == null)
+            return false;
+        
+        removeNode(currentNode);
+        return true;
     }
 
     @Override
@@ -95,19 +132,36 @@ public class CustomLinkedList<T> implements CustomList<T> {
             first = last = node;
         }else{
             last.next = node;
-            last = node;
         }
+        last = node;
         size++;
     }
 
     @Override
     public void insert(int index, T value) {
-  
-        Node<T> prevNode = getNodeByIndex(index - 1);
-        Node<T> nextNode = prevNode.next;
+        Node<T> right;
+        Node<T> left;
 
-        Node<T> newNode = new Node<>(value, prevNode, nextNode);
-        prevNode.next = nextNode.prev = newNode;
+        if(index == size){
+            left = last;
+            right = null;
+        } else {
+            right = getNodeByIndex(index);
+            left = right.prev;
+        }
+
+        Node<T> newNode = new Node<>(value, left, right);
+        if(left == null){
+           first = newNode;
+        } else {
+            left.next = newNode;
+        }
+
+        if(right == null){
+            last = newNode;
+        } else {
+            right.next = newNode;
+        }
 
         size++;
     }
@@ -121,6 +175,34 @@ public class CustomLinkedList<T> implements CustomList<T> {
             currentNode = currentNode.next;
         }
         System.out.println();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        Iterator<T> iterator = new BasicIterator<>(first);
+        return iterator;
+    }
+
+    private static class BasicIterator<E> implements Iterator<E>{
+
+        private Node<E> currentNode;
+        
+        public BasicIterator(Node<E> currentNode) {
+            this.currentNode = currentNode;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return currentNode != null; 
+        }
+
+        @Override
+        public E next() {
+            E res = currentNode.value;
+            currentNode = currentNode.next;
+            return res;
+        }
+
     }
     
 }

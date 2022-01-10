@@ -2,9 +2,9 @@ package list;
 import static java.util.Optional.ofNullable;
 import static org.junit.Assert.*;
 
+import java.util.Iterator;
 import java.util.Random;
 
-import org.junit.*;
 
 abstract class CustomListTest {
     
@@ -98,5 +98,42 @@ abstract class CustomListTest {
 
         assertEquals(3, integerList.removeById(2));
         assertListContents(new int[]{1, 3, 4});
+    }
+
+    @Test void testIterator_severalElements(){
+        integerList.add(5);
+        integerList.add(10);
+        integerList.add(2);
+        integerList.add(25);
+        integerList.add(6);
+
+        int[] expected = {5, 10, 2, 25, 6};
+
+        Iterator<Integer> iterator = integerList.iterator();
+        
+        int i = 0;
+        while(iterator.hasNext()){
+            int currentNum = iterator.next();
+            assertEquals(expected[i], currentNum);
+            i++;
+        }
+        assertEquals(i, expected.length);
+    }
+
+    // еще тесты: нет элементов и один элемент в массиве
+    @Test void testIterator_NoElements(){
+        Iterator<Integer> iterator = integerList.iterator();
+        
+        assertFalse(iterator.hasNext());
+    }
+
+    @Test void testIterator_OneElements(){
+        integerList.add(5);
+        Iterator<Integer> iterator = integerList.iterator();
+
+        int first = iterator.next();
+        
+        assertEquals(5, first);
+        assertFalse(iterator.hasNext());
     }
 }

@@ -1,6 +1,6 @@
-import list.AdvancedArrayList;
 import list.CustomArrayList;
 import list.CustomList;
+
 
 public class App {
 
@@ -33,5 +33,15 @@ public class App {
         myList.add(3); // 9, 5, 3
         myList.insert(2, 10); // 9, 5, 10, 3
         myList.println();
+
+        //  Iterator<Integer> iterator = myList.iterator();
+        // while(iterator.hasNext()){
+        //     int num = iterator.next();
+        //     System.out.println(num);
+        // }
+
+        for(int number : myList){   // только для iteratable объектов
+            System.out.println(number);
+        }
     }
 }
