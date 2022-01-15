@@ -1,5 +1,5 @@
-public interface CustomDeque<T> {
-    
+public interface CustomDeque<T> extends Iterable<T> {
+
     void addFirst(T elt);
 
     T getFirst();
