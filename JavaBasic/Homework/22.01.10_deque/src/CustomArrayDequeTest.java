@@ -122,4 +122,28 @@ class CustomArrayDequeTest {
         assertEquals(5, first);
         assertFalse(iterator.hasNext());
     }
+
+    @Test
+    public void testIterator_SizeEqualsToLength() {
+        dqList.addFirst(5);
+        dqList.addLast(56);
+        dqList.addLast(78);
+        dqList.addLast(34);
+        dqList.addLast(0);
+        dqList.addLast(3);
+        dqList.addLast(68);
+        dqList.addLast(90);
+
+        Iterator<Integer> iterator = dqList.iterator();
+
+        int[] res = { 5, 56, 78, 34, 0, 3, 68, 90 };
+
+        int i = 0;
+        while (iterator.hasNext()) {
+            int currentNum = iterator.next();
+            assertEquals(res[i], currentNum);
+            i++;
+        }
+        assertEquals(8, res.length);
+    }
 }
