@@ -117,7 +117,7 @@ public class HashMap<K, V> implements Map<K, V> {
     @Override
     public boolean contains(K key) {
         Pair<K, V> pair = findPair(key);
-        return pair == null;
+        return pair != null;
     }
 
     @Override
