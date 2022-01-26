@@ -1,4 +1,5 @@
-import java.util.Arrays;
+
+import java.util.Iterator;
 
 public class HashMap<K, V> implements Map<K, V> {
     // map.
@@ -7,7 +8,7 @@ public class HashMap<K, V> implements Map<K, V> {
     private static final double LOAD_FACTOR = 0.75;
     private static final int INITIAL_CAPACITY = 16;
     private int size;
-    private Pair<K, V>[] source = new Pair[INITIAL_CAPACITY];
+    Pair<K, V>[] source = new Pair[INITIAL_CAPACITY];
 
     private static class Pair<K, V> {
         K key;
@@ -22,7 +23,7 @@ public class HashMap<K, V> implements Map<K, V> {
     }
 
     @Override
-    public void put(K key, V value) {
+    public V put(K key, V value) {
         if (size > LOAD_FACTOR * source.length)
             resize();
 
@@ -33,9 +34,11 @@ public class HashMap<K, V> implements Map<K, V> {
             pair = new Pair<>(key, value, source[index]);
             source[index] = pair;
             size++;
-        } else {
-            pair.value = value;
+            return null;
         }
+        V res = pair.value;
+        pair.value = value;
+        return res;
     }
 
     private int findIndex(K key) {
@@ -99,7 +102,7 @@ public class HashMap<K, V> implements Map<K, V> {
             Pair<K, V> topPair = currentPair.next;
 
             while (topPair != null) {
-                if (topPair.value.equals(pair.value)) {
+                if (topPair.key.equals(pair.key)) {
                     currentPair.next = topPair.next;
                     size--;
                     return topPair.value;
@@ -109,7 +112,9 @@ public class HashMap<K, V> implements Map<K, V> {
             }
         }
         V res = pair.value;
+        pair.key = null;
         pair.value = null;
+        pair.next = null;
         size--;
         return res;
     }
@@ -124,4 +129,66 @@ public class HashMap<K, V> implements Map<K, V> {
     public int size() {
         return size;
     }
+
+    // TODO
+    @Override
+    public Iterator<K> keyIterator() {
+        K firstKey = findFirstKey(source);
+        if (firstKey == null)
+            throw new IllegalStateException();
+
+        return new BasicKeyIterator<>(firstKey, size);
+    }
+
+    private K findFirstKey(Pair<K, V>[] source) {
+        for (int i = 0; i < source.length; i++) {
+            if (source[i] != null)
+                return source[i].key;
+        }
+        return null;
+    }
+
+    public class BasicKeyIterator<K> implements Iterator<K> {
+
+        // private Pair<K, V>[] source;
+        K key;
+        final int size;
+        int counter = 0;
+        int index = findIndex(key);
+
+        public BasicKeyIterator(K firstKey, int size) {
+            // this.source = source;
+            this.key = firstKey;
+            this.size = size;
+        }
+
+        @Override
+        public boolean hasNext() {
+            return counter < size;
+        }
+
+        @Override
+        public K next() {
+            K res = key;
+            Pair<K, V> currentPair = findPair(key);
+
+            if (currentPair.next != null) {
+                currentPair = currentPair.next;
+                key = currentPair.key;
+                counter++;
+                return res;
+            }
+            counter++;
+            key = source[index++];
+            return res;
+        }
+    }
+
+    // TODO
+    @Override
+    public Iterator<V> valueIterator() {
+        return null;
+        // new BasicValueIterator(source, size);
+    }
+
 }

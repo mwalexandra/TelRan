@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public interface Map<K, V> {
 
     /**
@@ -6,8 +8,9 @@ public interface Map<K, V> {
      * 
      * @param key
      * @param value
+     * @return old value corresponding to the key
      */
-    void put(K key, V value);
+    V put(K key, V value);
 
     /**
      * The method returns the value corresponding to the key. If there is no such a
@@ -36,4 +39,17 @@ public interface Map<K, V> {
     boolean contains(K key);
 
     int size();
+
+    /**
+     * 
+     * @return
+     * @throws Exception
+     */
+    Iterator<K> keyIterator();
+
+    /**
+     * 
+     * @return
+     */
+    Iterator<V> valueIterator();
 }

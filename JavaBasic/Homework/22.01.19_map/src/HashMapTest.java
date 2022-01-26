@@ -1,5 +1,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Iterator;
+
 import org.junit.jupiter.api.Test;
 
 public class HashMapTest {
@@ -53,5 +55,27 @@ public class HashMapTest {
             map.put(i, "C");
         }
         assertEquals(100, map.size());
+    }
+
+    @Test
+    public void testKeyIterator() {
+        map.put(1, "A");
+        map.put(2, "B");
+        map.put(3, "A");
+        map.put(4, "B");
+        map.put(5, "A");
+        map.put(6, "B");
+
+        int[] expected = { 1, 2, 3, 4, 5, 6 };
+
+        Iterator<Integer> keyIterator = map.keyIterator();
+
+        int i = 0;
+        while (keyIterator.hasNext()) {
+            int currentNum = keyIterator.next();
+            assertEquals(expected[i], currentNum);
+            i++;
+        }
+        assertEquals(i, expected.length);
     }
 }
