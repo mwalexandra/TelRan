@@ -179,7 +179,7 @@ public class HashMap<K, V> implements Map<K, V> {
                 return res;
             }
             counter++;
-            key = source[index++];
+            key = source[index++].key;
             return res;
         }
     }
