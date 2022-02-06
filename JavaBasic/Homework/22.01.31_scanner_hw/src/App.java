@@ -10,13 +10,20 @@ public class App {
 
         System.out.println("Print a words");
         Scanner lineSc = new Scanner(System.in);
+        int num = lineSc.nextInt();
 
-        while (lineSc.hasNextLine()) {
-            resMap.put(lineSc.next(), lineSc.next());
+        for (int i = 0; i <= num; i++) {
+            Scanner words = new Scanner(lineSc.nextLine());
+            String value = lineSc.next();
+
+            while (lineSc.hasNext()) {
+                resMap.put(lineSc.next(), value);
+            }
         }
 
         System.out.println("Print a key-word");
         String key = lineSc.next();
+
         if (resMap.containsKey(key))
             System.out.println(resMap.get(key));
     }
