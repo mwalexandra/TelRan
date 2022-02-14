@@ -4,6 +4,7 @@ import java.util.Random;
 public class MaxRandomRule implements IRandomRule {
 
     private final int max;
+    private final Random rnd = new Random();
 
     public MaxRandomRule(int max) {
         this.max = max;
@@ -11,7 +12,6 @@ public class MaxRandomRule implements IRandomRule {
 
     @Override
     public int nextInt() {
-        Random rnd = new Random();
         return rnd.nextInt(max); // generates random numbers from o incl. to max excl.
     }
     

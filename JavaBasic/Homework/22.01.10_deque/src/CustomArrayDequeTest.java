@@ -136,14 +136,13 @@ class CustomArrayDequeTest {
 
         Iterator<Integer> iterator = dqList.iterator();
 
-        int[] res = { 5, 56, 78, 34, 0, 3, 68, 90 };
+        Integer[] res = { 5, 56, 78, 34, 0, 3, 68, 90 };
 
         int i = 0;
-        while (iterator.hasNext()) {
-            int currentNum = iterator.next();
-            assertEquals(res[i], currentNum);
+        for (Integer elt : dqList) {
+            assertEquals(res[i], elt);
             i++;
         }
-        assertEquals(8, res.length);
+        assertEquals(8, i);
     }
 }

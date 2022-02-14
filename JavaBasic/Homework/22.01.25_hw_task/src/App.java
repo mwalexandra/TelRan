@@ -2,6 +2,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 public class App {
     public static void main(String[] args) {
@@ -21,20 +22,16 @@ public class App {
 
         for (int number : list) {
             if (qtyByNumber.containsKey(number)) {
-                if(qtyByNumber.get(number) == null)    
-                    qtyByNumber.put(number, number);
-                else
-                qtyByNumber.put(number, null);        
+                int oldValue = qtyByNumber.get(number);
+                qtyByNumber.put(number, oldValue + 1);
             } else {
-                qtyByNumber.put(number, null);
+                qtyByNumber.put(number, 1);
             }
         }
-        
-        Iterator<Integer> keyIterator = qtyByNumber.keySet().iterator();
-            while (keyIterator.hasNext()) {
-                int resPair = keyIterator.next();
-                if (qtyByNumber.get(resPair) == null) {
-                    return resPair;
-                }
-            }
+
+        for(int number : qtyByNumber.keySet()){
+            if(qtyByNumber.get(number) % 2 != 0)
+                return number;
+        }
+        throw new NoSuchElementException();
 }

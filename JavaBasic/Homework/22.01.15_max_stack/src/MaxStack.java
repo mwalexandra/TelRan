@@ -1,12 +1,5 @@
 public interface MaxStack {
 
-    // TODO
-    /*
-     * 1. Implement at least a simple implementation of the collection
-     * 2. Try to implement this method so that it has the complexity O(1)
-     * 
-     * To simplify, you can use Java ready collections under the hood
-     */
     void add(int elt);
 
     int get();

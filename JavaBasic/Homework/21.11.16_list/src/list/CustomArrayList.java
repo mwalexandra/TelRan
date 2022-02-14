@@ -1,5 +1,6 @@
 package list;
 
+import java.util.Comparator;
 import java.util.Iterator;
 
 public class CustomArrayList<T> implements CustomList<T> {
@@ -9,23 +10,23 @@ public class CustomArrayList<T> implements CustomList<T> {
     private T[] source;
     private int size;
 
-    public CustomArrayList(){
+    public CustomArrayList() {
         source = (T[]) new Object[INITIAL_CAPACITY];
     }
 
     @Override
     public void set(int index, T value) {
-        if(index < 0 || index >= size)
+        if (index < 0 || index >= size)
             throw new CustomOutOfBoundsException();
 
-        source[index] = value;    
+        source[index] = value;
     }
 
     @Override
     public T get(int index) {
-        if(index < 0 || index >= size)
+        if (index < 0 || index >= size)
             throw new CustomOutOfBoundsException();
-            
+
         return source[index];
     }
 
@@ -45,10 +46,10 @@ public class CustomArrayList<T> implements CustomList<T> {
 
     @Override
     public T removeById(int index) {
-        if(index < 0 || index >= size)
+        if (index < 0 || index >= size)
             throw new CustomOutOfBoundsException();
-        
-        T res = source[index];    
+
+        T res = source[index];
         for (int i = index + 1; i < size; i++) {
             source[i - 1] = source[i];
         }
@@ -66,29 +67,28 @@ public class CustomArrayList<T> implements CustomList<T> {
         }
         return false;
     }
-    
 
     @Override
-    public void add (T value) {
-        if(size == source.length)
-            increaseCapacity();  
-            
+    public void add(T value) {
+        if (size == source.length)
+            increaseCapacity();
+
         source[size++] = value;
     }
 
     @Override
     public void insert(int index, T value) {
-        if(index < 0 || index > size)
+        if (index < 0 || index > size)
             throw new CustomOutOfBoundsException();
 
-        if(size == source.length)
-            increaseCapacity(); 
+        if (size == source.length)
+            increaseCapacity();
 
         for (int i = size; i < index; i--) {
             source[i] = source[i - 1];
         }
         source[index] = value;
-        size++;  
+        size++;
     }
 
     @Override
@@ -96,7 +96,7 @@ public class CustomArrayList<T> implements CustomList<T> {
         for (int i = 0; i < size; i++) {
             System.out.print(source[i] + " ");
         }
-        System.out.println();        
+        System.out.println();
     }
 
     private void increaseCapacity() {
@@ -108,17 +108,32 @@ public class CustomArrayList<T> implements CustomList<T> {
         source = newSource;
     }
 
+    public void sort(Comparator<T> comparator) {
+        int stepNum = size - 1;
+
+        for (int i = 0; i < stepNum; i++) {
+            int minNumIndex = i;
+            for (int j = i + 1; j < size; j++) {
+                if (comparator.compare(source[j], source[minNumIndex]) < 0) {
+                    minNumIndex = j;
+                }
+            }
+            T temp = source[minNumIndex];
+            source[minNumIndex] = source[i];
+            source[i] = temp;
+        }
+    }
+
     @Override
     public Iterator<T> iterator() {
         return new BasicIterator<>(source, size);
     }
 
-    private static class BasicIterator<E> implements Iterator<E>{
+    private static class BasicIterator<E> implements Iterator<E> {
 
         private final E[] array;
         private final int size;
         private int currentIndex = 0;
-        
 
         public BasicIterator(E[] source, int size) {
             array = source;

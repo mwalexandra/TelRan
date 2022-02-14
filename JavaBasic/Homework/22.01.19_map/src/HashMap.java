@@ -1,5 +1,6 @@
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class HashMap<K, V> implements Map<K, V> {
     // map.
@@ -41,7 +42,7 @@ public class HashMap<K, V> implements Map<K, V> {
         return res;
     }
 
-    private int findIndex(K key) {
+    public int findIndex(K key) {
         return Math.abs(key.hashCode()) % source.length;
     }
 
@@ -51,7 +52,7 @@ public class HashMap<K, V> implements Map<K, V> {
      * @param key
      * @return
      */
-    private Pair<K, V> findPair(K key) {
+    public Pair<K, V> findPair(K key) {
         int index = findIndex(key);
 
         Pair<K, V> currentPair = source[index];
@@ -130,65 +131,68 @@ public class HashMap<K, V> implements Map<K, V> {
         return size;
     }
 
-    // TODO
     @Override
     public Iterator<K> keyIterator() {
-        K firstKey = findFirstKey(source);
-        if (firstKey == null)
-            throw new IllegalStateException();
-
-        return new BasicKeyIterator<>(firstKey, size);
+        return new BasicKeyIterator();
     }
 
-    private K findFirstKey(Pair<K, V>[] source) {
-        for (int i = 0; i < source.length; i++) {
-            if (source[i] != null)
-                return source[i].key;
-        }
-        return null;
-    }
+    public class BasicKeyIterator implements Iterator<K> {
 
-    public class BasicKeyIterator<K> implements Iterator<K> {
+        int pairNumber = 0;
+        int index;
+        Pair<K, V> currentPair;
 
-        // private Pair<K, V>[] source;
-        K key;
-        final int size;
-        int counter = 0;
-        int index = findIndex(key);
+        public BasicKeyIterator() {
+            if (size == 0)
+                return;
 
-        public BasicKeyIterator(K firstKey, int size) {
-            // this.source = source;
-            this.key = firstKey;
-            this.size = size;
+            while ((currentPair = source[index]) == null)
+                index++;
         }
 
         @Override
         public boolean hasNext() {
-            return counter < size;
+            return pairNumber < size;
         }
 
         @Override
         public K next() {
-            K res = key;
-            Pair<K, V> currentPair = findPair(key);
+            if (pairNumber >= size)
+                throw new NoSuchElementException();
 
-            if (currentPair.next != null) {
+            K res = currentPair.key;
+
+            if (currentPair.next != null)
                 currentPair = currentPair.next;
-                key = currentPair.key;
-                counter++;
-                return res;
+            else {
+                do {
+                    index++;
+                } while ((currentPair = source[index]) == null);
             }
-            counter++;
-            key = source[index++].key;
+            pairNumber++;
             return res;
         }
     }
 
-    // TODO
     @Override
     public Iterator<V> valueIterator() {
-        return null;
-        // new BasicValueIterator(source, size);
+        return new ValueIterator();
     }
 
+    private class ValueIterator implements Iterator<V> {
+
+        BasicKeyIterator keyIterator = new BasicKeyIterator();
+
+        @Override
+        public boolean hasNext() {
+            return keyIterator.hasNext();
+        }
+
+        @Override
+        public V next() {
+            K key = keyIterator.next();
+            return get(key);
+        }
+
+    }
 }

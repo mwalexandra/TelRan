@@ -21,7 +21,7 @@ public class RandomGenerator {
         List<Integer> numbers = new ArrayList<>();
         
         for (int i = 0; i < n; i++) {
-            numbers.add(i, randomRule.nextInt());
+            numbers.add(randomRule.nextInt());
         }
         return numbers;
     }

@@ -1,3 +1,5 @@
+import javax.imageio.plugins.tiff.ExifTIFFTagSet;
+
 /**
  * Алгоритмы класса "Разделяй и влавствуй" (Divide and Conquer) сводятся к
  * разделению задачи на подзадачи и их решению.
@@ -34,7 +36,7 @@ public class Solution {
         if (rightIndex - leftIndex == 1)
             return;
 
-        int middleIndex = leftIndex + (rightIndex - leftIndex) / 2;
+        int middleIndex = (rightIndex + leftIndex) / 2;
 
         mergeSortRecursively(numbers, leftIndex, middleIndex);
         mergeSortRecursively(numbers, middleIndex, rightIndex);
@@ -76,23 +78,34 @@ public class Solution {
      */
 
     public int findMajority(int[] array) {
+        return findMajorityRecursively(array, 0, array.length);
+    }
 
-        int counter = 1;
-        int res = array[0];
+    private int findMajorityRecursively(int[] array, int leftIndex, int rightIndex) {
 
-        for (int i = 1; i < array.length; i++) {
-            if (counter == 0) {
-                res = array[i];
-                counter++;
-            } else {
-                if (res == array[i]) {
-                    counter++;
-                } else
-                    counter--;
-            }
+        if (rightIndex - leftIndex == 1)
+            return array[leftIndex];
+
+        int middleIndex = (leftIndex + rightIndex) / 2;
+        int leftDominant = findMajorityRecursively(array, leftIndex, middleIndex);
+        int rightDominant = findMajorityRecursively(array, middleIndex, rightIndex);
+
+        if (leftDominant >= 0) {
+            if (checkDominant(array, leftIndex, rightIndex, leftDominant))
+                return leftDominant;
+        } else if (rightDominant >= 0) {
+            if (checkDominant(array, leftIndex, rightIndex, rightDominant))
+                return rightDominant;
         }
-        if (counter < 1)
-            return -1;
-        return res;
+        return -1;
+    }
+
+    private boolean checkDominant(int[] array, int leftIndex, int rightIndex, int dominant) {
+        int counter = 0;
+        for (int i = leftIndex; i < rightIndex; i++) {
+            if (array[i] == dominant)
+                counter++;
+        }
+        return counter > (rightIndex - leftIndex) / 2;
     }
 }

@@ -72,4 +72,5 @@ public interface CustomList<T> extends Iterable<T>{
      * prints the element out to the console
      */
     public void println();
+
 }

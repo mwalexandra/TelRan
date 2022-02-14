@@ -92,35 +92,24 @@ public class CustomArrayDeque<T> implements CustomDeque<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new BasicIterator<>(source, size, firstElementIndex);
+        return new BasicIterator();
     }
 
-    private static class BasicIterator<E> implements Iterator<E> {
+    private class BasicIterator implements Iterator<T> {
 
-        private final E[] array;
-        private final int size;
-        private final int firstElementIndex;
-        private int currentElementIndex;
-
-        public BasicIterator(E[] source, int size, int firstElementIndex) {
-            array = source;
-            this.size = size;
-            this.firstElementIndex = firstElementIndex;
-            currentElementIndex = firstElementIndex;
-        }
+        int currentElementNumber = 0;
 
         @Override
         public boolean hasNext() {
-            return currentElementIndex != (firstElementIndex + size) % array.length;
+            return currentElementNumber < size;
         }
 
         @Override
-        public E next() {
-            E res = array[currentElementIndex];
-            currentElementIndex++;
+        public T next() {
+            int currentIndex = (firstElementIndex + currentElementNumber) % source.length;
 
-            if (currentElementIndex > array.length - 1)
-                currentElementIndex = 0;
+            T res = source[currentIndex];
+            currentElementNumber++;
 
             return res;
         }
