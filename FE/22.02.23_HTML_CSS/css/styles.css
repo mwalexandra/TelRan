@@ -97,18 +97,19 @@ section:nth-child(even) {
 }
 .about-content {
 	display: flex;
-	justify-content: space-between;
 	align-items: center;
 }
 
 .about-content figure {
+	margin-right: 2rem;
 	width: 30%;
 	border-radius: 5px;
 	overflow: hidden;
 }
 .about-content p {
-	width: 65%;
+	width: 55%;
 	padding: 30px;
+	font-size: 1.5rem;
 	border: 1px solid rgb(0, 86, 137);
 	box-shadow: 5px 5px 5px 3px rgba(0, 86, 137, 0.4);
 }
@@ -189,6 +190,7 @@ h2{
 
 .service h3 {
 	margin: 1rem 0;
+	text-align: center;
 }
 
 .service p{
@@ -203,4 +205,22 @@ h2{
 
 .service a:hover {
 	border-bottom-color: #d5eeff;
+}
+
+.contacts-list{
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	height: 8rem;
+}
+
+.contacts-list li strong{
+	display: block;
+	margin-top: 1rem;
+}
+
+footer{
+	padding: 20px;
+    color: #005689;
+    text-align: center;
 }
