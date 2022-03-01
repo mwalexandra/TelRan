@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+.agency-section {
+    position: relative;
+    min-height: 65vh;
+    color: #fff;
+    background-color: #2C3919;
+}
+
+.agency-container {
+    position: absolute;
+    top: 3rem;
+    right: 3rem;
+    min-height: 70vh;
+    max-width: 75%;
+    background: url('img/daniel-sessler-ijl7pdHmzM8-unsplash.jpg') no-repeat;
+    box-shadow: 9px -5px 11px 1px rgba(0,0,0,0.3);
+}
+
+.agency-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding: 3rem;
+}
+
+.desc-container {
+    max-width: 50%;
+}
+
+.agency-heading {
+    position: relative;
+    left: -30rem;
+    font-size: 4.3rem;
+    text-transform: uppercase;
+}
+
+.agency-text {
+    margin-top: 3rem;
+    text-align: right;
+    line-height: 1.6;
+    opacity: .7;
+}
