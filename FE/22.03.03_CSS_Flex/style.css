@@ -13,12 +13,12 @@ ul li {
 }
 
 img {
-    width: 100%;
-    overflow: hidden;
+    max-width: 100%;
 }
 
 section {
-    margin: 5rem 0;
+    margin-bottom: 5rem;
+    padding: 2rem 0;
 }
 
 .container {
@@ -82,7 +82,6 @@ section {
 /* car-section */
 
 .cars-section {
-    padding: 2rem 0;
     background-color: #282B32;
 }
 
@@ -104,7 +103,7 @@ section {
 .cars-list {
     display: flex;
     justify-content: center;
-    gap: 3rem;
+    gap: 1rem;
 }
 
 .car-item {
@@ -132,10 +131,284 @@ section {
 }
 
 .img-container {
-    height: 50%;
+    height: 45%;
     overflow: hidden;
 }
 
+.car-item-img {
+    height: 100%;
+    object-fit: cover;
+}
+
 .car-descr-container {
-    margin-top: ;
+    padding: 1.5rem;
+}
+
+.car-descr-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.car-item-descr-list li{
+    position: relative;
+    padding-left: 1rem;
+}
+
+.car-item-descr-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 3px;
+    width: .8rem;
+    height: .8rem;
+    background-image: url('img/bookmark.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.car-item-btn {
+    align-self: center;
+    padding: .5rem 1.5rem;
+    color: #fff;
+    border: none;
+    background-color: #F50C03;
+}
+
+/* headbands-section */
+
+.heading-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    margin-bottom: 2.5rem;
+}
+
+.headbands-section-heading {
+    margin-bottom: 1rem;
+    max-width: 30%;
+    text-align: right;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+.headbands-link {
+    padding-right: .6rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: #545C65;
+    border-bottom: 1px solid #545C65;
+    background: url('https://upload.wikimedia.org/wikipedia/commons/f/f9/Antu_arrow-right.svg') no-repeat;
+    background-position: right 2px;
+    background-size: .5rem;
+}
+
+.headbands-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.headband-item {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    max-width: 45%;
+}
+
+.headband-figure{
+    align-self: stretch;
+    overflow: hidden;
+}
+
+.headband-figure img {
+    height: 100%;
+    object-fit: cover;
+}
+
+.headband-descr-container {
+    padding: 1rem 0;
+}
+
+.headband-item-heading {
+    margin-bottom: 1rem;
+}
+
+.headband-item-text {
+    margin-bottom: 1.5rem;
+    color: #545C65;
+    font-size: .9rem;
+    line-height: 1.5;
+}
+
+.headband-price-text {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* plants-section */
+
+.plants-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.plants-descr-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-self: stretch;
+
+}
+
+.left-big-text {
+    max-width: 33%;
+    font-size: 2.2rem;
+    font-weight: 600;
+}
+
+.right-text {
+    max-width: 30%;
+    text-align: justify;
+    color: #858484;
+    font-size: .9rem;
+    font-style: italic;
+}
+
+.plants-card {
+    max-width: 30%;
+}
+
+.plants-card-figure {
+    margin-bottom: 2rem;
+}
+
+.plants-card-price {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.plants-card-heading {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: center;
+}
+
+/* ux-section */
+
+.ux-section {
+    background-color: #E4E4E4;
+}
+
+.ux-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ux-heading {
+    margin-bottom: 1.5rem;
+    max-width: 70%;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.ux-cards-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.ux-card {
+    padding: 2rem 1rem 1rem;
+    max-width: 30%;
+    background-color: #fff;
+    border-top: 15px solid;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    box-shadow: 9px 5px 23px -3px rgba(0,0,0,0.75);
+}
+
+.ux-card:nth-child(1){
+    border-top-color: #E647A1;
+}
+
+.ux-card:nth-child(2){
+    border-top-color: #31BFCD;
+}
+
+.ux-card:nth-child(3){
+    border-top-color: #00c01a;
+}
+
+.ux-card:nth-child(4){
+    border-top-color: #E2E800;
+}
+
+.ux-card:nth-child(5){
+    border-top-color: #C07FEF;
+}
+
+.ux-card:nth-child(6){
+    border-top-color: #ff92d0;
+}
+
+.ux-card-span {
+    margin-bottom: 1rem;
+    padding: .5rem .7rem;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.ux-card:nth-child(1) .ux-card-span {
+    background-color: #E647A1;
+}
+
+.ux-card:nth-child(2) .ux-card-span {
+    background-color: #31BFCD;
+}
+
+.ux-card:nth-child(3) .ux-card-span {
+    background-color: #00c01a;
+}
+
+.ux-card:nth-child(4) .ux-card-span {
+    background-color: #E2E800;
+}
+
+.ux-card:nth-child(5) .ux-card-span {
+    background-color: #C07FEF;
+}
+
+.ux-card:nth-child(6) .ux-card-span {
+    background-color: #ff92d0;
+}
+
+.ux-card-heading {
+    margin: 2rem 0 1rem;
+    font-weight: normal;
+}
+
+.ux-card-descr-text {
+    font-size: .8rem;
+}
+
+.ux-btn {
+    padding: .8rem 2rem;
+    color: #fff;
+    text-transform: uppercase;
+    border: none;
+    background-color: #E647A1;
+    border-radius: 10px;
+    opacity: .8;
+    cursor: pointer;
 }

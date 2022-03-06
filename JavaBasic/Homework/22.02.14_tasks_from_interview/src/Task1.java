@@ -13,14 +13,8 @@ public class Task1 {
             if (num2 == numbers[i]) {
                 count2++;
             }
-            if (count1 > 0 && count1 == count2)
-                prefix = i;
-        }
-
-        if (prefix > 0) {
-            while (numbers[prefix] != num1 && numbers[prefix] != num2) {
-                prefix++;
-            }
+            if (count1 == count2)
+                prefix = i + 1;
         }
         return prefix;
     }

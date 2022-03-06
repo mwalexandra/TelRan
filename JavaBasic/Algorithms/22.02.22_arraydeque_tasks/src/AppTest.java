@@ -90,11 +90,20 @@ public class AppTest {
     }
 
     @Test
-    void testCountOrdersNumber_minuteIsMore_than_lastElement() {
+    void testCountOrdersNumber_1() {
         long[] orderTimes = { 240000L, 300000L, 360000L };
 
-        int[] expected = { 4, 5, 6 };
+        int[] expected = { 0, 1, 2 };
 
         assertArrayEquals(expected, test.countOrdersNumber(orderTimes, 7));
+    }
+
+    @Test
+    void testCountOrdersNumber_2() {
+        long[] orderTimes = { 180000L, 240000L, 300000L, 360000L, 420000L, 480000L, 540000L };
+
+        int[] expected = { 0, 1, 2, 2, 2, 2, 2 };
+
+        assertArrayEquals(expected, test.countOrdersNumber(orderTimes, 2));
     }
 }

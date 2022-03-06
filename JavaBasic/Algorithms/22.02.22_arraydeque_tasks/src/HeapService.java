@@ -8,7 +8,7 @@ public class HeapService {
     // массиве равняется: 2*i + 1, 2*i + 2
     public void makeHeap(int[] array) {
         for (int i = (array.length - 1) / 2; i >= 0; i--) {
-            siftDown(i, array);
+            siftDown(i, array, array.length);
         }
     }
 
@@ -20,24 +20,38 @@ public class HeapService {
      * @param i
      * @param array
      */
-    private void siftDown(int i, int[] array) {
-        int cur = array[i];
-        int leftChildCur = array[i * 2 + 1];
-        int rightChildCur = array[i * 2 + 2];
+    private void siftDown(int i, int[] array, int size) {
+        int leftIndex = i * 2 + 1;
+        int rightIndex = leftIndex + 1;
 
-        if (cur < leftChildCur)
-            leftChildCur = cur;
-        else if (cur < rightChildCur)
-            rightChildCur = cur;
+        int cur = array[i];
+        int leftChildCur = array[leftIndex];
+        int rightChildCur = array[rightIndex];
+
+        int maxIndex = i;
+
+        if (leftIndex < size && cur < leftChildCur)
+            maxIndex = leftIndex;
+        if (rightIndex < size && array[maxIndex] < rightChildCur)
+            maxIndex = rightIndex;
+
+        if (maxIndex != i) {
+            int temp = array[i];
+            array[i] = array[maxIndex];
+            array[maxIndex] = temp;
+            siftDown(maxIndex, array, size);
+        }
     }
 
     public void heapSort(int[] array) {
         makeHeap(array);
 
-        int topInt = array[0];
-        array[0] = array[array.length - 1];
-
-        siftDown(0, array);
+        for (int i = array.length - 1; i > 0; i--) {
+            int temp = array[0];
+            array[0] = array[i];
+            array[i] = temp;
+            siftDown(0, array, i);
+        }
     }
 
 }

@@ -30,7 +30,7 @@ public class App {
         List<String> res = new ArrayList<>();
 
         for (String name : input) {
-            if (resSet.contains(name))
+            if (!resSet.contains(name) && !res.contains(name))
                 res.add(name);
         }
         return res;

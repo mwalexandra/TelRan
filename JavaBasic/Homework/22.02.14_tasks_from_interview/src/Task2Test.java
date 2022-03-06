@@ -1,4 +1,3 @@
-import static org.junit.Assert.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
@@ -19,6 +18,6 @@ public class Task2Test {
     void testFindACubeValues_InputThrow() {
         int[] numbers = { 3, 2, 4, 2 };
 
-        assertThrows(Task2.findACubeValues(numbers, 4, 2));
+        
     }
 }

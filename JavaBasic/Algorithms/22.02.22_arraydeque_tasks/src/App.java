@@ -29,17 +29,22 @@ public class App {
         Deque<Character> deque = new ArrayDeque<>();
 
         for (char curChar : brackets) {
-            if (curChar == '(' || curChar == '[' || curChar == '{')
-                deque.addFirst(curChar);
-            else if (curChar == ')' && deque.getFirst() == '('
-                    || curChar == ']' && deque.getFirst() == '['
-                    || curChar == '}' && deque.getFirst() == '{')
-                deque.removeFirst();
-        }
-        if (deque.size() == 0)
-            return true;
+            if (curChar == '(' || curChar == '[' || curChar == '{') {
+                deque.addLast(curChar);
+            } else if (deque.size() > 0) {
+                char lastOpen = deque.getLast();
 
-        return false;
+                if (curChar == ')' && lastOpen == '('
+                        || curChar == ']' && lastOpen == '['
+                        || curChar == '}' && lastOpen == '{')
+                    deque.removeLast();
+                else
+                    return false;
+            } else {
+                return false;
+            }
+        }
+        return deque.size() == 0;
     }
 
     // В ретсторан периодически попадает заказ. У заказа есть время, когда он был
@@ -55,18 +60,16 @@ public class App {
      *         предыдущие minutes минут
      */
     public int[] countOrdersNumber(long[] orderTimes, int minutes) {
-        Deque<Integer> deque = new ArrayDeque<>();
-        long minutesLong = minutes * 60000;
+        int[] res = new int[orderTimes.length];
+        Deque<Long> deque = new ArrayDeque<>();
+        long millis = minutes * 60000L;
 
         for (int i = 0; i < orderTimes.length; i++) {
-            if (orderTimes[i] < minutesLong)
-                deque.addLast((int) (orderTimes[i] / 60000));
-        }
+            deque.addLast(orderTimes[i]);
+            while (orderTimes[i] - deque.getFirst() > millis)
+                deque.removeFirst();
 
-        int[] res = new int[deque.size()];
-        for (int i = 0; i < res.length; i++) {
-            res[i] = deque.getFirst();
-            deque.removeFirst();
+            res[i] = deque.size() - 1;
         }
         return res;
     }
