@@ -1,0 +1,221 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Ubuntu', sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+section {
+    margin: 2rem 0;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 85%;
+}
+
+/* car-service-section */
+
+.hero-section {
+    padding: 2rem;
+    color: rgb(44, 44, 44);
+    background: url('img/22654-6-man.png') no-repeat right center;
+    background-size: contain;
+}
+
+.car-service-hero-descr-container {
+    max-width: 40%;
+}
+
+.car-service-hero-descr-heading {
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    text-transform: capitalize;
+}
+
+.car-service-hero-descr-text {
+    margin-bottom: 2rem;
+    line-height: 1.4;
+}
+
+.car-service-btn {
+    padding: .6rem 1.7rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: inherit;
+    font-weight: 600;
+    border: none;
+    background-color: #EEC511;
+}
+
+.list-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.car-service-card {
+    padding: 2rem 1.5rem 3rem;
+    width: 32%;
+    background-color: #EBEBEB;
+}
+
+.car-service-card-heading {
+    margin-bottom: 1rem;
+    text-transform: capitalize;
+    color: #EEC511;
+}
+
+.car-service-card-text {
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-size: .9rem;
+}
+
+.list-section-text {
+    margin-bottom: 1.5rem;
+    width: 100%;
+    text-align: center;
+}
+
+.car-service-card-link {
+    font-size: .9rem;
+    color: inherit;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 2px solid #EEC511;
+}
+
+/* it-services-section */
+
+.it-services-heading{
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #646363;
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.it-services-text {
+    margin-bottom: 4rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.it-services-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.it-services-item {
+    padding: 1.7rem;
+    max-width: 32%;
+    text-align: center;
+    border: 2px solid #BAAA86;
+}
+
+.it-services-item:nth-child(odd){
+    background-color: #FDF1E5;
+}
+
+.it-services-item span{
+    color: #BAAA86;
+    font-size: 2rem;
+}
+
+.it-services-item-heading {
+    margin: 1rem 0;
+    text-transform: capitalize;
+}
+
+.it-services-item-text {
+    color: #8f8f8f;
+    line-height: 1.5;
+}
+
+/* ann-norton-section */
+
+.ann-norton-hero-container {
+    padding: 0 1rem;
+}
+
+.ann-norton-main-heading {
+    margin-bottom: 1rem;
+    text-align: center;
+    font-size: 3rem;
+    color: #ee7053;
+}
+
+.ann-norton-hero-text {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.ann-norton-hero-figure {
+    max-height: 25rem;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.ann-norton-hero-figure img {
+    height: 100%;
+    object-position: 50% 50%;
+}
+
+.ann-norton-list {
+    margin: 0 auto;
+    max-width: 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    position: relative;
+    top: -2.5rem;
+}
+
+.ann-norton-li {
+    padding: 3rem 1.5rem;
+    width: calc(100% / 4 - 1rem);
+    text-align: center;
+    background-color: #EBEBEA;
+    border-radius: 15px;
+}
+
+.ann-norton-li-heading {
+    margin-bottom: 2rem;
+    font-size: .9rem;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.ann-norton-li-text {
+    font-size: 3.5rem;
+    font-weight: 600;
+    color: #ee7053;
+}
+
+.ann-norton-btn {
+    padding: 1rem 0;
+    width: 100%;
+    color: #fff;
+    text-transform: uppercase;
+    background-color: #ee7053;
+    border: none;
+    border-radius: 15px;
+}
+
+
+
