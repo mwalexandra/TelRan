@@ -12,6 +12,10 @@ img {
     max-width: 100%;
 }
 
+ul li {
+    list-style: none;
+}
+
 section {
     margin: 5rem 0;
     padding-bottom: 3rem;
@@ -219,5 +223,217 @@ section {
     border-radius: 15px;
 }
 
+/* urbanists-section */
 
+.urbanists-hero-container {
+    display: flex;
+    gap: 2.5rem;
+    margin-bottom: 2rem;
+}
 
+.urbanists-hero-heading {
+    margin-bottom: 1rem;
+    font-size: 2.3rem;
+    color: #DF3F3A;
+}
+
+.urbanists-hero-text {
+    line-height: 1.5;
+    color: #646363;
+}
+
+.urbanists-hero-figure {
+    max-width: 50%;
+    overflow: hidden;
+}
+
+.urbanists-hero-figure img {
+    border-radius: 25px;
+}
+
+.urbanists-list {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2rem;
+}
+
+.urbanists-item-numbers {
+    margin-bottom: .5rem;
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+.urbanists-item-name {
+    text-align: center;
+    text-transform: uppercase;
+}
+
+/* crisis-help-section */
+
+.crisis-help-section .container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    background: url('img/depression-depressed-sad-person-clothing-smelling-female-hair-transparent-png-1403801.png')no-repeat 10% bottom;
+    background-size: 30%;
+}
+
+.crisis-help-heading {
+    align-self: center;
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.crisis-help-descr-container {
+    max-width: 50%;
+}
+
+.crisis-help-item {
+    margin-bottom: 2rem;
+}
+
+.crisis-help-item-number {
+    margin-bottom: 1.5rem;
+    padding: .5rem .8rem;
+    width: fit-content;
+    font-size: 2rem;
+    font-weight: 600;
+    background-color: #F2C20A;
+}
+
+.crisis-help-item-text,
+.crisis-help-descr-text,
+.crisis-help-descr-text a {
+    line-height: 1.5;
+    color: #646363;
+}
+
+.crisis-help-btn {
+    margin-top: 1.5rem;
+    padding: 1rem 2rem;
+    text-transform: uppercase;
+    color: #fff;
+    border: none;
+    background-color: rgb(44, 44, 44);
+}
+
+/* apartments-section */
+
+.heading-text {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #EEC511;
+    text-transform: lowercase;
+}
+
+.apartments-heading {
+    margin-bottom: 2.5rem;
+    color: #646363;
+    font-size: 2.5rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.apartments-cards-container {
+    display: flex;
+    justify-content: center;
+}
+
+.apartments-card {
+    padding: 1rem 2rem;
+    text-align: center;
+}
+
+.apartments-card:nth-child(even){
+    background-color: #EBEBEA;
+}
+
+.apartments-card-span {
+    color: #EEC511;
+    font-size: 2rem;
+}
+
+.apartments-card-heading {
+    margin: 1rem 0;
+    text-transform: capitalize;
+}
+
+.apartments-card-list li {
+    color: #646363;
+    line-height: 1.5;
+}
+
+.apartments-card-btn {
+    margin-top: 1.5rem;
+    padding: .45rem .6rem;
+    color: #EEC511;
+    font-size: 1.2rem;
+    background-color: transparent;
+    border: 2px solid #EEC511;
+    border-radius: 50%;
+}
+
+/* testimonials-section */
+
+.testimonials-section .container {
+    text-align: center;
+    color: #4d4d4d;
+}
+
+.testimonials-strong {
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.testimonials-heading {
+    margin: 1rem 0;
+    color: rgb(0, 128, 207);
+    font-size: 2.1rem;
+    text-transform: capitalize;
+}
+
+.testimonials-descr-text {
+    margin: 0 auto;
+    max-width: 60%;
+    line-height: 1.4;
+}
+
+.testimonials-cards-container {
+    display: flex;
+    gap: 1rem;
+    margin-top: 6rem;
+}
+
+.testimonials-card{
+    padding: 0 2rem 2rem;
+    background-color: #F1F1F1;
+    border-radius: 15px;
+}
+
+.testim-card-figure {
+    position: relative;
+    left: 25%;
+    top: -40px;
+    width: 7rem;
+    border: 8px solid #fff;
+}
+
+.testim-card-figure img {
+    height: 100%;
+}
+
+.testim-card-text {
+    margin-bottom: 2rem;
+    font-size: .9rem;
+    line-height: 1.8;
+}
+
+.testim-card-name {
+    color: rgb(0, 128, 207);
+}
+
+.testim-card-profession {
+    margin: 1rem 0 0;
+    font-size: .9rem;
+    font-weight: 600;
+}
