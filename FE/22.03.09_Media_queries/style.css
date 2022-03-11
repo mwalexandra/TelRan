@@ -1,0 +1,411 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* font-family: 'League Gothic', sans-serif; */
+body {
+    font-family: sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 90%;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    padding: .5rem 0;
+    font-family: 'League Gothic', sans-serif;
+    color: #fff;
+    background-color: transparent;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.burger-span {
+    display: block;
+    width: 1rem;
+    height: 2px;
+    background-color: #fff;
+}
+
+.burger-span:not(:last-child) {
+    margin-bottom: 3px;
+}
+
+/* main */
+
+.hero-section {
+    padding: 3rem 0 2rem;
+    text-align: center;
+    color: #fff;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 3rem;
+    background: url('img/katie-rainbow-xwqTSc14hD4-unsplash.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.descr-section {
+    padding: 1.5rem 0;
+}
+
+.descr-card {
+    padding: 1rem 0;
+}
+
+.descr-card figure {
+    display: none;
+}
+
+.heading {
+    font-size: .7rem;
+    font-weight: normal;
+    text-transform: uppercase;
+}
+
+.descr-card-heading {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 2.5rem;
+}
+
+.descr-card-heading::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 45%;
+    width: 2rem;
+    height: 2px;
+}
+
+.descr-card:nth-child(1) .descr-card-heading {
+    color: #5ED1E3;
+}
+
+.descr-card:nth-child(1) .descr-card-heading::before{
+    background-color: #5ED1E3;
+}
+
+.descr-card:nth-child(2) .descr-card-heading {
+    color: #FED24B;
+}
+
+.descr-card:nth-child(2) .descr-card-heading::before{
+    background-color: #FED24B;
+}
+
+.descr-card:nth-child(3) .descr-card-heading {
+    color: #E8A8BC;
+}
+
+.descr-card:nth-child(3) .descr-card-heading::before{
+    background-color: #E8A8BC;
+}
+
+.strong-text {
+    text-transform: capitalize;
+    font-family: 'League Gothic', sans-serif;
+    font-size: 2.5rem;
+}
+
+.descr-card-text {
+    margin: 1.3rem 0;
+    line-height: 1.3;
+    color: rgba(0, 0, 0, 0.8);
+}
+
+.descr-card-btn {
+    padding: .4rem 1.5rem;
+    font-family: 'League Gothic', sans-serif;
+    text-transform: uppercase;
+    background-color: transparent;
+    border-width: 2px;
+    border-style: solid;
+}
+
+.descr-card:nth-child(1) .descr-card-btn {
+    border-color: #5ED1E3;
+}
+
+.descr-card:nth-child(2) .descr-card-btn {
+    border-color: #FED24B;
+}
+
+.descr-card:nth-child(3) .descr-card-btn {
+    border-color: #E8A8BC;
+}
+
+.figure {
+    display: none;
+}
+
+/* portfolio section */
+
+.portfolio-heading {
+    margin-bottom: 1rem;
+    text-align: center;
+    color: #E8A8BC;
+}
+
+.portfolio-strong-text {
+    text-align: center;
+}
+
+.portfolio-imgs-list {
+    display: none;
+}
+
+/* services section */
+
+.services-section {
+    padding: 2rem 0;
+}
+
+.services-section .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: .5rem;
+}
+
+.services-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1.5rem;
+    min-width: 48%;
+}
+
+.services-item:nth-child(1),
+.services-item:nth-child(4) {
+    background-color: #5ED1E3;
+}
+
+.services-item:nth-child(2){
+    background-color:#FED24B;
+}
+
+.services-item:nth-child(3) {
+    background-color:#E8A8BC;
+}
+
+.services-item span {
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+.services-item-heading {
+    margin-top: 1rem;
+    color: #fff;
+}
+
+/* contact section */
+  
+.contact-section {
+    padding: 2rem 0;
+    background: url('img/keila-hotzel-2VyyvZns3qQ-unsplash.jpg') no-repeat;
+    background-size: cover;
+}
+
+.contact-heading {
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact-section input, 
+.contact-section textarea {
+    margin-bottom: .5rem;
+    padding: .5rem;
+    width: 100%;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+}
+
+.contact-section input::placeholder, 
+.contact-section textarea::placeholder {
+    font-family: sans-serif;
+    color: rgba(255, 255, 255, .8);
+}
+
+.contact-section button {
+    padding: .5rem 1rem;
+    text-transform: uppercase;
+    color: #E8A8BC;
+    font-weight: 600;
+    background-color: #fff;
+    border: none;
+}
+
+/* footer */
+
+.footer {
+    padding: 1rem 0;
+    background-color: rgb(104, 104, 104);
+}
+
+.footer-text {
+    text-align: center;
+    color: #fff;
+    font-size: .4rem;
+}
+
+@media screen and (min-width: 481px) {
+    .hero-section{
+        padding: 3rem 0;
+        font-size: 4rem;
+    }
+
+    .descr-section{
+        padding: 0;
+        margin-bottom: 4rem;
+    }
+
+    .descr-section .container {
+        max-width: 100%;
+    }
+
+    .descr-card {
+        display: flex;
+        padding: 0;
+    }
+
+    .descr-card:nth-child(even){
+        flex-direction: row-reverse;
+    }
+
+    .descr-card figure{
+        display: block;
+        max-width: 50%;
+        overflow: hidden;
+    }
+
+    .descr-card img {
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .descr-card-text-container {
+        padding: 2rem 1rem;
+    }
+}    
+
+@media screen and (min-width: 769px){
+    .header-logo-text {
+        font-size: 2rem;
+    }
+
+    .hero-section {
+        padding: 8rem 0;
+        font-size: 5rem;
+    }
+
+    .descr-section{
+        margin: 0;
+    }
+
+    .descr-card-text-container {
+        padding: 3rem;
+    }
+
+    .heading {
+        font-size: 1rem;
+    }   
+    
+    .strong-text {
+        font-size: 3.5rem;
+    }
+
+    .descr-card-btn {
+        padding: .6rem 2.5rem;
+        font-size: 1.4rem;
+    }
+
+    .figure {
+        display: flex;
+        margin-bottom: 4rem;
+    }
+
+    .figure img {
+        max-width: 25%;
+    }
+
+    .portfolio-strong-text {
+        margin: 0 auto;
+        max-width: 55%;
+    }
+
+    .portfolio-imgs-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 2rem;
+    }
+
+    .portfolio-img-item {
+        width: calc(100% / 3 - 1rem);
+    }
+
+    .services-section .container {
+        flex-wrap: nowrap;
+    }
+
+    .services-item {
+        padding: 4rem 1.5rem;
+        min-width: calc(100% / 4 - .5rem);
+    }
+
+    .contact-section form {
+        margin: 0 auto;
+        max-width: 60%;
+    }
+}
+
+    @media screen and (min-width: 769px) {
+        .main-heading {
+            font-size: 10rem;
+        }
+
+        .descr-card-text-container {
+            padding: 4rem;
+        }
+
+        .strong-text {
+            font-size: 5rem;
+        }
+
+        .descr-card-text {
+            margin: 2.5rem 0;
+            font-size: 1.4rem;
+            line-height: 1.5;
+        }
+
+        .descr-card-btn {
+            padding: 0.8rem 2.8rem;
+            font-size: 2rem;
+        }
+
+        .contact-section button {
+            padding: .8rem 1.5rem;
+            font-size: 1.3rem;
+        }
+    }
+}

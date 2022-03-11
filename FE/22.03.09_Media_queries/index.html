@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media queries</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=League+Gothic&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <p class="header-logo-text">Creative Studio</p>
+      <nav class="nav">
+        <span class="burger-span"></span>
+        <span class="burger-span"></span>
+        <span class="burger-span"></span>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="hero-section">
+      <div class="container">
+        <h1 class="main-heading">Creative stories</h1>
+      </div>
+    </section>
+
+    <section class="descr-section">
+      <div class="container">
+        <div class="descr-card">
+          <figure>
+            <img src="img/matthew-feeney-dzs_CPWIkQg-unsplash.jpg" alt="#">
+          </figure>
+          <div class="descr-card-text-container">
+            <h2 class="heading descr-card-heading">About us</h2>
+            <strong class="strong-text descr-card-strong">Time to make a difference</strong>
+            <p class="descr-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse hic qui nisi corporis non maxime dicta fuga odio necessitatibus quis?</p>
+            <button class="descr-card-btn">View more</button>
+          </div>
+        </div>
+        <div class="descr-card">
+          <figure>
+            <img src="img/irene-kredenets-tVs-nga-tpo-unsplash.jpg" alt="#">
+          </figure>
+          <div class="descr-card-text-container">
+            <h2 class="heading descr-card-heading">Our features</h2>
+            <strong class="strong-text descr-card-strong">Create your visual style</strong>
+            <p class="descr-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse hic qui nisi corporis non maxime dicta fuga odio necessitatibus quis?</p>
+            <button class="descr-card-btn">View more</button>
+          </div>
+        </div>
+        <div class="descr-card">
+          <figure>
+            <img src="img/heather-ford-Fq54FqucgCE-unsplash.jpg" alt="#">
+          </figure>
+          <div class="descr-card-text-container">
+            <h2 class="heading descr-card-heading">Digital studio</h2>
+            <strong class="strong-text descr-card-strong">We develop digital strategies</strong>
+            <p class="descr-card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse hic qui nisi corporis non maxime dicta fuga odio necessitatibus quis?</p>
+            <button class="descr-card-btn">View more</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <figure class="figure">
+      <img src="img/bruna-branco-7r1HxvVC7AY-unsplash.jpg" alt="#" class="figure-img">
+      <img src="img/matthew-feeney-dzs_CPWIkQg-unsplash.jpg" alt="#" class="figure-img">
+      <img src="img/charlesdeluvio-0v_1TPz1uXw-unsplash.jpg" alt="#" class="figure-img">
+      <img src="img/heather-ford_small.jpg" alt="#" class="figure-img">
+    </figure>
+    
+    <section class="portfolio-section">
+      <div class="container">
+        <h2 class="heading portfolio-heading">Portfolio</h2>
+        <p class="strong-text portfolio-strong-text">We are nominated to agency of year</p>
+        <figure class="portfolio-imgs-list">
+          <img class="portfolio-img-item" src="img/erik-mclean-QYkxVBwNmoQ-unsplash.jpg" alt="#">
+          <img class="portfolio-img-item" src="img/guido-fua-yfrNSdGn-TE-unsplash.jpg" alt="#">
+          <img class="portfolio-img-item" src="img/katie-rainbow-small.jpg" alt="#">
+          <img class="portfolio-img-item" src="img/the-9th-coworking-XA3ouJTah0Q-unsplash.jpg" alt="#">
+          <img class="portfolio-img-item" src="img/isaac-quesada-0kF7wNPl1kk-unsplash.jpg" alt="#">
+          <img class="portfolio-img-item" src="img/patrick-OIFgeLnjwrM-unsplash.jpg" alt="#">
+        </figure>
+      </div>
+    </section>
+
+    <section class="services-section">
+      <div class="container">
+        <div class="services-item">
+          <span><i class="fa-solid fa-desktop"></i></span>
+          <h2 class="heading services-item-heading">Development</h2>
+        </div>
+        <div class="services-item">
+          <span><i class="fa-solid fa-pen-ruler"></i></span>
+          <h2 class="heading services-item-heading">Design</h2>
+        </div>
+        <div class="services-item">
+          <span><i class="fa-solid fa-wand-magic-sparkles"></i></span>
+          <h2 class="heading services-item-heading">Editing</h2>
+        </div>
+        <div class="services-item">
+          <span><i class="fa-solid fa-chess"></i></span>
+          <h2 class="heading services-item-heading">Strategy</h2>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section">
+      <div class="container">
+        <h2 class="contact-heading strong-text">Contact us</h2>
+        <form action="#" method="post">
+          <input type="text" name="name" id="name" placeholder="Name">
+          <input type="email" name="email" id="email" placeholder="Email">
+          <textarea name="message" id="message" cols="30" rows="10" placeholder="Message"></textarea>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p class="footer-text">Sample footer text</p>
+  </footer>
+</body>
+</html>
