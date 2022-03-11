@@ -313,7 +313,7 @@ img {
     }
 
     .hero-section {
-        padding: 8rem 0;
+        padding: 15rem 0;
         font-size: 5rem;
     }
 
@@ -323,6 +323,11 @@ img {
 
     .descr-card-text-container {
         padding: 3rem;
+    }
+
+    .descr-card-text {
+        font-size: 1.5rem;
+        line-height: 1.5;
     }
 
     .heading {
@@ -349,7 +354,7 @@ img {
 
     .portfolio-strong-text {
         margin: 0 auto;
-        max-width: 55%;
+        max-width: 50%;
     }
 
     .portfolio-imgs-list {
@@ -379,9 +384,17 @@ img {
     }
 }
 
-    @media screen and (min-width: 769px) {
+    @media screen and (min-width: 1025px) {
+        .hero-section {
+            padding: 20rem 0;
+        }
+
         .main-heading {
             font-size: 10rem;
+        }
+
+        .heading {
+            font-size: 1.5rem;
         }
 
         .descr-card-text-container {
@@ -400,6 +413,10 @@ img {
 
         .descr-card-btn {
             padding: 0.8rem 2.8rem;
+            font-size: 2rem;
+        }
+
+        .services-item span {
             font-size: 2rem;
         }
 
