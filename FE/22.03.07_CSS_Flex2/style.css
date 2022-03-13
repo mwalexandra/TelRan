@@ -415,11 +415,11 @@ section {
     left: 25%;
     top: -40px;
     width: 7rem;
-    border: 8px solid #fff;
 }
 
 .testim-card-figure img {
     height: 100%;
+    border: 8px solid #fff;
 }
 
 .testim-card-text {
