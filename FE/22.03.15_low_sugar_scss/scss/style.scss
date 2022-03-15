@@ -1,0 +1,71 @@
+@import 'variables';
+@import 'mixins';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: $main-font;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  text-transform: lowercase;
+  font-family: $btn-font;
+  color: $grey-text;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 90%;
+
+  @include for-desktops {
+    max-width: 80%;
+  }
+}
+
+section {
+  padding: 2rem 0;
+}
+
+.section-heading {
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.text {
+  font-family: $main-font;
+  font-size: 1rem;
+}
+
+.italic {
+  font-style: italic;
+  color: $grey-text;
+}
+
+.btn {
+  padding: .4rem 1rem;
+  border: 1px solid #BBA267;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: border-color 60ms ease-in-out;
+
+  &:hover {
+    border-color: $btn-hover;
+  }
+}
+
+@import 'header';
+@import 'main';
+

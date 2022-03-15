@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../22.03.13_low_sugar_project/img"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "22.03.15_low_sugar_scss"
+	}
+}

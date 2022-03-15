@@ -1,0 +1,31 @@
+.header {
+  padding: 2rem 0 5rem;
+  background: linear-gradient(to left, transparent, $bg-grey);
+
+  @include for-laptop {
+    background: linear-gradient(to left, transparent, #EFEFEF), url('/img/brooke-lark-jUPOXXRNdcA-unsplash.jpg') no-repeat;
+    background-size: cover;
+  }
+}
+
+.header-descr-container {
+  @include for-laptop {
+    max-width: 50%;
+  }
+}
+
+.main-heading {
+  color: $main-beige;
+  margin-bottom: 1rem;
+  font-size: 3rem;
+  font-weight: 700;
+
+  @include for-laptop {
+    font-size: 4rem;
+  }
+}
+
+.header-descr-text {
+  margin-bottom: 2rem;
+  color: $grey-text;
+}
