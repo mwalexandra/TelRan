@@ -5,10 +5,12 @@ public class App {
     }
 
     public int knapsack(int V, int[] v, int[] p) {
+        if (V == 0 || v.length == 0)
+            return 0;
+
         int[] v0 = new int[v.length + 1];
         int[] p0 = new int[p.length + 1];
 
-        v0[0] = 0;
         for (int i = 0; i < v.length; i++) {
             v0[i + 1] = v[i];
             p0[i + 1] = p[i];
@@ -24,7 +26,7 @@ public class App {
                 if (i > tempV + v0[j]) {
                     res[i][j] += p0[j];
                     tempV += v0[j];
-                } else if (i == tempV + v0[j]) {
+                } else {
                     if (p0[j - 1] < p0[j]) {
                         res[i][j] += (p0[j] - p0[j - 1]);
                         tempV += (tempV - v0[j - 1] + v0[j]);

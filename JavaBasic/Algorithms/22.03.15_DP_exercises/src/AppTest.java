@@ -49,4 +49,15 @@ public class AppTest {
 
     assertEquals(expected, test.knapsack(V, v, p));
   }
+
+  @Test
+  void testKnapsack_V400() {
+    int V = 400;
+    int[] v = { 1500, 200, 368 };
+    int[] p = { 276, 1000, 100000 };
+
+    int expected = 100000;
+
+    assertEquals(expected, test.knapsack(V, v, p));
+  }
 }
