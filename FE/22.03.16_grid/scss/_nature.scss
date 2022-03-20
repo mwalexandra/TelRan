@@ -1,0 +1,144 @@
+.nature-section .container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+
+  @include for-tablets {
+    grid-auto-rows: 15rem;
+  }
+
+  .nature-card {
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+.nature-card:nth-child(1),
+.nature-card:nth-child(4),
+.nature-card:nth-child(5),
+.nature-card:nth-child(6) {
+  display: none;
+}
+
+.nature-card:nth-child(2),
+.nature-card:nth-child(3),
+.nature-card:nth-child(7) {
+  grid-column: 1 / span 3;
+}
+
+.nature-card:nth-child(1) {
+  @include for-laptop {
+    display: block;
+    grid-column: 1 / 1 span;
+  }
+}
+
+.nature-card:nth-child(2){
+  @include bg-cover('../img/nate-johnston-BW9bM5UoLk4-unsplash.jpg');
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+
+  @include for-laptop {
+    grid-column: 2 / 2 span;
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  
+  p {
+    color: #fff;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.nature-card:nth-child(3),
+.nature-card:nth-child(7) {
+  margin-top: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(201, 175, 175);
+
+  @include for-tablets {
+    margin-top: 0;
+  }
+
+  @include for-laptop {
+    border: none;
+  }
+
+  span {
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    margin: 1rem 0;
+    text-transform: uppercase;
+    font-size: .9rem;
+    font-weight: 400;
+  }
+
+  p {
+    text-align: center;
+    font-size: .8rem;
+    line-height: 1.5;
+  }
+}
+
+.nature-card:nth-child(3) {
+  @include for-tablets {
+    grid-column: 1 / 2 span;
+  }
+
+  @include for-laptop {
+    grid-column: 1 / 1 span;
+  }
+}
+
+.nature-card:nth-child(4) {
+  @include for-tablets {
+    display: block;
+    grid-column: 3 / 1 span;
+  }
+
+  @include for-laptop {
+    grid-column: 2 / 1 span;
+  }
+}
+
+.nature-card:nth-child(5) {
+  @include for-laptop {
+    display: block;
+    grid-column: 3 / 1 span;
+  }
+}
+
+.nature-card:nth-child(6) {
+  @include for-tablets {
+    display: block;
+    grid-column: 1 / 1 span;
+  }
+    
+  @include for-laptop {
+    grid-column: 1 / 2 span;
+  }
+}
+
+.nature-card:nth-child(7) {
+  @include for-tablets {
+    grid-column: 2 / 2 span;
+  }
+
+  @include for-laptop {
+    grid-column: 3 / 1 span;
+  }
+}

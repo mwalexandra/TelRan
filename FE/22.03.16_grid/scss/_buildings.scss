@@ -1,0 +1,50 @@
+.buildings-section {
+  color: #fff;
+}
+
+.buildings-section .container {
+  @include for-tablets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 30rem;
+  }
+}
+
+.buildings-card {
+  padding: 1.5rem;
+
+  h2 {
+    text-transform: capitalize;
+  }
+
+  p {
+    margin: 1.5rem 0;
+    line-height: 1.5;
+
+    @include for-laptop {
+      max-width: 55%;
+    }
+  }
+
+  a {
+    border-bottom: 1px solid #fff;
+  }
+}
+
+.buildings-card:nth-child(1) {
+  @include bg-cover('../img/alejandro-C3CF_u3kewI-unsplash.jpg');
+  
+  @include for-tablets {
+    text-align: right;
+  }
+
+  @include for-laptop {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+}
+
+.buildings-card:nth-child(2) {
+  @include bg-cover('../img/xrdes-Hp-qsOO_gY0-unsplash.jpg');
+}
