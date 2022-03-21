@@ -1,13 +1,28 @@
 .factory-section {
-  text-align: center;
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
-  strong {
-    color: #ec7f2b;
-    font-size: 2rem;
-  }
-
-  p {
-    margin: 1.5rem 0;
+    .section-heading {
+      margin-bottom: 1rem;
+      text-align: center;
+      color: #ec7f2b;
+      font-size: 2rem;
+    }
+  
+    .heading-descr {
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+  
+    @include for-laptop {
+      .section-heading, 
+      .heading-descr {
+        max-width: 80%;
+      }
+    }
   }
 }
 
@@ -15,14 +30,169 @@
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-auto-rows: minmax(auto, 15rem);
+  gap: 1rem;
+
+  @include for-tablets {
+    grid-template-rows: repeat(3, auto);
+  }
+
+  @include for-laptop {
+    grid-template-rows: repeat(3, 15rem);
+  }
 }
 
 .card {
   grid-column: 1 / 6 span;
+  color: #fff;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .card:nth-child(1),
 .card:nth-child(2),
 .card:nth-child(5) {
   display: none;
+}
+
+.card:nth-child(1) {
+  @include for-tablets {
+    display: block;
+    grid-column: 1 / 3 span;
+    grid-row: 1 / 2 span;
+  }
+
+  @include for-laptop {
+    grid-column: 1 / 2 span;
+  }
+}
+
+.card:nth-child(2) {
+  @include for-laptop {
+    display: block;
+    grid-column: 3 / 2 span;
+  }
+}
+
+.card:nth-child(3),
+.card:nth-child(4),
+.card:nth-child(6) {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+}
+
+.card:nth-child(3){
+  align-items: flex-start;
+  background-color: #2a315b;
+
+  p {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+  }
+
+  a {
+    display: inline-block;
+    padding: .4rem 1rem;
+    color: #2a315b;
+    font-size: .8rem;
+    text-transform: uppercase;
+    background-color: #fff;
+  }
+
+  @include for-tablets {
+    grid-column: 4 / 3 span;
+  }
+
+  @include for-laptop {
+    grid-column: 5 / 2 span;
+  }
+}
+
+.card:nth-child(4){
+  justify-content: space-around;
+  border: 2px solid #ec7f2b;
+
+  h2, a {
+    text-align: center;
+    text-transform: uppercase;
+    color: #ec7f2b;
+    font-size: 2rem;
+  }
+
+  @include for-tablets {
+    grid-column: 4 / 3 span;
+    grid-row: 2 / 1 span;
+  }
+
+  @include for-laptop {
+    grid-column: 3 / 2 span;
+  }
+
+  @include for-desktops {
+    h2 {
+      font-size: 3rem;
+    }
+  }
+}
+
+.card:nth-child(5){
+  @include for-laptop {
+    display: block;
+    grid-column: 5 / 2 span;
+  }
+}
+
+.card:nth-child(6){
+  background-color: #ec7f2b;
+
+  span, p {
+    margin-top: 1rem;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.801);
+  }
+
+  span {
+    font-size: 2rem;
+  }
+
+  p {
+    font-size: .8rem;
+  }
+
+  @include for-tablets {
+    grid-column: 1 / 3 span;
+    grid-row: 3 / 1 span;
+  }
+
+  @include for-laptop {
+    grid-column: 1 / 2 span;
+  }
+}
+
+.card:nth-child(7) {
+  @include for-tablets {
+    grid-column: 4 / 3 span;
+    grid-row: 3 / 1 span;
+  }
+
+  @include for-laptop {
+    grid-column: 3 / 4 span;
+  }
+}
+
+.copyright {
+  margin-top: 2rem;
+  text-align: center;
+  font-style: italic;
+  font-size: .7rem;
+
+  a {
+    border-bottom: 1px solid #000;
+  }
 }
