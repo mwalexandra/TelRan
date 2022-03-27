@@ -5,8 +5,6 @@ public class App {
     }
 
     public int knapsack(int V, int[] v, int[] p) {
-        if (V == 0 || v.length == 0)
-            return 0;
 
         int[] v0 = new int[v.length + 1];
         int[] p0 = new int[p.length + 1];
@@ -19,21 +17,32 @@ public class App {
         int[][] res = new int[V + 1][v0.length];
 
         for (int i = 0; i < res.length; i++) {
-            int tempV = 0;
+
             for (int j = 1; j < res[i].length; j++) {
                 res[i][j] = res[i][j - 1];
 
-                if (i > tempV + v0[j]) {
-                    res[i][j] += p0[j];
-                    tempV += v0[j];
-                } else {
-                    if (p0[j - 1] < p0[j]) {
-                        res[i][j] += (p0[j] - p0[j - 1]);
-                        tempV += (tempV - v0[j - 1] + v0[j]);
-                    }
+                if (i >= v0[j]) {
+                    int possibleRes = res[i - v0[j]][j - 1] + p0[j];
+
+                    if (possibleRes > res[i][j])
+                        res[i][j] = possibleRes;
                 }
             }
         }
-        return res[V][p.length];
+        return res[V][v0.length - 1];
+    }
+
+    public int knapsackRepeat(int V, int[] v, int[] p) {
+        int[] res = new int[V + 1];
+
+        for (int i = 1; i <= V; i++) {
+            res[i] = res[i - 1];
+
+            for (int j = 0; j < v.length; j++) {
+                if (v[j] <= i)
+                    res[i] = Math.max(res[i], res[i - v[j]] + p[j]);
+            }
+        }
+        return res[V];
     }
 }
