@@ -39,8 +39,12 @@ public class App {
             res[i] = res[i - 1];
 
             for (int j = 0; j < v.length; j++) {
-                if (v[j] <= i)
-                    res[i] = Math.max(res[i], res[i - v[j]] + p[j]);
+                if (i >= v[j]) {
+                    int possibleRes = res[i - v[j]] + p[j];
+
+                    if (possibleRes > res[i])
+                        res[i] = possibleRes;
+                }
             }
         }
         return res[V];
