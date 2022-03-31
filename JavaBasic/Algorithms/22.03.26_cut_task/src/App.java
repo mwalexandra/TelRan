@@ -15,13 +15,17 @@ public class App {
         List<Point> points = new ArrayList<>();
 
         for (Cut cut : cuts) {
-            Point lPoint = new Point(cut.left, true);
-            Point rPoint = new Point(cut.right, false);
-            points.add(lPoint);
-            points.add(rPoint);
+            points.add(new Point(cut.left, true));
+            points.add(new Point(cut.right, false));
         }
         Collections.sort(points);
         return points;
+
+        // через stream
+        // return cuts.stream()
+        // .flatMap(cut -> Stream.of(cut.left, true), new Point(cut.right, false)))
+        // .sorted()
+        // .collect(Collectors.toList());
     }
 
     public int getMaxCovered(List<Cut> cuts) {
@@ -31,13 +35,13 @@ public class App {
         int max = 0;
 
         for (Point p : points) {
-            if (p.isLeft)
-                counter++;
+            if (p.isLeft) {
+                if (max < ++counter)
+                    max = counter;
+            }
+
             else
                 counter--;
-
-            if (max < counter)
-                max = counter;
         }
         return max;
     }

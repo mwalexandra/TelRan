@@ -12,13 +12,15 @@ public class Point implements Comparable<Point> {
   public int compareTo(Point p) {
     int res = this.value - p.value;
 
-    if (res == 0) {
-      if (this.isLeft)
-        return -1;
-      else
-        return 1;
-    }
+    if (res != 0)
+      return res;
 
-    return res;
+    if (this.isLeft && !p.isLeft)
+      return -1;
+
+    if (!this.isLeft && p.isLeft)
+      return 1;
+
+    return 0;
   }
 }

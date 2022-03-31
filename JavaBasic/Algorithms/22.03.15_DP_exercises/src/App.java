@@ -36,7 +36,6 @@ public class App {
         int[] res = new int[V + 1];
 
         for (int i = 1; i <= V; i++) {
-            res[i] = res[i - 1];
 
             for (int j = 0; j < v.length; j++) {
                 if (i >= v[j]) {

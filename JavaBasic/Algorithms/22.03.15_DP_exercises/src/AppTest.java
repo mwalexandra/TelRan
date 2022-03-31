@@ -75,10 +75,10 @@ public class AppTest {
   @Test
   void testKnapsackRepeat_V10() {
     int V = 10;
-    int[] v = { 5, 3, 4, 2 };
+    int[] v = { 6, 3, 4, 2 };
     int[] p = { 30, 14, 16, 9 };
 
-    int expected = 60;
+    int expected = 48;
 
     assertEquals(expected, test.knapsackRepeat(V, v, p));
   }
