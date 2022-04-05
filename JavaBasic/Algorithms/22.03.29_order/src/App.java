@@ -1,4 +1,6 @@
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,21 +18,21 @@ public class App {
      *         previous delta millis before the oder.
      */
     public Map<String, Integer> countPreviousOrders(List<Order> orders, long delta) {
-        Map<String, Integer> res = new HashMap<>();
+        int[] res = new int[orders.size() + 1];
+        Map<String, Deque<Long>> resMap = new HashMap<>();
 
         for (Order curOrder : orders) {
-            String curKey = curOrder.getUuid();
-            String curRest = curOrder.getRestaurantId();
-            long curTime = curOrder.getTimestamp();
-            int curValue = 0;
+            String key = curOrder.getUuid();
+            Long curTime = curOrder.getTimestamp();
 
-            for (Order order : orders) {
-                if (!order.getUuid().equals(curKey) && order.getRestaurantId().equals(curRest)) {
-                    if (curTime - order.getTimestamp() < delta)
-                        curValue++;
-                }
+            if (resMap.containsKey(key)) {
+                Deque<Long> deque = resMap.
+
+            } else {
+                Deque<Long> deque = new ArrayDeque<>();
+                deque.add(curTime);
+                resMap.put(key, deque);
             }
-            res.put(curKey, curValue);
         }
         return res;
     }

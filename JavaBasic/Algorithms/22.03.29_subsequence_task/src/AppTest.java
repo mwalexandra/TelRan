@@ -29,7 +29,7 @@ public class AppTest {
     String s1 = "hello";
     String s2 = "world";
 
-    assertEquals(2, test.getLongestSharedSubsequence(s1, s2));
+    assertEquals(1, test.getLongestSharedSubsequence(s1, s2));
   }
 
   @Test
