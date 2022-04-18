@@ -1,3 +1,4 @@
+import java.util.Deque;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
@@ -28,9 +29,9 @@ public class AppTest {
     orders.add(o5);
     orders.add(o6);
 
-    Map<String, Integer> res = test.countPreviousOrders(orders, 3500L);
+    Map<String, Deque<Long>> res = test.countPreviousOrders(orders, 3500L);
 
-    assertEquals(1, res.get("order5"));
+    assertEquals(2, res.get("res1").size());
   }
 
   @Test
@@ -42,8 +43,8 @@ public class AppTest {
     orders.add(o5);
     orders.add(o6);
 
-    Map<String, Integer> res = test.countPreviousOrders(orders, 5000L);
+    Map<String, Deque<Long>> res = test.countPreviousOrders(orders, 5000L);
 
-    assertEquals(2, res.get("order5"));
+    assertEquals(3, res.get("res1").size());
   }
 }

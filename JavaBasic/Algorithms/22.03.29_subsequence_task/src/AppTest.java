@@ -47,4 +47,12 @@ public class AppTest {
 
     assertEquals(5, test.getLongestSharedSubsequence(s1, s2));
   }
+
+  @Test
+  void testGetLongestSharedSubsequence_all2() {
+    String s1 = "world";
+    String s2 = "worldworld";
+
+    assertEquals(5, test.getLongestSharedSubsequence(s1, s2));
+  }
 }

@@ -1,5 +1,6 @@
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
 import java.util.HashMap;
 import java.util.List;
@@ -17,23 +18,25 @@ public class App {
      * @return the number of orders from the same restaurant for every order for the
      *         previous delta millis before the oder.
      */
-    public Map<String, Integer> countPreviousOrders(List<Order> orders, long delta) {
-        int[] res = new int[orders.size() + 1];
+    public Map<String, Deque<Long>> countPreviousOrders(List<Order> orders, long delta) {
         Map<String, Deque<Long>> resMap = new HashMap<>();
 
-        for (Order curOrder : orders) {
-            String key = curOrder.getUuid();
-            Long curTime = curOrder.getTimestamp();
+        for (Order order : orders) {
+            String key = order.getRestaurantId();
+            Long orderTime = order.getTimestamp();
 
             if (resMap.containsKey(key)) {
-                Deque<Long> deque = resMap.
+                Deque<Long> timeDeque = resMap.get(key);
+                timeDeque.addLast(orderTime);
+                while (orderTime - timeDeque.getFirst() > delta)
+                    timeDeque.removeFirst();
 
             } else {
-                Deque<Long> deque = new ArrayDeque<>();
-                deque.add(curTime);
-                resMap.put(key, deque);
+                Deque<Long> timeDeque = new ArrayDeque<>();
+                timeDeque.addLast(orderTime);
+                resMap.put(key, timeDeque);
             }
         }
-        return res;
+        return resMap;
     }
 }
