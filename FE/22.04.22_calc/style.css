@@ -1,0 +1,91 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+ul li {
+  list-style: none;
+}
+
+.calc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 2rem;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 30rem;
+  border: 2px solid #9d8189ff;
+  border-radius: 15px;
+  box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.calc-output{
+  padding: .5rem;
+  width: 100%;
+  text-align: right;
+  font-size: 2rem;
+  border: 3px solid #9d8189ff;
+  border-radius: 15px;
+}
+
+.calc-numbers-list {
+  width: 60%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.number {
+  padding: 1rem;
+  border-radius: 15px;
+  font-size: 1.5rem;
+  text-align: center;
+  box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.number:nth-child(2n+1) {
+  background-color: #d8e2dc;
+}
+
+.number:nth-child(2n) {
+  background-color: #ffcad4;
+}
+
+.number:nth-child(10) {
+  grid-column: 2/ span 1;
+  background-color: #d8e2dc;
+}
+
+.number:active {
+  outline: 2px solid #9d8189;
+}
+
+.btns-wrapper {
+ display: grid;
+ grid-template-columns: 1, 1fr;
+ gap: 1rem;
+ width: 20%;
+}
+
+.btns-wrapper > button {
+  padding: .5rem;
+  color: #ffffff;
+  font-size: 1.3rem;
+  border-radius: 15px;
+  border: none;
+  background-color: #d4304e;
+  box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.btns-wrapper > button:active {
+  outline: 2px solid #9d8189;
+}
+
