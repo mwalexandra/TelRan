@@ -5,7 +5,7 @@
 }
 
 body{
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 ul li {
@@ -20,8 +20,9 @@ ul li {
   margin: 0 auto;
   padding: 2rem;
   width: 30rem;
-  border: 2px solid #9d8189ff;
+  _border: 2px solid #9d8189ff;
   border-radius: 15px;
+  background-color: #9d8189ff;
   box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
@@ -30,8 +31,9 @@ ul li {
   width: 100%;
   text-align: right;
   font-size: 2rem;
-  border: 3px solid #9d8189ff;
+  _border: 3px solid rgb(126, 105, 111);
   border-radius: 15px;
+  box-shadow: inset 1px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .calc-numbers-list {
@@ -64,7 +66,7 @@ ul li {
 }
 
 .number:active {
-  outline: 2px solid #9d8189;
+  outline: 2px solid #fff;
 }
 
 .btns-wrapper {
@@ -80,12 +82,12 @@ ul li {
   font-size: 1.3rem;
   border-radius: 15px;
   border: none;
-  background-color: #d4304e;
+  background-color: #b65667;
   box-shadow: 1px 5px 10px 0px rgba(0, 0, 0, 0.5);
   cursor: pointer;
 }
 
 .btns-wrapper > button:active {
-  outline: 2px solid #9d8189;
+  outline: 2px solid #fff;
 }
 
