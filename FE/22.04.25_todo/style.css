@@ -1,0 +1,97 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ul li {
+  list-style: none;
+}
+
+.todo-section {
+  padding: 2rem 0;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 85%;
+}
+
+.heading-wrapper {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.todo-heading {
+  padding-left: 2rem;
+  width: 60%;
+  color: navy;
+}
+
+.todo-form {
+  width: 35%;
+}
+
+.todo-form input {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  width: 100%;
+  font-family: inherit;
+  border: none;
+  border-bottom: 1px solid navy;
+}
+
+.todo-form button {
+  padding: 1rem;
+  width: 100%;
+  color: aliceblue;
+  background-color: rgb(105, 174, 242);
+  border: none;
+}
+
+.todos-list-wrapper {
+  padding-left: 2rem;
+  width: 60%;
+  border-left: 1px solid rgb(57, 57, 112);
+}
+
+.todos-list-wrapper li:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
+.todos-list-wrapper li {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: 1rem;
+  _padding: 0.5rem 0;
+  border-bottom: 1px solid navy;
+}
+
+.todos-list-wrapper li p {
+  max-width: calc(100%);
+}
+
+.todo-item-btn {
+  padding: 0.5rem;
+  color: aliceblue;
+  background-color: navy;
+  border: none;
+}
+
+@media screen and (max-width: 435px) {
+  .todo-form,
+  .todos-list-wrapper {
+    width: 100%;
+  }
+}
