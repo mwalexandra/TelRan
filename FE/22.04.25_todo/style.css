@@ -82,6 +82,14 @@ ul li {
   max-width: calc(100%);
 }
 
+.done-item {
+  background-color: rgb(162, 228, 171);
+}
+
+.done-item .todo-item-btn {
+  background-color: rgb(241, 112, 112);
+}
+
 .todo-item-btn {
   padding: 0.5rem;
   color: aliceblue;
