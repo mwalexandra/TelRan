@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul li {
+  list-style: none;
+}
+
+html {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+img {
+  max-width: 100%;
+}
+
+main {
+  padding: 2rem 0;
+}
+
+input,
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+.container {
+  margin: 0 auto;
+  width: 85%;
+}
+
+.recipes-main-heading {
+  margin-bottom: 2rem;
+}
+
+.resipe-form {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  width: 85%;
+  background-color: peachpuff;
+  transform: translateX(-200%);
+  transition: transform 600ms ease-in-out;
+  z-index: 1;
+}
+
+.resipe-form input,
+.resipe-form textarea {
+  margin-bottom: 1rem;
+  padding: .5rem;
+  border: none;
+}
+
+.open-form-btn,
+.resipe-form button {
+  align-self: center;
+  padding: .7rem 1.5rem;
+  width: 40%;
+  font-size: 1.5rem;
+  background-color: peachpuff;
+  border: none;
+}
+
+.resipe-form button {
+  border: 1px solid #000;
+}
+
+.open-form-btn:active,
+.resipe-form button:active {
+  background-color: rgb(250, 188, 134);
+}
+
+/* cards */
+
+.recipes-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  _grid-auto-rows: 15rem;
+  gap: 2rem;
+}
+
+.recipe-card {
+  position: relative;
+  padding: 1rem 0;
+  border-bottom: 1px solid peachpuff;
+}
+
+.delete-recipe-btn {
+  position: absolute;
+  right: 10px;
+  top: 25px;
+  display: block;
+  padding: .5rem;
+  width: 30px;
+  height: 30px;
+  background: #fff url('../img/icons8-delete.svg') no-repeat;
+}
+
+.recipe-card-figure {
+  height: 10rem;
+  overflow: hidden;
+}
+
+.recipe-card-figure img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.recipe-card-heading {
+  margin: 1rem 0;
+  font-size: 2rem;
+}
+
+.recipe-card-descr {
+  max-height: 15rem;
+  font-size: 1.5rem;
+  overflow-y: scroll;
+}
+
