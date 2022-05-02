@@ -31,7 +31,7 @@ button, a {
 
 .persons-list{
   display: grid;
-  grid-template-columns: repeat(4, 20%);
+  grid-template-columns: repeat(4, 1fr);
   grid-auto-rows: minmax(12rem, auto);
   gap: .3rem;
 }
@@ -53,6 +53,17 @@ button, a {
 
 .person-card:last-child:active {
   outline: 3px solid #00F6ED;
+}
+
+.delete-btn {
+  position: relative;
+  left: 45%;
+  bottom: -5%;
+  color: #00F6ED;
+}
+
+.delete-btn:active {
+  color: aquamarine;
 }
 
 .person-card-name {
@@ -152,4 +163,16 @@ button, a {
   .form-modal-form{
     width: 60%;
   }
+}
+
+@media screen and (max-width: 768px ) {
+  .persons-list{
+    grid-template-columns: repeat(2, 1fr);
+  }  
+}
+
+@media screen and (max-width: 480px ) {
+  .persons-list{
+    grid-template-columns: 1fr;
+  }  
 }
