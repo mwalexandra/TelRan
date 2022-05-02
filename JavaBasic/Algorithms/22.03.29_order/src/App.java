@@ -1,10 +1,5 @@
 
-import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.Deque;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class App {
     public static void main(String[] args) {
@@ -18,24 +13,27 @@ public class App {
      * @return the number of orders from the same restaurant for every order for the
      *         previous delta millis before the oder.
      */
-    public Map<String, Deque<Long>> countPreviousOrders(List<Order> orders, long delta) {
-        Map<String, Deque<Long>> resMap = new HashMap<>();
+    public Map<String, Integer> countPreviousOrders(List<Order> orders, long delta) {
+        List<Order> ordersCopy = new ArrayList<>(orders);
+        ordersCopy.sort(Comparator.comparingLong(Order::getTimestamp));
+        Map<String, Deque<Long>> orderTimesByRestaurantId = new HashMap<>();
 
-        for (Order order : orders) {
-            String key = order.getRestaurantId();
-            Long orderTime = order.getTimestamp();
+        Map<String, Integer> resMap = new HashMap<>();
 
-            if (resMap.containsKey(key)) {
-                Deque<Long> timeDeque = resMap.get(key);
-                timeDeque.addLast(orderTime);
-                while (orderTime - timeDeque.getFirst() > delta)
-                    timeDeque.removeFirst();
+        for (Order order : ordersCopy) {
+            Deque<Long> previousTimestamps = orderTimesByRestaurantId.get(order.getRestaurantId());
 
-            } else {
-                Deque<Long> timeDeque = new ArrayDeque<>();
-                timeDeque.addLast(orderTime);
-                resMap.put(key, timeDeque);
+            if (previousTimestamps == null) {
+                previousTimestamps = new ArrayDeque<>();
+                orderTimesByRestaurantId.put(order.getRestaurantId(), previousTimestamps);
             }
+
+            long currentTimestamp = order.getTimestamp();
+            previousTimestamps.addLast(currentTimestamp);
+            while (currentTimestamp - previousTimestamps.getFirst() > delta)
+                previousTimestamps.removeFirst();
+
+            resMap.put(order.getUuid(), previousTimestamps.size() - 1);
         }
         return resMap;
     }
