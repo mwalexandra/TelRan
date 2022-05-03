@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class PointFinder {
@@ -8,32 +6,20 @@ public class PointFinder {
     // чтобы каждый отрезок покрывал хотя бы одну (подсказка: жадные алгоритмы).
 
     public static int getPointsNumber(List<Cut> cuts) {
-        List<Point> points = getPointsList(cuts);
+        // cuts.sort(Comparator.comparing(cut -> cut.getLeft()));
+        cuts.sort((cut1, cut2) -> Integer.compare(cut1.getLeft(), cut2.getLeft()));
 
         int res = 0;
-        boolean isPrevRight = false;
-
-        for (Point point : points) {
-            if (point.isLeft) {
-                isPrevRight = false;
-            }
-            if (!point.isLeft) {
-                if (!isPrevRight)
-                    res++;
-                isPrevRight = true;
-            }
-        }
-        return res;
-    }
-
-    public static List<Point> getPointsList(List<Cut> cuts) {
-        List<Point> points = new ArrayList<>();
+        int hypotheticalPoint = cuts.get(0).getRight();
 
         for (Cut cut : cuts) {
-            points.add(new Point(cut.left, true));
-            points.add(new Point(cut.right, false));
+            if (cut.getRight() < hypotheticalPoint) {
+                hypotheticalPoint = cut.getRight();
+            } else if (cut.getLeft() > hypotheticalPoint) {
+                res++;
+                hypotheticalPoint = cut.getRight();
+            }
         }
-        Collections.sort(points);
-        return points;
+        return ++res;
     }
 }

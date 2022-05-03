@@ -14,11 +14,13 @@ public class Point implements Comparable<Point> {
     if (res != 0)
       return res;
 
-    if (this.type == PointType.LEFT || (this.type == PointType.NUMBER && point.type == PointType.RIGHT)) {
+    if (this.type == point.type)
+      return 0;
+
+    if (this.type == PointType.LEFT || point.type == PointType.RIGHT)
       return -1;
-    }
-    //
-    if (this.type == PointType.RIGHT || (this.type == PointType.NUMBER && point.type == PointType.LEFT))
+
+    if (this.type == PointType.RIGHT || point.type == PointType.LEFT)
       return 1;
 
     return 0;
