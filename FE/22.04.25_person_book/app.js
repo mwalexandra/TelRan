@@ -1,22 +1,5 @@
 const personsList = document.querySelector('.persons-list');
-let personsArray = [
-  {
-    id: 1,
-    name: 'Sasha',
-    surname: 'Makeewa',
-    tel: '123456',
-    email: 'sasha@gmail.com',
-    photoLink: 'jfgkfjg.com',
-  },
-  {
-    id: 2,
-    name: 'Sasha2',
-    surname: 'Makeewa',
-    tel: '123456',
-    email: 'sasha@gmail.com',
-    photoLink: 'jfgkfjg.com',
-  },
-];
+let personsArray = [];
 
 const openModalEl = document.querySelector('.open-modal-btn');
 const modal = document.querySelector('.form-modal-wrapper');
@@ -137,6 +120,11 @@ const editPersonCard = (person) => {
 
 const clickHandler = () => {
   const newPerson = createNewPerson();
+
+  if(!isPersonNew(newPerson)) {
+    return;
+  };
+
   personsArray.push(newPerson);
   renderPersonsArray(personsArray);
 };
@@ -156,6 +144,10 @@ const addPersonToForm = (obj) => {
 const isFormValide = () => {
   return fields[0].value.trim() !== '' && fields[2].value.trim() !== ''; // ???
 };
+
+const isPersonNew = (person) => {
+  return !personsArray.find(item => item.tel === person.tel);
+}
 
 // open modal
 openModalEl.addEventListener('click', () => {
