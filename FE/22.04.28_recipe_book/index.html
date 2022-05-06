@@ -6,34 +6,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Recipes book</title>
   <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/app.js" defer></script>
+  <link
+  rel="stylesheet"
+  href="https://unpkg.com/simplebar@latest/dist/simplebar.css"/>
 </head>
 <body>
   <main>
     <div class="container">
-      <form class="resipe-form">
-        <label for="resipe-name-input">Dish name</label>
-        <input type="text" name="resipe-name-input" id="resipe-name-input">
-        <label for="resipe-text-input">Recipe text</label>
-        <textarea name="resipe-text-input" id="resipe-text-input"></textarea>
-        <label for="resipe-photo">Photo</label>
-        <input type="text" name="resipe-photo" id="resipe-photo" placeholder="Put a link to photo">
+      <form class="recipe-form">
+        <label for="recipe-name-input">Dish name</label>
+        <input type="text" name="recipe-name-input" id="recipeName">
+        <label for="recipe-text-input">Recipe text</label>
+        <textarea name="recipe-text-input" id="recipeText"></textarea>
+        <label for="recipe-photo">Photo</label>
+        <input type="text" name="recipe-photo" id="recipePhoto" placeholder="Put a link to photo">
         <button type="submit">Add recipe</button>
       </form>
-      <h1 class="recipes-main-heading">My resipes</h1>
+      <h1 class="recipes-main-heading">My recipes</h1>
       <button class="open-form-btn">Add recipe</button>
       <div class="recipes-card-wrapper">
         <ul class="recipes-list">
-          <li class="recipe-card">
-            <span class="delete-recipe-btn"></span>
-            <figure class="recipe-card-figure">
-              <img src="./img/dana-devolk-BJet_Z80fv8-unsplash.jpg" alt="Onion soup">
-            </figure>
-            <div class="recipe-card-descr-wrapper">
-              <h3 class="recipe-card-heading">Onion soup</h3>
-              <p class="recipe-card-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores cum quis dolores, voluptas quam nemo error quod repudiandae dolorem sequi sapiente fuga earum tempora suscipit impedit labore nesciunt amet laudantium! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quasi vitae eum corrupti numquam ullam laboriosam. Asperiores quam molestias iste? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi fugiat quae officia perferendis asperiores velit molestias dolores id vero nobis.</p>
-            </div>
-          </li>
+          <!-- 
           <li class="recipe-card">
             <span class="delete-recipe-btn"></span>
             <figure class="recipe-card-figure">
@@ -41,32 +34,14 @@
             </figure>
             <div class="recipe-card-descr-wrapper">
               <h3 class="recipe-card-heading">Lentil soup</h3>
-              <p class="recipe-card-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores cum quis dolores, voluptas quam nemo error quod repudiandae dolorem sequi sapiente fuga earum tempora suscipit impedit labore nesciunt amet laudantium!</p>
+              <p class="recipe-card-descr scrollbar">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores cum quis dolores, voluptas quam nemo error quod repudiandae dolorem sequi sapiente fuga earum tempora suscipit impedit labore nesciunt amet laudantium!</p>
             </div>
-          </li>
-          <li class="recipe-card">
-            <span class="delete-recipe-btn"></span>
-            <figure class="recipe-card-figure">
-              <img src="./img/dana-devolk-BJet_Z80fv8-unsplash.jpg" alt="Onion soup">
-            </figure>
-            <div class="recipe-card-descr-wrapper">
-              <h3 class="recipe-card-heading">Onion soup</h3>
-              <p class="recipe-card-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores cum quis dolores, voluptas quam nemo error quod repudiandae dolorem sequi sapiente fuga earum tempora suscipit impedit labore nesciunt amet laudantium! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quasi vitae eum corrupti numquam ullam laboriosam. Asperiores quam molestias iste? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi fugiat quae officia perferendis asperiores velit molestias dolores id vero nobis.</p>
-            </div>
-          </li>
-          <li class="recipe-card">
-            <span class="delete-recipe-btn"></span>
-            <figure class="recipe-card-figure">
-              <img src="./img/dana-devolk-BJet_Z80fv8-unsplash.jpg" alt="Onion soup">
-            </figure>
-            <div class="recipe-card-descr-wrapper">
-              <h3 class="recipe-card-heading">Onion soup</h3>
-              <p class="recipe-card-descr">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores cum quis dolores, voluptas quam nemo error quod repudiandae dolorem sequi sapiente fuga earum tempora suscipit impedit labore nesciunt amet laudantium! Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima quasi vitae eum corrupti numquam ullam laboriosam. Asperiores quam molestias iste? Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi fugiat quae officia perferendis asperiores velit molestias dolores id vero nobis.</p>
-            </div>
-          </li>
+          </li> -->
         </ul>
       </div>
     </div>
   </main>
+  <script src="https://unpkg.com/simplebar@latest/dist/simplebar.min.js"></script>
+  <script src="./js/app.js"></script>
 </body>
 </html>

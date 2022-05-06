@@ -35,8 +35,9 @@ button {
   margin-bottom: 2rem;
 }
 
-.resipe-form {
+.recipe-form {
   position: absolute;
+  top: 12rem;
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
@@ -48,15 +49,19 @@ button {
   z-index: 1;
 }
 
-.resipe-form input,
-.resipe-form textarea {
+.is-opened {
+  transform: translateX(0);
+}
+
+.recipe-form input,
+.recipe-form textarea {
   margin-bottom: 1rem;
   padding: .5rem;
   border: none;
 }
 
 .open-form-btn,
-.resipe-form button {
+.recipe-form button {
   align-self: center;
   padding: .7rem 1.5rem;
   width: 40%;
@@ -65,12 +70,12 @@ button {
   border: none;
 }
 
-.resipe-form button {
+.recipe-form button {
   border: 1px solid #000;
 }
 
 .open-form-btn:active,
-.resipe-form button:active {
+.recipe-form button:active {
   background-color: rgb(250, 188, 134);
 }
 
@@ -98,14 +103,19 @@ button {
   width: 30px;
   height: 30px;
   background: #fff url('../img/icons8-delete.svg') no-repeat;
+  cursor: pointer;
 }
 
 .recipe-card-figure {
+  width: 100%;
   height: 10rem;
   overflow: hidden;
+  background-color: rgb(248, 182, 189);
 }
 
 .recipe-card-figure img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
 }
@@ -116,8 +126,9 @@ button {
 }
 
 .recipe-card-descr {
+  padding-right: .5rem;
   max-height: 15rem;
-  font-size: 1.5rem;
-  overflow-y: scroll;
+  _font-size: 1.5rem;
+  overflow-y: auto;
 }
 
