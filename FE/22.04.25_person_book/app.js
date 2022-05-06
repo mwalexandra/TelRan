@@ -1,29 +1,21 @@
 const personsList = document.querySelector('.persons-list');
 let personsArray = [
-  // {
-  //   id: 1,
-  //   name: 'Sasha',
-  //   surname: 'Makeewa',
-  //   tel: '123456',
-  //   email: 'sasha@gmail.com',
-  //   photoLink: 'jfgkfjg.com',
-  // },
-  // {
-  //   id: 2,
-  //   name: 'Sasha2',
-  //   surname: 'Makeewa',
-  //   tel: '123456',
-  //   email: 'sasha@gmail.com',
-  //   photoLink: 'jfgkfjg.com',
-  // },
-  // {
-  //   id: 3,
-  //   name: 'Sasha3',
-  //   surname: 'Makeewa',
-  //   tel: '123456',
-  //   email: 'sasha@gmail.com',
-  //   photoLink: 'jfgkfjg.com',
-  // },
+  {
+    id: 1,
+    name: 'Sasha',
+    surname: 'Makeewa',
+    tel: '123456',
+    email: 'sasha@gmail.com',
+    photoLink: 'jfgkfjg.com',
+  },
+  {
+    id: 2,
+    name: 'Sasha2',
+    surname: 'Makeewa',
+    tel: '123456',
+    email: 'sasha@gmail.com',
+    photoLink: 'jfgkfjg.com',
+  },
 ];
 
 const openModalEl = document.querySelector('.open-modal-btn');
@@ -33,11 +25,7 @@ const modalCloseBtn = document.querySelector('.form-modal-form span');
 const modalOpenBtn = document.querySelector('.open-modal-btn');
 
 // form elements
-const nameInput = document.querySelector('#name');
-const surnameInput = document.querySelector('#surname');
-const telInput = document.querySelector('#tel');
-const emailInput = document.querySelector('#email');
-const photoLinkInput = document.querySelector('#photo-link');
+const fields = document.querySelectorAll('input');
 
 // create delete btn in card
 const createDeleteBtn = (person) => {
@@ -50,20 +38,31 @@ const createDeleteBtn = (person) => {
     renderPersonsArray();
   });
   return deleteBtn;
-}
+};
 
-//create new person card
-const createNewPersonCard = (obj) => {
-  const personItem = document.createElement('li');
-  personItem.classList.add('person-card');
-  // avatar
-  const personAvatar = document.createElement('span');
-  personAvatar.classList.add('person-card-avatar');
-  // name
+// create edit btn in card
+const createEditBtn = (person) => {
+  const editBtn = document.createElement('span');
+  editBtn.classList.add('edit-btn');
+  editBtn.innerHTML = '<i class="fa-solid fa-user-pen"></i>';
+  editBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    editPersonCard(person);
+    renderPersonsArray();
+  });
+  return editBtn;
+} 
+
+// create name element for person card
+const createName = (obj) => {
   const personName = document.createElement('p');
   personName.classList.add('person-card-name');
   personName.textContent = obj.name + ' ' + obj.surname;
-  // links
+  return personName;
+};
+
+//create description element for person card
+const createDescription = (obj) => {
   const personLinksWrapper = document.createElement('div');
   personLinksWrapper.classList.add('person-links-wrapper');
   const personPhone = document.createElement('a');
@@ -82,18 +81,29 @@ const createNewPersonCard = (obj) => {
   personLinksWrapper.appendChild(personPhone);
   personLinksWrapper.appendChild(personEmail);
   personLinksWrapper.appendChild(personImage);
-  personItem.appendChild(personAvatar);
-  personItem.appendChild(personName);
-  personItem.appendChild(personLinksWrapper);
-  personItem.appendChild(createDeleteBtn(obj));
+  return personLinksWrapper;
+};
 
-  personsList.prepend(personItem);
+//create new person card
+const createNewPersonCard = (obj) => {
+  const personItem = document.createElement('li');
+  personItem.classList.add('person-card');
+  // avatar
+  const personAvatar = document.createElement('span');
+  personAvatar.classList.add('person-card-avatar');
+
+  personItem.appendChild(personAvatar);
+  personItem.appendChild(createName(obj));
+  personItem.appendChild(createDescription(obj));
+  personItem.appendChild(createDeleteBtn(obj));
+  personItem.appendChild(createEditBtn(obj));
+  return personItem;
 };
 
 const renderPersonsArray = () => {
   personsList.innerHTML = '';
   personsArray.forEach((person) => {
-    createNewPersonCard(person);
+    personsList.prepend(createNewPersonCard(person));
   });
   personsList.appendChild(modalOpenBtn);
 };
@@ -102,13 +112,11 @@ const renderPersonsArray = () => {
 const createNewPerson = () => {
   const newPerson = {
     id: Date.now(),
-    name: nameInput.value,
-    surname: surnameInput.value,
-    tel: telInput.value,
-    email: emailInput.value,
-    photoLink: photoLinkInput.valu,
   };
-  personsArray.push(newPerson);
+  fields.forEach(field => {
+    newPerson[field.id] = field.value;
+  });
+  return newPerson;
 };
 
 // remove Person 
@@ -120,22 +128,34 @@ const removePersonCard = (person) => {
   personsArray = personsArray.filter(item => item.id !== person.id);
 };
 
+// edit Person
+const editPersonCard = (person) => {
+  modal.style.display = 'flex';
+  addPersonToForm(person);
+  removePersonCard(person);
+};
+
 const clickHandler = () => {
-  createNewPerson();
-  renderPersonsArray();
+  const newPerson = createNewPerson();
+  personsArray.push(newPerson);
+  renderPersonsArray(personsArray);
 };
 
 const cleanForm = () => {
-  nameInput.value = '';
-  surnameInput.value = '';
-  telInput.value = '';
-  emailInput.value = '';
-  photoLinkInput.value = '';
+  fields.forEach(field => {
+    field.value = '';
+  });
 };
 
-const isFormNotValide = () => {
-  return nameInput.value.trim() === '' || telInput.value.trim() === '';
-}
+const addPersonToForm = (obj) => {
+  fields.forEach(field => {
+    field.value = obj[field.id];
+  });
+};
+
+const isFormValide = () => {
+  return fields[0].value.trim() !== '' && fields[2].value.trim() !== ''; // ???
+};
 
 // open modal
 openModalEl.addEventListener('click', () => {
@@ -150,12 +170,9 @@ modalCloseBtn.addEventListener('click', () => {
 // form submit
 form.addEventListener('submit', (event) => {
   event.preventDefault();
-  if(isFormNotValide()){
-    cleanForm();
-    modal.style.display = 'none';
-    return;
+  if(isFormValide()){
+    clickHandler();
   }
-  clickHandler();
   cleanForm();
   modal.style.display = 'none';
 });

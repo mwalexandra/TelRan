@@ -55,14 +55,23 @@ button, a {
   outline: 3px solid #00F6ED;
 }
 
-.delete-btn {
+.delete-btn,
+.edit-btn {
   position: relative;
-  left: 45%;
   bottom: -5%;
   color: #00F6ED;
 }
 
-.delete-btn:active {
+.delete-btn {
+  left: 60%;
+}
+
+.edit-btn {
+  left: 30%;
+}
+
+.delete-btn:active,
+.edit-btn:active {
   color: aquamarine;
 }
 
