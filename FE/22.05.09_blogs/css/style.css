@@ -1,0 +1,98 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+.wrapper {
+	width: 80%;
+	margin: 20px auto 0;
+	display: flex;
+	justify-content: space-between;
+}
+
+.users {
+	width: 30%;
+}
+
+.user {
+	padding: 10px 10px 20px;
+	cursor: pointer;
+}
+
+.user:nth-child(2n + 1) {
+	background-color: #eee;
+}
+
+.blogs {
+	width: 68%;
+}
+
+.article {
+	padding: 10px 10px 20px;
+}
+.article__title {
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.article__descr {
+	font-style: italic;
+	margin: 10px 0;
+}
+
+.article__likes {
+  margin-bottom: .5rem;
+	color: green;
+	font-size: 1.5em;
+}
+
+.btn {
+  padding: 0.3rem;
+  border: none;
+  border-radius: 10px;
+  transition: transform 60ms ease-in;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.like-btn {
+  margin-right: 0.3rem;
+  background-color: rgb(161, 249, 176, 0.8);
+}
+
+.dislike-btn {
+  background-color: rgb(255, 114, 89, 0.8);
+}
+
+.form {
+	width: 60%;
+	margin: 0 auto;
+	display: none;
+}
+
+input,
+textarea,
+.form-btn {
+	display: block;
+	width: 100%;
+	margin: 10px 0;
+}
+
+input,
+textarea {
+	padding: 10px;
+}
+textarea {
+	height: 80px;
+}
+
+.form-btn {
+	padding: 8px 0;
+	border: none;
+	background-color: darkblue;
+	color: #fff;
+	border-radius: 10px;
+	cursor: pointer;
+}
