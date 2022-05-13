@@ -10,10 +10,14 @@ const likeBtn = document.querySelector('.like-btn');
 const dislikeBtn = document.querySelector('.dislike-btn');
 
 const showBlogs = () => {
-	const filteredData = blogs.filter(
-		(article) => article.user_id === activeUser
-	);
-	renderBlogs(filteredData);
+	if(activeUser === 0)
+		renderBlogs(blogs);
+	else {
+		const filteredData = blogs.filter(
+			(article) => article.user_id === activeUser
+		);
+		renderBlogs(filteredData);
+	}
 };
 
 const renderBlogs = (articles) => {
@@ -45,9 +49,8 @@ const createLikeBtn = (article) => {
   btn.innerHTML = '<i class="fa-solid fa-thumbs-up"></i>';
   btn.addEventListener('click', (event) => {
     event.preventDefault();
-    article.likes += 1;
-    saveBlogs();
-    renderBlogs(blogs);
+    article.likes++;
+		saveShowBlogs();
   });
   return btn;
 };
@@ -59,10 +62,9 @@ const createDislikeBtn = (article) => {
   btn.addEventListener('click', (event) => {
     event.preventDefault();
     if (article.likes > 0) {
-      article.likes -= 1;
+      article.likes--;
     }
-    saveBlogs();
-    renderBlogs(blogs);
+    saveShowBlogs();
   });
   return btn;
 };
@@ -102,13 +104,15 @@ form.addEventListener('submit', (event) => {
 		likes: 0,
 	};
 	blogs.push(newArticle);
-	saveBlogs();
 	document.querySelector('#title').value = '';
 	document.querySelector('#description').value = '';
-	showBlogs();
+	saveShowBlogs();
 });
 
-// likeBtn.addEventListener('click')
+const saveShowBlogs = () => {
+	saveBlogs();
+	showBlogs();
+}
 
 const saveUsers = () => {
 	localStorage.setItem('users', JSON.stringify(users));

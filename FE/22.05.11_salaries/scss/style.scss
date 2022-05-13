@@ -1,0 +1,224 @@
+@import 'mixins';
+
+@font-face {
+  font-family: 'Abhaya';
+  src: url('../fonts/AbhayaLibre-Bold-webfont.woff2') format('woff2'),
+       url('../fonts/AbhayaLibre-Bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya';
+  src: url('../fonts/AbhayaLibre-Medium-webfont.woff2') format('woff2'),
+       url('../fonts/AbhayaLibre-Medium-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Abhaya';
+  src: url('../fonts/AbhayaLibre-Regular-webfont.woff2') format('woff2'),
+       url('../fonts/AbhayaLibre-Regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Abhaya', serif;
+}
+
+input, 
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+input:focus {
+  outline-color: #51396F;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #ffffff;
+  transition: transform 60ms ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+}
+
+.employees {
+  padding: 2rem 0;
+
+  &__wrapper {
+    position: relative;
+  }
+
+  &__heading {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    font-size: 2rem;
+    color: #396F40;
+    border-bottom: 2px solid #396F40;
+  }
+
+  &__wrapper__spanPlus {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #6F3957;
+    font-size: 2rem;
+    transition: color 60ms ease;
+
+    &:hover {
+      color: #396F40;
+    }
+  }
+
+  &__list_item{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #6f633975;
+
+    &_name {
+      font-size: 1.5rem;
+    }
+
+    &_btn {
+      background-color: #396F40;
+    }
+  }
+}
+
+.form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: #6f633975;
+
+  &__wrapper {
+    padding: 2rem;
+    width: 80%;
+    background-color: #396F40;
+
+    @include for-laptop {
+      max-width: 60%;
+    }
+
+    @include for-desktops {
+      max-width: 40%;
+    }
+  }
+}
+
+.add-employee-form {
+  display: none;
+
+  &__heading {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: #ffffff;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    & label {
+      color: #ffffff;
+    }
+
+    & input {
+      margin-bottom: 1rem;
+      padding: 0.2rem;
+    }
+
+    & button {
+      align-self: center;
+      width: 40%;
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #ffffff;
+      background-color: #6F3957;
+    }
+  }
+}
+
+.add-days-form {
+  display: none;
+
+  &__heading {
+    margin-bottom: 1rem;
+    color: #ffffff;
+  }
+
+  &__form{
+    width: 100%;
+
+    &__label{
+      margin-right: 1rem;
+    }
+  
+    &__btn {
+      margin-top: 1rem;
+      width: 100%;
+      background-color: #6F3957;
+    }
+  }
+}
+
+.salary-calc {
+  padding: 1rem 0;
+  background-color: antiquewhite;
+
+  &__heading {
+    margin-bottom: 1rem;
+  }
+
+  &__select {
+    display: block;
+    margin-bottom: 1rem;
+    padding: .3rem 1rem;
+    font-family: inherit;
+    font-size: 1.1rem;
+  }
+
+  &__btn {
+    margin-bottom: 1rem;
+    background-color: #51396F;
+  }
+
+  &__output {
+    font-size: 2rem;
+  }
+}
+
+
+
+

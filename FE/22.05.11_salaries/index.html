@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salaries</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./scss/style.css">
+</head>
+<body>
+
+  <section class="employees">
+    <div class="employees__wrapper container">
+      <h1 class="employees__heading">Employees</h1>
+      <span class="employees__wrapper__spanPlus" id="empFormOpen"><i class="fa-solid fa-plus"></i></span>
+      <ul class="employees__list">
+        <li class="employees__list_item">
+          <p class="employees__list_item_name">Ivan Ivanov</p>
+          <button class="btn employees__list_item_btn">Add working days</button>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="add-employee-form form">
+    <div class="add-employee-form__wrapper form__wrapper">
+      <h2 class="add-employee-form__heading">Add new employee</h2>
+      <form class="add-employee-form__form">
+        <label class="add-employee-form__form__label" for="fName">First name</label>
+        <input type="text" name="fNAme" id="fName">
+        <label class="add-employee-form__form__label" for="lName">Last name</label>
+        <input type="text" name="lNAme" id="lName">
+        <label class="add-employee-form__form__label" for="base">Base salary</label>
+        <input type="text" name="base" id="base">
+        <label class="add-employee-form__form__label" for="plan">Plan of work hours</label>
+        <input type="text" name="plan" id="plan">
+        <label class="add-employee-form__form__label" for="koeff">Koeff for overtime</label>
+        <input type="text" name="koeff" id="koeff">
+        <button class="btn" type="submit">Add</button>
+      </form>
+    </div>  
+  </div>
+
+  <div class="add-days-form form">
+    <div class="add-days-form__wrapper form__wrapper">
+      <h2 class="add-days-form__heading">Add workings days</h2>
+      <form action="#" class="add-days-form__form">
+        <label class="add-days-form__form__label" for="workingDays">Hours per one working day</label>
+        <input type="text" name="workingDays" id="workingDays">
+        <button class="add-days-form__form__btn btn" type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+
+  <section class="salary-calc">
+    <div class="container">
+      <h2 class="salary-calc__heading">Salary calculate</h2>
+      <select name="select" class="salary-calc__select">
+        <option value="id1" class="select__option" selected>Ivan Ivanov</option>
+        <option value="id2" class="select__option">Petr Petrov</option>
+        <option value="id3" class="select__option">Sidr Sidorov</option>
+      </select>
+      <button class="salary-calc__btn btn">Calculate</button>
+      <p class="salary-calc__output">0</p>
+    </div>  
+  </section>
+
+  <script src="./js/forms.js"></script>
+</body>
+</html>

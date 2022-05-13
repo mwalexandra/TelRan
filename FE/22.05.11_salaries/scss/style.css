@@ -1,0 +1,194 @@
+@font-face {
+  font-family: "Abhaya";
+  src: url("../fonts/AbhayaLibre-Bold-webfont.woff2") format("woff2"), url("../fonts/AbhayaLibre-Bold-webfont.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Abhaya";
+  src: url("../fonts/AbhayaLibre-Medium-webfont.woff2") format("woff2"), url("../fonts/AbhayaLibre-Medium-webfont.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Abhaya";
+  src: url("../fonts/AbhayaLibre-Regular-webfont.woff2") format("woff2"), url("../fonts/AbhayaLibre-Regular-webfont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Abhaya", serif;
+}
+
+input,
+button {
+  font-family: inherit;
+  color: inherit;
+}
+
+input:focus {
+  outline-color: #51396F;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 80%;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border: none;
+  color: #ffffff;
+  transition: transform 60ms ease;
+}
+.btn:active {
+  transform: translateY(1px);
+}
+
+.employees {
+  padding: 2rem 0;
+}
+.employees__wrapper {
+  position: relative;
+}
+.employees__heading {
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  font-size: 2rem;
+  color: #396F40;
+  border-bottom: 2px solid #396F40;
+}
+.employees__wrapper__spanPlus {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #6F3957;
+  font-size: 2rem;
+  transition: color 60ms ease;
+}
+.employees__wrapper__spanPlus:hover {
+  color: #396F40;
+}
+.employees__list_item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(111, 99, 57, 0.4588235294);
+}
+.employees__list_item_name {
+  font-size: 1.5rem;
+}
+.employees__list_item_btn {
+  background-color: #396F40;
+}
+
+.form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-color: rgba(111, 99, 57, 0.4588235294);
+}
+.form__wrapper {
+  padding: 2rem;
+  width: 80%;
+  background-color: #396F40;
+}
+@media screen and (min-width: 769px) {
+  .form__wrapper {
+    max-width: 60%;
+  }
+}
+@media screen and (min-width: 1025px) {
+  .form__wrapper {
+    max-width: 40%;
+  }
+}
+
+.add-employee-form {
+  display: none;
+}
+.add-employee-form__heading {
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+}
+.add-employee-form__form {
+  display: flex;
+  flex-direction: column;
+}
+.add-employee-form__form label {
+  color: #ffffff;
+}
+.add-employee-form__form input {
+  margin-bottom: 1rem;
+  padding: 0.2rem;
+}
+.add-employee-form__form button {
+  align-self: center;
+  width: 40%;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #6F3957;
+}
+
+.add-days-form {
+  display: none;
+}
+.add-days-form__heading {
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+.add-days-form__form {
+  width: 100%;
+}
+.add-days-form__form__label {
+  margin-right: 1rem;
+}
+.add-days-form__form__btn {
+  margin-top: 1rem;
+  width: 100%;
+  background-color: #6F3957;
+}
+
+.salary-calc {
+  padding: 1rem 0;
+  background-color: antiquewhite;
+}
+.salary-calc__heading {
+  margin-bottom: 1rem;
+}
+.salary-calc__select {
+  display: block;
+  margin-bottom: 1rem;
+  padding: 0.3rem 1rem;
+  font-family: inherit;
+  font-size: 1.1rem;
+}
+.salary-calc__btn {
+  margin-bottom: 1rem;
+  background-color: #51396F;
+}
+.salary-calc__output {
+  font-size: 2rem;
+}
+
+/*# sourceMappingURL=style.css.map */
