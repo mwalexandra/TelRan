@@ -1,0 +1,52 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+  background-color: beige;
+}
+
+.hello {
+  margin: 0 auto;
+  padding: 2rem 0;
+  width: 80%;
+  max-width: 768px;
+}
+
+.hello__heading{
+  margin-bottom: 2rem;
+  font-size: 2rem;
+}
+
+.btn {
+  padding: 0.4rem 1rem;
+  border: none;
+  background-color: aquamarine;
+  transition: background-color, transform 60ms ease;
+}
+
+.btn:hover {
+  background-color: aqua;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.hello__btn-empty {
+  position: relative;
+  top: 3px;
+  width: 62px;
+  height: 27.8px;
+}
+
+.hello__output {
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
