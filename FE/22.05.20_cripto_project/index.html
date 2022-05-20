@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Currency Exchange</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <script src="./js/app.js" defer></script>
+</head>
+<body>
+  <header class="header">Header</header>
+  <main class="main">
+    <section class="promo">
+      <h1 class="promo__head">Currency Exchange fast & safe</h1>
+      <form class="exchange_form">
+        <div class="exchange_form__row">
+          <label for="give-amount">You give</label>
+          <input id="give-amount" type="text">
+          <label for="receive-amount">You receive</label>
+          <input id="receive-amount" type="text">
+        </div>
+        <div class="exchange_form__row">
+          <select name="give_currency" id="give_currency" class="give_currency"></select>
+          <select name="receive_currency" id="receive_currency" class="receive_currency"></select>
+        </div>
+        <div class="exchange_form__row">
+          <div class="exchange_form__rate">
+              3 <span>RUB</span> = 0.0001 <span>USD</span>
+          </div>
+          <div class="exchange_form__commission">
+              3456 <span>BCH</span>
+          </div>
+        </div>
+        <button class="btn exchange_form__submit" type="submit">Exchange</button>
+        <label>
+          <input class="exchange_form__checkbox" type="checkbox" name="rules_agree" id="rules_agree">
+          I agree with 
+          <a href="#">Rules and statements</a>
+      </label>
+      </form>
+    </section>  
+  </main>
+  <footer class="footer">Footer</footer>
+</body>
+</html>
