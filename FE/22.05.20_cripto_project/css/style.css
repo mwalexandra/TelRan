@@ -105,13 +105,13 @@ h1, h2 {
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 2.5rem;
+  gap: 2rem;
   color: #ffffff;
 }
 
 .header__nav_list{
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 
 .header__nav_list_item a {
@@ -136,9 +136,9 @@ h1, h2 {
 
 .promo .container {
   color: #ffffff;
-  background: url('../img/MaskGroup.svg') no-repeat;
+  background: url('../img/main.svg') no-repeat;
   background-position: right center;
-  background-size: contain;
+  background-size: 50%;
 }
 
 .promo__head {
@@ -390,4 +390,16 @@ h1, h2 {
 
 .footer__signup_btn {
   margin-right: 24px;
+}
+
+@media screen and (max-width: 1180px) {
+  .header .container,
+  .header__nav,
+  .header__nav_list{
+    gap: 1rem;
+  }
+
+  .footer__menu {
+    max-height: initial;
+  }
 }
