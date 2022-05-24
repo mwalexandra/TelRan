@@ -3,9 +3,7 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 
@@ -74,20 +72,5 @@ public class AppTest {
 
     int expected = 0;
     assertEquals(expected, test.findAnIndex(numbers));
-  }
-
-  @Test
-  void testKeysToCamelCase_3keys() {
-    Map<String, Object> json = Map.of(
-        "make", "Opel",
-        "model", "Astra",
-        "year_of_assembling", 2022);
-
-    Map<String, Object> expected = Map.of(
-        "make", "Opel",
-        "model", "Astra",
-        "yearOfAssembling", 2022);
-
-    assertEquals(expected, test.keysToCamelCase(json));
   }
 }
