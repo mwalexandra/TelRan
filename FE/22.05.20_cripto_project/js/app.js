@@ -13,16 +13,27 @@ const exchangeForm = document.querySelector('.exchange_form'),
       formSubmit = document.querySelector('.exchange_form__submit'),
       formCheckbox = document.querySelector('.exchange_form__checkbox');
 
+const isClient = false; 
+let currencies;
+
 getDataCurrency().then(result => changeCurrency(result)); // запрос к серверу
 
-function changeCurrency(dataCurrency){
-  const currencyList = Object.keys(dataCurrency.conversion_rates);
-  currencyList.forEach(currency => {
+function renderCurrencyList (dataCurrency){
+  Object.keys(dataCurrency.conversion_rates).forEach(currency => {
     addGiveCurrency(currency);
     addReceiveCurrency(currency);
   })
 }
 
+function changeCurrency(dataCurrency){
+  renderCurrencyList (dataCurrency);
+  getCurrencyList(dataCurrency);
+}
+
+function getCurrencyList(dataCurrency){
+  currencies = dataCurrency.conversion_rates;
+}
+  
 function addOption(select){
   return function(currency) {
     const option = document.createElement('option');
@@ -31,9 +42,25 @@ function addOption(select){
     select.appendChild(option);
   }
 }
-
+  
 const addGiveCurrency = addOption(giveCurrencySelect);
 const addReceiveCurrency = addOption(receiveCurrencySelect);
+
+function getCalc(isClient){
+  let commission = 1;
+  if(isClient) commission = 0;
+
+  return function (from, to, input){
+    const coeff = calcCoeff(from, to);
+    const changedMoney = coeff * input;
+    const percent = (changedMoney / 100) * commission;
+    return changedMoney - percent;
+  }
+}
+
+function calcCoeff(from, to){
+  return currencies[to]/currencies[from];
+}
 
 
 giveCurrencySelect.addEventListener('change', function () {
@@ -56,11 +83,13 @@ giveInput.addEventListener('input', function(){
 //commissionOutput
 
 formCheckbox.addEventListener('change', function(){
-   const isChecked = this.checked; 
+    const isChecked = this.checked; 
 })
 
 exchangeForm.addEventListener('submit', function(event){
   event.preventDefault();
+  const result = getCalc(isClient)('EUR', 'RUB', 500);
+  console.log(result);
 })
 
 function recieve(giveValue, giveCurrency, receiveCurrency){
