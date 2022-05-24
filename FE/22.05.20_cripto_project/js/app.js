@@ -1,11 +1,9 @@
 import getDataCurrency from "./api.js";
+import renderCurrencyList from "./render.js";
 
 const exchangeForm = document.querySelector('.exchange_form'),
       giveInput = document.getElementById('give-amount'),
       receiveInput = document.getElementById('receive-amount'),
-
-      giveCurrencySelect = document.getElementById('give_currency'),
-      receiveCurrencySelect = document.getElementById('receive_currency'),
 
       rateOutput = document.querySelector('.exchange_form__rate'),
       commissionOutput = document.querySelector('.exchange_form__commission'),
@@ -18,13 +16,6 @@ let currencies;
 
 getDataCurrency().then(result => changeCurrency(result)); // запрос к серверу
 
-function renderCurrencyList (dataCurrency){
-  Object.keys(dataCurrency.conversion_rates).forEach(currency => {
-    addGiveCurrency(currency);
-    addReceiveCurrency(currency);
-  })
-}
-
 function changeCurrency(dataCurrency){
   renderCurrencyList (dataCurrency);
   getCurrencyList(dataCurrency);
@@ -33,18 +24,6 @@ function changeCurrency(dataCurrency){
 function getCurrencyList(dataCurrency){
   currencies = dataCurrency.conversion_rates;
 }
-  
-function addOption(select){
-  return function(currency) {
-    const option = document.createElement('option');
-    option.textContent = currency;
-    option.value = currency;
-    select.appendChild(option);
-  }
-}
-  
-const addGiveCurrency = addOption(giveCurrencySelect);
-const addReceiveCurrency = addOption(receiveCurrencySelect);
 
 function getCalc(isClient){
   let commission = 1;
@@ -62,14 +41,14 @@ function calcCoeff(from, to){
   return currencies[to]/currencies[from];
 }
 
+// Перенести в модуль js с обработчиками событий???
+// giveCurrencySelect.addEventListener('change', function () {
+//   const selectedGiveCurrency = this.value;
+// })
 
-giveCurrencySelect.addEventListener('change', function () {
-  const selectedGiveCurrency = this.value;
-})
-
-receiveCurrencySelect.addEventListener('change', function () {
-  const selectedReceiveCurrency = this.value;
-})
+// receiveCurrencySelect.addEventListener('change', function () {
+//   const selectedReceiveCurrency = this.value;
+// })
 
 giveInput.addEventListener('input', function(){
   const currentGive = this.value;
@@ -95,6 +74,15 @@ exchangeForm.addEventListener('submit', function(event){
 function recieve(giveValue, giveCurrency, receiveCurrency){
   // TODO
   return receiveValue;
+}
+
+// MODULS
+function openInterfaceModal(){
+  document.querySelector('.interface-modal').style.display = 'block';
+}
+
+function closeModal(){
+  document.querySelector('.modal').style.display = 'none';
 }
 
 /* 
