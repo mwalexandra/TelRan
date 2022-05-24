@@ -1,3 +1,4 @@
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
@@ -112,7 +113,9 @@ public class App {
     // надо проверять велью, являются ли они Map, в этом случае рекурсивно вызвать
     // функцию для него
 
-    public void keysToCamelCase(Map<String, Object> jsonMap) {
+    public Map<String, Object> keysToCamelCase(Map<String, Object> jsonMap) {
+        Map<String, Object> res = new HashMap<>();
+
         Set<String> keys = jsonMap.keySet();
 
         for (String string : keys) {
@@ -125,13 +128,13 @@ public class App {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < string.length(); i++) {
                 if (string.charAt(i) == '_') {
-                    char upperCase = string.charAt(++i);
-                    Character.toUpperCase(upperCase);
+                    char upperCase = Character.toUpperCase(string.charAt(++i));
                     sb = sb.append(upperCase);
                 } else
                     sb = sb.append(string.charAt(i));
             }
-            string = sb.toString();
+            res.put(sb.toString(), jsonMap.get(string));
         }
+        return res;
     }
 }
