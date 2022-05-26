@@ -37,16 +37,29 @@ receiveCurrencySelect.disabled = true;
 formSubmit.disabled = true;
 
 
-// получили данные? инициализируем приложение
-// getDataCurrency().then(result => initialApp(result)); // получили данные от сервера и запустили инициализацию
-// function initialApp(dataCurrency){ // инициализация приложения
+// LOCALSTORAGE
+let applications = JSON.parse(localStorage.getItem('applications'));
 
-//   currencies = dataCurrency.conversion_rates; // получили список валют и их значение
+function createNewApplication(currentGive, selectedGiveCurrency, outputMoney, selectedReceiveCurrency) {
+  const application = {
+    date: Date.now(),
+    currentGive,
+    selectedGiveCurrency,
+    outputMoney,
+    selectedReceiveCurrency,
+  }
+  return application;
+}
 
-//   renderCurrencySelect(dataCurrency); // отрендерили selects
-//   selectedGiveCurrency = giveCurrencySelect.value; // после рендеринга 
-//   selectedReceiveCurrency = receiveCurrencySelect.value; // сохранили валюты в переменные
-// }
+function addNewApplication(){
+  const application = createNewApplication(currentGive, selectedGiveCurrency, outputMoney, selectedReceiveCurrency);
+  applications.unshift(application);
+  if(applications.length > 4){
+    applications.pop();
+  }
+  console.log(applications);
+  localStorage.setItem('applications', JSON.stringify(applications));
+}
 
 
 initialApp();
@@ -68,27 +81,26 @@ function updateCurriency() {
   objectCurriency = getObjectCurriency(selectedGiveCurrency, selectedReceiveCurrency, currentGive, currencies); // получили объект calc
 
   // обновили calc state
-  outputMoney = objectCurriency.outputMoney;
-  changedMoney = objectCurriency.changedMoney;
-  coeff = objectCurriency.coeff;
-  percent = objectCurriency.percent;
-  
-  renderRate(selectedGiveCurrency, coeff, selectedReceiveCurrency);
-  
+  const calcState = updateCalcState();
+  renderRate(selectedGiveCurrency, calcState[2], selectedReceiveCurrency);
   
   if (currentGive !== '') {
     // вывели итоговую сумму в receiveInput
-    receiveInput.value = outputMoney;
-    renderComission(percent, selectedReceiveCurrency);
+    receiveInput.value = calcState[0];
+    renderComission(calcState[3], selectedReceiveCurrency);
     formSubmit.disabled = false;
   } else {
     formSubmit.disabled = true;
   }
 }
 
-
-
-
+function updateCalcState(){
+  outputMoney = objectCurriency.outputMoney;
+  changedMoney = objectCurriency.changedMoney;
+  coeff = objectCurriency.coeff;
+  percent = objectCurriency.percent;
+  return [outputMoney, changedMoney, coeff, percent];
+}
 
 // Обработчики событий
 giveCurrencySelect.addEventListener('change', function () {
@@ -110,12 +122,12 @@ giveInput.addEventListener('input', function(){
   updateCurriency();
 })
 
-
 // submit и checkbox
 exchangeForm.addEventListener('submit', function(event){
   event.preventDefault();
   if(isChecked){
     console.log('SUBMIT');
+    addNewApplication();
   } else {
     console.log('You have to check');
     // нужна будет валидация
