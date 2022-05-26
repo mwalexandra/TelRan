@@ -1,113 +1,129 @@
+import {
+  exchangeForm, giveInput, receiveInput,
+  giveCurrencySelect,receiveCurrencySelect,
+  rateOutput, commissionOutput, formSubmit, 
+  formCheckbox
+} from './elements.js';
 import getDataCurrency from "./api.js";
-import renderCurrencyList from "./render.js";
+import {
+  renderCurrencySelect, 
+  renderRate, 
+  renderComission
+} from "./render.js";
+import calculateСurriency from "./calc.js";
 
-const exchangeForm = document.querySelector('.exchange_form'),
-      giveInput = document.getElementById('give-amount'),
-      receiveInput = document.getElementById('receive-amount'),
+// states
+// user state
+let isClient;
 
-      rateOutput = document.querySelector('.exchange_form__rate'),
-      commissionOutput = document.querySelector('.exchange_form__commission'),
-
-      formSubmit = document.querySelector('.exchange_form__submit'),
-      formCheckbox = document.querySelector('.exchange_form__checkbox');
-
-const isClient = false; 
+// data state
 let currencies;
+let selectedGiveCurrency;
+let selectedReceiveCurrency;
+let currentGive = giveInput.value;
+let isChecked;
 
-getDataCurrency().then(result => changeCurrency(result)); // запрос к серверу
+// calc state
+let objectCurriency;
+let outputMoney;
+let changedMoney;
+let coeff;
+let percent;
 
-function changeCurrency(dataCurrency){
-  renderCurrencyList (dataCurrency);
-  getCurrencyList(dataCurrency);
+// app state
+giveInput.disabled = true;
+giveCurrencySelect.disabled = true;
+receiveCurrencySelect.disabled = true;
+formSubmit.disabled = true;
+
+
+// получили данные? инициализируем приложение
+// getDataCurrency().then(result => initialApp(result)); // получили данные от сервера и запустили инициализацию
+// function initialApp(dataCurrency){ // инициализация приложения
+
+//   currencies = dataCurrency.conversion_rates; // получили список валют и их значение
+
+//   renderCurrencySelect(dataCurrency); // отрендерили selects
+//   selectedGiveCurrency = giveCurrencySelect.value; // после рендеринга 
+//   selectedReceiveCurrency = receiveCurrencySelect.value; // сохранили валюты в переменные
+// }
+
+
+initialApp();
+async function initialApp(){ // инициализация приложения
+  const dataCurrency = await getDataCurrency();
+  currencies = dataCurrency.conversion_rates; // получили список валют и их значение
+  renderCurrencySelect(dataCurrency); // отрендерили selects
+  selectedGiveCurrency = giveCurrencySelect.value; // после рендеринга 
+  selectedReceiveCurrency = receiveCurrencySelect.value; // сохранили валюты в переменные
+
+  giveInput.disabled = false;
+  giveCurrencySelect.disabled = false;
+  receiveCurrencySelect.disabled = false;
 }
 
-function getCurrencyList(dataCurrency){
-  currencies = dataCurrency.conversion_rates;
-}
+function updateCurriency() {
+  
+  const getObjectCurriency = calculateСurriency(isClient); // замкнули calc curriency функцию c статусом клиента 
+  objectCurriency = getObjectCurriency(selectedGiveCurrency, selectedReceiveCurrency, currentGive, currencies); // получили объект calc
 
-function getCalc(isClient){
-  let commission = 1;
-  if(isClient) commission = 0;
-
-  return function (from, to, input){
-    const coeff = calcCoeff(from, to);
-    const changedMoney = coeff * input;
-    const percent = (changedMoney / 100) * commission;
-    return changedMoney - percent;
+  // обновили calc state
+  outputMoney = objectCurriency.outputMoney;
+  changedMoney = objectCurriency.changedMoney;
+  coeff = objectCurriency.coeff;
+  percent = objectCurriency.percent;
+  
+  renderRate(selectedGiveCurrency, coeff, selectedReceiveCurrency);
+  
+  
+  if (currentGive !== '') {
+    // вывели итоговую сумму в receiveInput
+    receiveInput.value = outputMoney;
+    renderComission(percent, selectedReceiveCurrency);
+    formSubmit.disabled = false;
+  } else {
+    formSubmit.disabled = true;
   }
 }
 
-function calcCoeff(from, to){
-  return currencies[to]/currencies[from];
-}
 
-// Перенести в модуль js с обработчиками событий???
-// giveCurrencySelect.addEventListener('change', function () {
-//   const selectedGiveCurrency = this.value;
-// })
 
-// receiveCurrencySelect.addEventListener('change', function () {
-//   const selectedReceiveCurrency = this.value;
-// })
+
+
+// Обработчики событий
+giveCurrencySelect.addEventListener('change', function () {
+  selectedGiveCurrency = this.value;
+  // так же валидация нужна полю currentGive
+  updateCurriency();
+})
+
+receiveCurrencySelect.addEventListener('change', function () {
+  selectedReceiveCurrency = this.value;
+  // так же валидация нужна полю currentGive
+  updateCurriency();
+})
 
 giveInput.addEventListener('input', function(){
-  const currentGive = this.value;
+  this.value = this.value.replace(/\D/, '');
+  // так же валидация нужна полю currentGive
+  currentGive = this.value;
+  updateCurriency();
 })
 
-// receiveInput.addEventListener('input', function(){
-//   const currentReceive = this.value;
-// })
 
-// rateOutput
-//commissionOutput
-
-formCheckbox.addEventListener('change', function(){
-    const isChecked = this.checked; 
-})
-
+// submit и checkbox
 exchangeForm.addEventListener('submit', function(event){
   event.preventDefault();
-  const result = getCalc(isClient)('EUR', 'RUB', 500);
-  console.log(result);
+  if(isChecked){
+    console.log('SUBMIT');
+  } else {
+    console.log('You have to check');
+    // нужна будет валидация
+    // ее нужно будет ввести в validation.js
+  }
+  // так же валидация нужна полю currentGive
 })
 
-function recieve(giveValue, giveCurrency, receiveCurrency){
-  // TODO
-  return receiveValue;
-}
-
-// MODULS
-function openInterfaceModal(){
-  document.querySelector('.interface-modal').style.display = 'block';
-}
-
-function closeModal(){
-  document.querySelector('.modal').style.display = 'none';
-}
-
-/* 
-1. Берем value из giveInput и selected валюта1 и валюта2 из CurrencySelect
-2. Достаем из объекта result.conversion_rates стоимость валюты1 и валюты2
-3. Считаем: value * курс валюты1 / курс валюты2
-4. Выводим в receiveInput результат
-
-5. Рассчет суммы для 8 других валют (секция Treasury)
-  5.1 Достаем из объекта result.conversion_rates в массив стоимость валюты1, валюты2, валюты3, валюты4, валюты5, валюты6, валюты7, валюты8
-  5.2 Считаем: value * курс валюты1 / курс валюты2
-6. Берем все элементы <li class="treasury__list_item"> </li>
-7. Для каждого элемента массива (forEach) достаем .treasury__receive_currency, .treasury__sum, .treasury__give_currency и складываем туда сответственно 
-    валюту из CurrencySelect (пункт 1), результат рассчета (5.2) и валюту1, 2, 3...
-
-8. Секция Latest applications. Создаем новый объект <li class="applications__list_item"></li>
-  8.1 Кладем внутрь HTML             
-      <p class="applications_list_item_time">ДАТА ОПЕРАЦИИ</p>
-      <p class="applications__give_currency"> VALUE из giveInput
-        <span>ИМЯ валюты из giveCurrencySelect</span>
-      </p>
-      <span><img src="./img/Icons.svg" alt=""></span>
-      <p class="applications__received_currency">VALUE из recieveInput
-        <span>ИМЯ валюты из recieveCurrencySelect</span>
-      </p>
-  8.2 Prepend в applications__list
-  8.3 Пятый элемент листа удаляем                            ---- ???
-*/
+formCheckbox.addEventListener('change', function(){
+   isChecked = this.checked; 
+})
