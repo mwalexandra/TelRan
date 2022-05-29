@@ -6,40 +6,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Currency Exchange</title>
   <link rel="stylesheet" href="./css/style.css">
-  <script src="./js/app.js" type="module" defer></script>
 </head>
 <body>
   <header class="header">
     <div class="container">
-      <figure class="header_figure logo-wrapper">
+      <a href="#" class="header_link logo-wrapper">
         <img src="./img/logo.svg" alt="Logo">
-      </figure>
+      </a>
       <nav class="header__nav">
         <ul class="header__nav_list">
           <li class="header__nav_list_item">
-            <a href="#"">Home</a>
+            <a href="#">Home</a>
           </li>
           <li class="header__nav_list_item">
-            <a href="#"">Tariffs</a>
+            <a href="#">Tariffs</a>
           </li>
           <li class="header__nav_list_item">
-            <a href="#"">Reviews</a>
+            <a href="#">Reviews</a>
           </li>
           <li class="header__nav_list_item">
-            <a href="#"">Rules</a>
+            <a href="#">Rules</a>
           </li>
           <li class="header__nav_list_item">
-            <a href="#"">FAQ</a>
+            <a href="#">FAQ</a>
           </li>
           <li class="header__nav_list_item">
-            <a href="#"">For partners</a>
+            <a href="#">For partners</a>
           </li>
           <li class="header__nav_list_item">
-            <a href="#"">Contacts</a>
+            <a href="#">Contacts</a>
           </li>
         </ul>
         <button class="signup-btn btn">Sign Up</button>
         <button class="login-btn btn">Login in</button>
+        <button class="logout-btn btn">Login out</button>
       </nav>
     </div>  
   </header>
@@ -54,7 +54,7 @@
               <input id="give-amount" type="text" placeholder="Amount">
             </label>
             <label class="exchange_form_label" for="receive-amount">
-              <input id="receive-amount" type="text" placeholder="Amount">
+              <input id="receive-amount" type="text" disabled="true" placeholder="Amount">
             </label>
           </div>
           <div class="exchange_form__row">
@@ -63,7 +63,7 @@
           </div>
           <div class="exchange_form__row">
             <div class="exchange_form__rate">
-                3 <span>RUB</span> = 0.0001 <span>USD</span>
+                1 <span>USD</span> = 1 <span>USD</span>
             </div>
             <div class="exchange_form__commission">
                 3456 <span>BCH</span>
@@ -78,97 +78,14 @@
         </form>
       </div>  
     </section>  
-    <section class="treasury">
-      <div class="container">
-        <h2 class="treasury__heading section__heading">Treasury</h2>
-        <ul class="treasury__list">
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-          <li class="treasury__list_item">
-            <p class="treasury__receive_currency">USD</p>
-            <p class="treasury__sum">123456 
-              <span class="treasury__give_currency">RUB</span></p>
-          </li>
-        </ul>
-      </div>
-    </section>
     <section class="applications">
       <div class="container">
         <h2 class="applications__heading section__heading">Latest applications</h2>
+
+
         <ul class="applications__list">
-          <li class="applications__list_item">
-            <p class="applications_list_item_time">12.07.2020, 11:06</p>
-            <p class="applications__give_currency">3759687
-              <span>USD</span>
-            </p>
-            <span><img src="./img/Icons.svg" alt=""></span>
-            <p class="applications__received_currency">2746584
-              <span>ETH</span>
-            </p>
-          </li>
-          <li class="applications__list_item">
-            <p class="applications_list_item_time">12.07.2020, 11:06</p>
-            <p class="applications__give_currency">3759687
-              <span>USD</span>
-            </p>
-            <span><img src="./img/Icons.svg" alt=""></span>
-            <p class="applications__received_currency">2746584
-              <span>ETH</span>
-            </p>
-          </li>
-          <li class="applications__list_item">
-            <p class="applications_list_item_time">12.07.2020, 11:06</p>
-            <p class="applications__give_currency">3759687
-              <span>USD</span>
-            </p>
-            <span><img src="./img/Icons.svg" alt=""></span>
-            <p class="applications__received_currency">2746584
-              <span>ETH</span>
-            </p>
-          </li>
-          <li class="applications__list_item">
-            <p class="applications_list_item_time">12.07.2020, 11:06</p>
-            <p class="applications__give_currency">3759687
-              <span>USD</span>
-            </p>
-            <span><img src="./img/Icons.svg" alt=""></span>
-            <p class="applications__received_currency">2746584
-              <span>ETH</span>
-            </p>
-          </li>
+          <!-- render -->
+
         </ul>
       </div>
     </section>
@@ -221,22 +138,21 @@
       <div class="footer__wrapper">
         <button class="footer__signup_btn signup-btn btn">Sign Up</button>
         <button class="footer__login_btn login-btn btn">Log in</button>
+        <button class="footer__logout_btn logout-btn btn">Login out</button>
       </div>
     </div>
   </footer>
-  <div class="submit-modal modal">
-    <div class="submit-modal__wrapper modal__wrapper">
-      <span class="modal-close__btn" onclick="closeModal()">X</span>
-      <p class="modal__text">Your money has been exchanged.</p>
-      <p class="modal__text">Thank you for using our service!</p>
+
+
+  <div class="modal-wrapper">
+    <div class="modal">
+      <div class="modal__close"></div>
+      <h2 class="modal__header">head</h2>
+      <p class="modal__content">text</p>
     </div>
-  </div>
-  <div class="interface-modal modal">
-    <div class="interface-modal__wrapper modal__wrapper">
-      <span class="modal-close__btn" onclick="closeModal()">X</span>
-      <p class="modal__text">This part of the interface is for demonstration purposes only.</p>
-      <p class="modal__text">Better try to change the currency!</p>
-    </div>
-  </div>
+  </div>   
+
+
+  <script type="module" src="./js/app.js"></script> 
 </body>
 </html>

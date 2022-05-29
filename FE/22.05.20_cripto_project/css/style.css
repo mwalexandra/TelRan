@@ -1,3 +1,4 @@
+
 @font-face {
   font-family: 'Rubik';
   src: url('../fonts/Rubik-Regular.woff') format('woff');
@@ -123,10 +124,15 @@ h1, h2 {
   background-color: #6DE0F6;
 }
 
-.login-btn {
+.login-btn, 
+.logout-btn {
   padding: 0.5rem 1rem;
   color: #ffffff;
   border: 1px solid #6DE0F6;
+}
+
+.logout-btn {
+  display: none;
 }
 
 /* MAIN */
@@ -250,47 +256,6 @@ h1, h2 {
   border-bottom: 1px solid #fff;
 }
 
-/* TREASURY */
-.treasury{
-  margin-bottom: 130px;
-}
-
-.section__heading {
-  margin-bottom: 50px;
-  font-size: 30px;
-  font-weight: 600;
-}
-
-.treasury__heading {
-  color: #ffffff;
-}
-
-.treasury__list {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  column-gap: 12px;
-  row-gap: 30px;
-}
-
-.treasury__list_item {
-  display: flex;
-  justify-content: space-between;
-  padding: 19px 42px;
-  font-size: 22px;
-  background-color: #fff;
-  border-radius: 15px;
-}
-
-.treasury__sum {
-  font-weight: 500;
-}
-
-.treasury__give_currency {
-  font-size: 18px;
-  font-weight: 400;
-  color: #040404;
-}
-
 /* APPLICATION */
 .applications {
   position: relative;
@@ -300,10 +265,15 @@ h1, h2 {
   background: #CEEDFF;
 }
 
+.applications__heading {
+  margin-bottom: 3rem;
+}
+
+
 .applications::before {
   content: '';
   position: absolute;
-  top: -50px;
+  top: -49px;
   width:0;
   height:0;
   border-bottom: 50px solid #CEEDFF; 
@@ -349,6 +319,41 @@ h1, h2 {
   font-weight: 400;
 }
 
+/* MODAL */
+.modal {
+  position: fixed;
+  width: 300px;
+  height: 400px;
+  left: calc(50% - 150px);
+  top: calc(50% - 200px);
+  background: #CEEDFF;
+}
+.modal-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(5px);
+  display: none;
+}
+.modal__close {
+  float: right;
+  padding: 20px;
+  background: url('../img/close.svg') no-repeat center;
+  background-size: 20px;
+  cursor: pointer;
+}
+.modal__header {
+  padding: 50px 20px 0;
+  text-align: center;
+}
+.modal__content {
+  padding: 20px;
+  font-size: 16px;
+  text-align: center;
+}
+
 /* FOOTER */
 .footer {
   padding-top: 56px;
@@ -390,44 +395,6 @@ h1, h2 {
 
 .footer__signup_btn {
   margin-right: 24px;
-}
-
-/* MODALS */
-.modal{
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(5px);
-}
-
-.modal__wrapper {
-  padding: 200px 25px;
-  max-width: 274px;
-  background-color: #CEEDFF;
-}
-
-.modal-close__btn {
-  position: relative;
-  right: -220px;
-  top: -180px;
-  cursor: pointer;
-}
-
-.modal__text{
-  margin-bottom: 1rem;
-}
-
-.submit-modal {
-  display: none;
-}
-
-.interface-modal{
-  display: none;
 }
 
 @media screen and (max-width: 1180px) {

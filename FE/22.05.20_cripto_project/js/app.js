@@ -2,140 +2,164 @@ import {
   exchangeForm, giveInput, receiveInput,
   giveCurrencySelect,receiveCurrencySelect,
   rateOutput, commissionOutput, formSubmit, 
-  formCheckbox
+  formCheckbox, modalWrapper, modalClose, 
+  modalHeader, modalContent, 
+  //loginBtn, logoutBtn,
 } from './elements.js';
-import getDataCurrency from "./api.js";
+
 import {
-  renderCurrencySelect, 
-  renderRate, 
-  renderComission
+  EXCHANGE_HEAD, EXCHANGE_MESSAGE, DEMO_HEAD, DEMO_MESSAGE,
+  LOGIN_HEAD, LOGIN_MESSAGE, LOGOUT_HEAD, LOGOUT_MESSAGE,
+} from "./consts.js";
+
+import getDataCurrency from "./api.js";
+
+import {
+  renderCurrencySelect, renderRate,
+  renderCommission, renderApplications,
 } from "./render.js";
+
 import calculateСurriency from "./calc.js";
 
-// states
-// user state
-let isClient;
-
-// data state
-let currencies;
-let selectedGiveCurrency;
-let selectedReceiveCurrency;
-let currentGive = giveInput.value;
-let isChecked;
-
-// calc state
-let objectCurriency;
-let outputMoney;
-let changedMoney;
-let coeff;
-let percent;
-
-// app state
-giveInput.disabled = true;
-giveCurrencySelect.disabled = true;
-receiveCurrencySelect.disabled = true;
-formSubmit.disabled = true;
-
-
-// LOCALSTORAGE
-let applications = JSON.parse(localStorage.getItem('applications'));
-
-function createNewApplication(currentGive, selectedGiveCurrency, outputMoney, selectedReceiveCurrency) {
-  const application = {
-    date: Date.now(),
-    currentGive,
-    selectedGiveCurrency,
-    outputMoney,
-    selectedReceiveCurrency,
-  }
-  return application;
-}
-
-function addNewApplication(){
-  const application = createNewApplication(currentGive, selectedGiveCurrency, outputMoney, selectedReceiveCurrency);
-  applications.unshift(application);
-  if(applications.length > 4){
-    applications.pop();
-  }
-  console.log(applications);
-  localStorage.setItem('applications', JSON.stringify(applications));
-}
+import state from "./state.js";
 
 
 initialApp();
 async function initialApp(){ // инициализация приложения
-  const dataCurrency = await getDataCurrency();
-  currencies = dataCurrency.conversion_rates; // получили список валют и их значение
-  renderCurrencySelect(dataCurrency); // отрендерили selects
-  selectedGiveCurrency = giveCurrencySelect.value; // после рендеринга 
-  selectedReceiveCurrency = receiveCurrencySelect.value; // сохранили валюты в переменные
-
-  giveInput.disabled = false;
-  giveCurrencySelect.disabled = false;
-  receiveCurrencySelect.disabled = false;
+  const dataCurrency = await getDataCurrency(); // получили данные
+  state.set('currencies', dataCurrency.conversion_rates); // получили список валют и их значение 
+  renderCurrencySelect(); // отрендерили selects
+  state.set('selectedGiveCurrency', giveCurrencySelect.value); // после рендеринга 
+  state.set('selectedReceiveCurrency', receiveCurrencySelect.value); // обновили state
+  giveInput.disabled = false; // app state
+  giveCurrencySelect.disabled = false; // app state
+  receiveCurrencySelect.disabled = false; // app state
 }
 
 function updateCurriency() {
-  
-  const getObjectCurriency = calculateСurriency(isClient); // замкнули calc curriency функцию c статусом клиента 
-  objectCurriency = getObjectCurriency(selectedGiveCurrency, selectedReceiveCurrency, currentGive, currencies); // получили объект calc
-
-  // обновили calc state
-  const calcState = updateCalcState();
-  renderRate(selectedGiveCurrency, calcState[2], selectedReceiveCurrency);
-  
-  if (currentGive !== '') {
-    // вывели итоговую сумму в receiveInput
-    receiveInput.value = calcState[0];
-    renderComission(calcState[3], selectedReceiveCurrency);
-    formSubmit.disabled = false;
-  } else {
-    formSubmit.disabled = true;
-  }
+  calculateСurriency(); // обновить calc state
+  renderRate(); // рендерим rate
+  if (state.currentGive === '') return false
+  receiveInput.value = state.get('objectCurriency').outputMoney; // вывели итоговую сумму в receiveInput
+  renderCommission(); // рендерим commission
+  formSubmit.disabled = false;
 }
 
-function updateCalcState(){
-  outputMoney = objectCurriency.outputMoney;
-  changedMoney = objectCurriency.changedMoney;
-  coeff = objectCurriency.coeff;
-  percent = objectCurriency.percent;
-  return [outputMoney, changedMoney, coeff, percent];
+function exchange() {
+  addNewApplication();
+  callToModal(EXCHANGE_HEAD, EXCHANGE_MESSAGE);
+}
+
+function callToModal(head, message) {
+  modalHeader.textContent = head;
+  modalContent.textContent = message;
+  modalWrapper.style.display = 'block';
+}
+
+// Applications to LOCALSTORAGE
+function addNewApplication(){
+  const applications = JSON.parse(localStorage.getItem('applications')) || [];
+  // создали строку времени
+  const now = new Date();
+  let month;
+  if (now.getMonth()+1 < 10) {
+    month = `0${now.getMonth()+1}`;
+  } else {
+    month = `${now.getMonth()+1}`;
+  }
+  // создать объект application
+  const application = {
+    date: `${now.getDate()}.${month}.${now.getFullYear()}, ${now.getHours()}:${now.getMinutes()}`,
+    currentGive: state.currentGive,
+    selectedGiveCurrency: state.selectedGiveCurrency,
+    outputMoney: state.objectCurriency.outputMoney,
+    selectedReceiveCurrency: state.selectedReceiveCurrency,
+  }
+  applications.unshift(application);
+  if(applications.length > 4){
+    applications.pop();
+  }
+  // обновить localStorage
+  localStorage.setItem('applications', JSON.stringify(applications));
+  // отрендерить applications
+  renderApplications();
 }
 
 // Обработчики событий
 giveCurrencySelect.addEventListener('change', function () {
-  selectedGiveCurrency = this.value;
-  // так же валидация нужна полю currentGive
+  state.selectedGiveCurrency = this.value;
+  // так же ВАЛИДАЦИЯ нужна полю currentGive
   updateCurriency();
 })
 
 receiveCurrencySelect.addEventListener('change', function () {
-  selectedReceiveCurrency = this.value;
-  // так же валидация нужна полю currentGive
+  state.selectedReceiveCurrency = this.value;
+  // так же ВАЛИДАЦИЯ нужна полю currentGive
   updateCurriency();
 })
 
 giveInput.addEventListener('input', function(){
   this.value = this.value.replace(/\D/, '');
-  // так же валидация нужна полю currentGive
-  currentGive = this.value;
+  // так же ВАЛИДАЦИЯ нужна полю currentGive
+  state.currentGive = this.value;
   updateCurriency();
 })
 
-// submit и checkbox
-exchangeForm.addEventListener('submit', function(event){
+exchangeForm.addEventListener('submit', function(event){ 
   event.preventDefault();
-  if(isChecked){
+  if (state.isChecked) {
     console.log('SUBMIT');
-    addNewApplication();
+    exchange();
   } else {
-    console.log('You have to check');
-    // нужна будет валидация
-    // ее нужно будет ввести в validation.js
+    console.log('Чекни чекбокс сначала!');
+    // здесь нужна будет валидация
+    // и её нужно будет вынести в модуль validation.js
   }
+
   // так же валидация нужна полю currentGive
 })
 
 formCheckbox.addEventListener('change', function(){
-   isChecked = this.checked; 
+   state.isChecked = this.checked;
+})
+
+modalClose.addEventListener('click', function(){
+  modalWrapper.style.display = 'none';
+})
+
+document.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    callToModal(DEMO_HEAD, DEMO_MESSAGE);
+  })
+})
+
+const logInBtns = document.querySelectorAll('.login-btn');
+const logOutBtns = document.querySelectorAll('.logout-btn');
+
+// LOGIN LOGOUT
+logInBtns.forEach(btn => {
+  btn.addEventListener('click', function(){
+    state.isClient = true;
+    logInBtns.forEach(btn => {
+      btn.style.display = 'none';
+    });
+    logOutBtns.forEach(btn => {
+      btn.style.display = 'block';
+    })
+    callToModal(LOGIN_HEAD, LOGIN_MESSAGE);
+  }) 
+})
+
+logOutBtns.forEach(btn => {
+  btn.addEventListener('click', function(){
+    state.isClient = false;
+    commissionOutput.textContent = '1';
+    logOutBtns.forEach(btn => {
+      btn.style.display = 'none';
+    });
+    logInBtns.forEach(btn => {
+      btn.style.display = 'block';
+    })
+    callToModal(LOGOUT_HEAD, LOGOUT_MESSAGE);
+  }) 
 })

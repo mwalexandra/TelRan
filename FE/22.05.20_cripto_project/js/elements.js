@@ -7,11 +7,26 @@ const exchangeForm = document.querySelector('.exchange_form'),
       rateOutput = document.querySelector('.exchange_form__rate'),
       commissionOutput = document.querySelector('.exchange_form__commission'),
       formSubmit = document.querySelector('.exchange_form__submit'),
-      formCheckbox = document.querySelector('.exchange_form__checkbox');
+      formCheckbox = document.querySelector('.exchange_form__checkbox'),
+      applicationsSection = document.querySelector('.applications'),
+      applicationsList = document.querySelector('.applications__list'),
+
+      modalWrapper = document.querySelector('.modal-wrapper'),
+      modalClose = document.querySelector('.modal__close'),
+      modalHeader = document.querySelector('.modal__header'),
+      modalContent = document.querySelector('.modal__content');
+
+      // loginBtns = document.querySelectorAll('.login-btn');
+      // logoutBtns = document.querySelectorAll('.logout-btn');
+
 
 export {
 	exchangeForm, giveInput, receiveInput,
-  giveCurrencySelect,receiveCurrencySelect,
+  giveCurrencySelect, receiveCurrencySelect,
   rateOutput, commissionOutput, formSubmit, 
-  formCheckbox
+  formCheckbox, applicationsSection, applicationsList,
+  modalWrapper, modalClose, modalHeader, modalContent,
+  // loginBtns, logoutBtns, 
 };
+
+
