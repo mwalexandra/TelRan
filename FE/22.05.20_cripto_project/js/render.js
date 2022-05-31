@@ -4,11 +4,12 @@ import {
   applicationsSection,
 } from './elements.js';
 
-import state from "./state.js";
+import {dataState, calcState} from "./state.js";
 
 // render currency options 
 const addGiveCurrency = addOption(giveCurrencySelect);
 const addReceiveCurrency = addOption(receiveCurrencySelect);
+
 function addOption(select){
   return function(currency) {
     const option = document.createElement('option');
@@ -17,8 +18,9 @@ function addOption(select){
     select.appendChild(option);
   }
 }
+
 function renderCurrencySelect() {
-  Object.keys(state.currencies).forEach(currency => {
+  Object.keys(dataState.get('currencies')).forEach(currency => {
     addGiveCurrency(currency);
     addReceiveCurrency(currency);
   })
@@ -26,12 +28,12 @@ function renderCurrencySelect() {
 
 // render rate
 function renderRate() {
-  rateOutput.innerHTML = `1 <span>${state.selectedGiveCurrency}</span> = ${state.objectCurriency.coeff} <span>${state.selectedReceiveCurrency}</span>`
+  rateOutput.innerHTML = `1 <span>${dataState.get('selectedGiveCurrency')}</span> = ${calcState.get('coeff')} <span>${dataState.get('selectedReceiveCurrency')}</span>`;
 }
 
 // render commission
 function renderCommission() {
-  commissionOutput.innerHTML = `${state.objectCurriency.percent} <span>${state.selectedReceiveCurrency}</span>`
+  commissionOutput.innerHTML = `${calcState.get('percent')} <span>${dataState.get('selectedReceiveCurrency')}</span>`
 }
 
 // render applications

@@ -8,16 +8,19 @@ const exchangeForm = document.querySelector('.exchange_form'),
       commissionOutput = document.querySelector('.exchange_form__commission'),
       formSubmit = document.querySelector('.exchange_form__submit'),
       formCheckbox = document.querySelector('.exchange_form__checkbox'),
+
       applicationsSection = document.querySelector('.applications'),
       applicationsList = document.querySelector('.applications__list'),
 
       modalWrapper = document.querySelector('.modal-wrapper'),
       modalClose = document.querySelector('.modal__close'),
       modalHeader = document.querySelector('.modal__header'),
-      modalContent = document.querySelector('.modal__content');
+      modalContent = document.querySelector('.modal__content'),
 
-      // loginBtns = document.querySelectorAll('.login-btn');
-      // logoutBtns = document.querySelectorAll('.logout-btn');
+      demonstrationLinks = document.querySelectorAll('.demo-link'),
+
+      loginBtns = document.querySelectorAll('.login-btn'),
+      logoutBtns = document.querySelectorAll('.logout-btn');
 
 
 export {
@@ -25,8 +28,7 @@ export {
   giveCurrencySelect, receiveCurrencySelect,
   rateOutput, commissionOutput, formSubmit, 
   formCheckbox, applicationsSection, applicationsList,
-  modalWrapper, modalClose, modalHeader, modalContent,
-  // loginBtns, logoutBtns, 
+  modalWrapper, modalClose, modalHeader, modalContent, demonstrationLinks, loginBtns, logoutBtns, 
 };
 
 

@@ -229,7 +229,7 @@ h1, h2 {
 }
 
 .exchange_form__commission::before {
-  content: "Commission - 1%";
+  content: "Commission";
 }
 
 .exchange_form__rate span,
