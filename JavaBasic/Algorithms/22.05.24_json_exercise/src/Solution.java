@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -17,23 +19,46 @@ public class Solution {
 
         Set<String> keys = jsonMap.keySet();
 
-        for (String string : keys) {
+        for (String key : keys) {
 
-            // if (jsonMap.get(string) instanceof Map) { проверка вложенности
-            // Map<String, Object> map = jsonMap.get(string);
-            // keysToCamelCase(map);
-            // }
+            String newKey = snakeToCamel(key);
+            Object value = jsonMap.get(key);
 
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < string.length(); i++) {
-                if (string.charAt(i) == '_') {
-                    char upperCase = Character.toUpperCase(string.charAt(++i));
-                    sb = sb.append(upperCase);
-                } else
-                    sb = sb.append(string.charAt(i));
-            }
-            res.put(sb.toString(), jsonMap.get(string));
+            res.put(newKey, transformValue(value));
         }
         return res;
+    }
+
+    List<Object> transformListValue(List<Object> value) {
+        List<Object> res = new ArrayList<>();
+        for (Object obj : value) {
+            res.add(transformValue(obj));
+        }
+        return res;
+    }
+
+    String snakeToCamel(String snake_case) {
+        StringBuilder sb = new StringBuilder();
+
+        int length = snake_case.length();
+
+        for (int i = 0; i < length; i++) {
+            if (snake_case.charAt(i) == '_') {
+                char upperCase = Character.toUpperCase(snake_case.charAt(++i));
+                sb = sb.append(upperCase);
+            } else
+                sb = sb.append(snake_case.charAt(i));
+        }
+        return sb.toString();
+    }
+
+    Object transformValue(Object value) {
+        if (value instanceof Map) {
+            return keysToCamelCase((Map) value);
+        } else if (value instanceof List) {
+            return transformListValue((List) value);
+        } else {
+            return value;
+        }
     }
 }

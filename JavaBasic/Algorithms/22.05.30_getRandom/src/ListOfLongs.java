@@ -25,11 +25,13 @@ public class ListOfLongs<T> {
       return false;
     else {
       list.add(number);
-      map.put(number, list.size());
+      map.put(number, list.size() - 1);
     }
     return true;
   }
 
+  // TODO
+  // переписать у чатом смены индексов у лонгов в листе
   boolean removeLong(Long number) {
     if (!map.containsKey(number))
       return false;
