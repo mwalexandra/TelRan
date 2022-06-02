@@ -19,7 +19,7 @@ class State {
 			return getProp(this, name);
 		}
 		set(name, value){
-			return setProp(this, name, value);
+			setProp(this, name, value);
 		}
 	}
 
@@ -61,14 +61,14 @@ function getProp(object, name){
 	}
 }
 
-// наверное проверка на 67 строке неверна. может надо сравнивать key и name?
 function setProp(object, name, value){
+	// console.log(object);
 	for (let key in object) {  						// идет циклом о ключам свойств
 		if (object[name] !== undefined) {      // если свойство, которое ищем, существует 
-			return object[name] = value;				// то присвоит ему переданное значение
+			object[name] = value;				// то присвоит ему переданное значение
 		}
-		if(typeof(object[key] === 'object')){  // если тип значения текущего свойства - объект
-			return setProp(object[key], name, value); // вызывает саму себя с этим объектом
+		if(typeof(object[key]) === 'object'){  // если тип значения текущего свойства - объект
+			setProp(object[key], name, value); // вызывает саму себя с этим объектом
 		}
 	}
 }
@@ -77,7 +77,6 @@ function setProp(object, name, value){
 giveInput.disabled = true;
 giveCurrencySelect.disabled = true;
 receiveCurrencySelect.disabled = true;
-formSubmit.disabled = true;
 
 // applications state default
 if (JSON.parse(localStorage.getItem('applications'))) {

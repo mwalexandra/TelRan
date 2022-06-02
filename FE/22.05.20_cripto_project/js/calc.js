@@ -8,7 +8,6 @@ function calculatePercent() {
   return (calcState.get('changedMoney') / 100) * commission;
 }
 function calculateChangedMoney() {
-  console.log( dataState.get('currentGive'));
   return calcState.get('coeff') * dataState.get('currentGive');
 }
 function calculateOutputMoney() { //nan

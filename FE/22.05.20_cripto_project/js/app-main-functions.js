@@ -2,7 +2,7 @@ import {
   exchangeForm, giveInput, receiveInput,
   giveCurrencySelect,receiveCurrencySelect,
   rateOutput, commissionOutput, formSubmit, 
-  formCheckbox, modalWrapper, modalClose, 
+  formCheckbox, blur, modal, modalClose, 
   modalHeader, modalContent, demonstrationLinks,
   loginBtns, logoutBtns,
 } from './elements.js';
@@ -44,7 +44,6 @@ function updateCurriency() {
   if (dataState.currentGive === '') return false
   receiveInput.value = calcState.get('outputMoney'); // вывели итоговую сумму в receiveInput
   renderCommission(); // рендерим commission
-  formSubmit.disabled = false;
 }
 
 function exchange() {
@@ -52,10 +51,12 @@ function exchange() {
   callToModal(EXCHANGE_HEAD, EXCHANGE_MESSAGE);
 }
 
+//TODO fix blur for modals
 function callToModal(head, message) {
   modalHeader.textContent = head;
   modalContent.textContent = message;
-  modalWrapper.style.display = 'block';
+  modal.style.display = 'block';
+  blur.style.display = 'block';
 }
 
 // Applications to LOCALSTORAGE

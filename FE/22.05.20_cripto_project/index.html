@@ -11,7 +11,8 @@
   <header class="header">
     <div class="container">
       <a href="#" class="header_link logo-wrapper demo-link">
-        <img src="./img/logo.svg" alt="Logo">
+        <img class="header__logo" src="./img/logo.svg" alt="Logo">
+        <img class="header__logo-small" src="./img/small-logo.svg" alt="Logo">
       </a>
       <nav class="header__nav">
         <ul class="header__nav_list">
@@ -38,8 +39,45 @@
           </li>
         </ul>
         <button class="signup-btn btn demo-link">Sign Up</button>
-        <button class="login-btn btn">Login in</button>
-        <button class="logout-btn btn">Login out</button>
+        <button class="login-btn btn header__nav__login-btn">Login in</button>
+        <button class="logout-btn btn header__nav__logout-btn">Login out</button>
+        <div class="burger-menu">
+          <button class="burger-menu__open-btn"></button>
+          <div class="blur">
+            <div class="burger-menu__wrapper">
+              <span class="burger-close__span"></span>
+              <button class="login-btn burger-btn burger__login-btn">Login in</button>
+              <button class="logout-btn burger-btn burger__logout-btn">Logout out</button>
+              <ul class="burger-menu_list">
+                <li class="burger-menu_list_item">
+                  <a class="demo-link" href="#">Home</a>
+                </li>
+                <li class="burger-menu_list_item">
+                  <a class="demo-link" href="#">Tariffs</a>
+                </li>
+                <li class="burger-menu_list_item">
+                  <a class="demo-link" href="#">Reviews</a>
+                </li>
+                <li class="burger-menu_list_item">
+                  <a class="demo-link" href="#">Rules</a>
+                </li>
+                <li class="burger-menu_list_item">
+                  <a class="demo-link" href="#">FAQ</a>
+                </li>
+                <li class="burger-menu_list_item">
+                  <a class="demo-link" href="#">For partners</a>
+                </li>
+                <li class="burger-menu_list_item">
+                  <a class="demo-link" href="#">Contacts</a>
+                </li>
+              </ul>
+              <form action="#" class="search-form">
+                <input class="search-form__input" type="search" name="search" id="search-input" placeholder="Search">
+                <button class="search-input__button"></button>
+              </form>
+            </div>  
+          </div>  
+        </div>
       </nav>
     </div>  
   </header>
@@ -49,16 +87,16 @@
         <h1 class="promo__head">Currency Exchange fast & safe</h1>
         <p class="promo__description">No extra fee. Account replenishment no longer than 15 minutes</p>
         <form class="exchange_form">
-          <div class="exchange_form__row">
-            <label class="exchange_form_label" for="give-amount">
+          <div class="exchange_form__column">
+            <label class="exchange_form_label-give" for="give-amount">
               <input id="give-amount" type="text" placeholder="Amount">
             </label>
-            <label class="exchange_form_label" for="receive-amount">
+            <select name="give_currency" id="give_currency" class="exchange_form__select"></select>
+          </div>
+          <div class="exchange_form__column">
+            <label class="exchange_form_label-recieve" for="receive-amount">
               <input id="receive-amount" type="text" disabled="true" placeholder="Amount">
             </label>
-          </div>
-          <div class="exchange_form__row">
-            <select name="give_currency" id="give_currency" class="exchange_form__select"></select>
             <select name="receive_currency" id="receive_currency" class="exchange_form__select"></select>
           </div>
           <div class="exchange_form__row">
@@ -98,7 +136,7 @@
         </div>
       </div>
       <div class="footer__wrapper">
-        <p>Popular directions of exchange_form</p>
+        <p>Popular directions of exchange</p>
         <ul class="footer__popular__list">
           <li>Exchange Bitcoin to Qiwi</li>
           <li>Exchange Sber to Bitcoin </li>
@@ -140,7 +178,7 @@
   </footer>
 
 
-  <div class="modal-wrapper">
+  <div class="blur">
     <div class="modal">
       <div class="modal__close"></div>
       <h2 class="modal__header">head</h2>
