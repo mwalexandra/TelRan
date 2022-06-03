@@ -2,7 +2,7 @@ import {
   exchangeForm, giveInput, receiveInput,
   giveCurrencySelect,receiveCurrencySelect,
   rateOutput, commissionOutput, formSubmit, 
-  formCheckbox, blur, modal, modalClose, 
+  formCheckbox, modalBlur, modal, modalClose, 
   modalHeader, modalContent, demonstrationLinks,
   loginBtns, logoutBtns,
 } from './elements.js';
@@ -53,10 +53,11 @@ function exchange() {
 
 //TODO fix blur for modals
 function callToModal(head, message) {
+  console.log(modal, blur);
   modalHeader.textContent = head;
   modalContent.textContent = message;
+  modalBlur.style.display = 'block';
   modal.style.display = 'block';
-  blur.style.display = 'block';
 }
 
 // Applications to LOCALSTORAGE

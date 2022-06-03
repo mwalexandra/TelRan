@@ -1,8 +1,9 @@
 import {
   exchangeForm, giveInput,
   giveCurrencySelect,receiveCurrencySelect,
-  formCheckbox, blur, modalClose, demonstrationLinks,
-  loginBtns, logoutBtns, burgerOpenBtn, burgerCloseBtn, burgerMenu,
+  formCheckbox, modalBlur, modalClose, demonstrationLinks,
+  loginBtns, logoutBtns, 
+  burgerBlur, burgerOpenBtn, burgerCloseBtn, burgerMenu,
 } from './elements.js';
 
 import {
@@ -16,6 +17,15 @@ import {updateCurriency, exchange, callToModal, login} from "./app-main-function
 import {inputNumberValidate, submitValidate} from "./validate.js";
 
 // Обработчики событий
+// FLEXSLIDER
+document.addEventListener('DOMContentLoaded', function(){
+  if(window.innerWidth < 992) {
+    $('.flexslider').flexslider({
+      animation: "slide",
+    });
+  }
+})
+
 giveCurrencySelect.addEventListener('change', function () {
   dataState.set('selectedGiveCurrency', this.value);
   updateCurriency();
@@ -47,7 +57,7 @@ formCheckbox.addEventListener('change', function(){
 })
 
 modalClose.addEventListener('click', function(){
-  blur.style.display = 'none';
+  modalBlur.style.display = 'none';
 })
 
 demonstrationLinks.forEach(link => {
@@ -70,14 +80,15 @@ logoutBtns.forEach(btn => {
   })
 }) 
 
-// burger
+// BURGER
 burgerOpenBtn.addEventListener('click', e => {
   e.preventDefault();
   burgerMenu.style.display = 'block';
-  blur.style.display = 'block';
+  burgerBlur.style.display = 'block';
 })
 
 burgerCloseBtn.addEventListener('click', e => {
   burgerMenu.style.display = 'none';
-  blur.style.display = 'none';
+  burgerBlur.style.display = 'none';
 })
+

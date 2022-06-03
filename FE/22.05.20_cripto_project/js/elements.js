@@ -12,7 +12,7 @@ const exchangeForm = document.querySelector('.exchange_form'),
       applicationsSection = document.querySelector('.applications'),
       applicationsList = document.querySelector('.applications__list'),
 
-      blur = document.querySelector('.blur'),
+      modalBlur = document.querySelector('.modal-blur'),
       modal = document.querySelector('.modal'),
       modalClose = document.querySelector('.modal__close'),
       modalHeader = document.querySelector('.modal__header'),
@@ -23,6 +23,7 @@ const exchangeForm = document.querySelector('.exchange_form'),
       loginBtns = document.querySelectorAll('.login-btn'),
       logoutBtns = document.querySelectorAll('.logout-btn'),
 
+      burgerBlur = document.querySelector('.burger-blur'),
       burgerOpenBtn = document.querySelector('.burger-menu__open-btn'),
       burgerCloseBtn = document.querySelector('.burger-close__span'),
       burgerMenu = document.querySelector('.burger-menu__wrapper');
@@ -33,8 +34,8 @@ export {
   giveCurrencySelect, receiveCurrencySelect,
   rateOutput, commissionOutput, formSubmit, 
   formCheckbox, applicationsSection, applicationsList,
-  blur, modal, modalClose, modalHeader, modalContent, demonstrationLinks, loginBtns, logoutBtns,
-  burgerOpenBtn, burgerCloseBtn, burgerMenu,
+  modalBlur, modal, modalClose, modalHeader, modalContent, demonstrationLinks, loginBtns, logoutBtns,
+  burgerBlur, burgerOpenBtn, burgerCloseBtn, burgerMenu,
 };
 
 

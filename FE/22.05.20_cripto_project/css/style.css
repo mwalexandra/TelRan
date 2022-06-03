@@ -155,7 +155,8 @@ h1, h2 {
   background-size: cover;
 }
 
-.blur {
+.burger-blur,
+.modal-blur {
   position: fixed;
   width: 100%;
   height: 100%;
