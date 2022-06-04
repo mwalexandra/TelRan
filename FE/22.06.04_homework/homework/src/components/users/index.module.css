@@ -1,0 +1,24 @@
+.users {
+  padding: 2rem;
+  border: 1px solid rgb(252, 235, 215);
+}
+
+.heading {
+  color: rgb(82, 62, 12);
+  font-size: 36px;
+  text-align: center;
+}
+
+.list {
+  text-align: center;
+  list-style: none;
+}
+
+.item {
+  padding: 0.5rem;
+  font-size: 16px;
+}
+
+.item:nth-child(2n + 1){
+  background-color: lavender;
+}

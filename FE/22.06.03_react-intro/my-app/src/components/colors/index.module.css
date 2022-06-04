@@ -1,0 +1,11 @@
+.colors{
+  padding: 100px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.color{
+  width: 100px;
+  height: 100px;
+  background-color: #2d3175;
+}
