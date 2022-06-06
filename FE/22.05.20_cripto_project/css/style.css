@@ -594,6 +594,11 @@ h1, h2 {
   }
 
   /* APPLICATION */
+
+  .applications__list {
+    grid-template-columns: 1fr;
+  }
+
   .applications__heading {
     text-align: center;
   }

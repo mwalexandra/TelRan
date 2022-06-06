@@ -18,13 +18,17 @@ import {inputNumberValidate, submitValidate} from "./validate.js";
 
 // Обработчики событий
 // FLEXSLIDER
-document.addEventListener('DOMContentLoaded', function(){
-  if(window.innerWidth < 992) {
-    $('.flexslider').flexslider({
-      animation: "slide",
-    });
-  }
-})
+  document.addEventListener('DOMContentLoaded', () => {
+    // if(window.innerWidth < 769) {
+      const swiper = new Swiper('.swiper', {
+        slidesPerView: 1,
+        spaceBetween: 10,
+        // pagination: {
+        //   el: '.swiper-pagination',
+        // },
+      });
+    // }
+  })
 
 giveCurrencySelect.addEventListener('change', function () {
   dataState.set('selectedGiveCurrency', this.value);
