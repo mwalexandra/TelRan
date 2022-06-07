@@ -14,10 +14,17 @@ public class QueueMedian<Integer> {
     }
 
     void add(Integer num) {
-        if (maxHeap.size() <= minHeap.size())
-            maxHeap.add(num);
-        else
+        if (num < getMedian()) {
+            if (minHeap.size() > maxHeap.size()) {
+                maxHeap.add(minHeap.poll());
+            }
             minHeap.add(num);
+        } else {
+            if (maxHeap.size() > minHeap.size()) {
+                minHeap.add(maxHeap.poll());
+            }
+            maxHeap.add(num);
+        }
     }
 
     double getMedian() {
