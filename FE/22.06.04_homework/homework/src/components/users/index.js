@@ -19,7 +19,6 @@ function Users (props){
         })
 
       }
-
       </ul>
     </section>
   )

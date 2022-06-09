@@ -19,6 +19,7 @@ empform.addEventListener('submit', (event) => {
   empFormWrapper.style.display = 'none';
 })
 
+
 daysForm.addEventListener('submit', event => {
   event.preventDefault();
   daysFormWrapper.style.display = "none";

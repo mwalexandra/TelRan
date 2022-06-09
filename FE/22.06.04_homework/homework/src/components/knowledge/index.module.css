@@ -12,6 +12,7 @@
 
 .list {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 1rem;
   list-style: decimal-leading-zero;
@@ -21,4 +22,10 @@
   padding: 0.4rem;
   font-size: 24px;
   color: rgb(187, 246, 179);
+}
+
+@media screen and (max-width: 768px) {
+  .item {
+    width: 100%;
+  }
 }
