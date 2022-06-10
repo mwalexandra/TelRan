@@ -3,13 +3,18 @@ import style from './index.module.css'
 function Button(props){
   const btnType = props.btnType;
   const btnText = props.btnText;
-  // const btnClass = props.btnClass;
+  const btnStyle = props.btnStyle;
+
+  const disabled = props.disabled;
+  const buttonClick = props.buttonClick;
 
   return (
     <>
       <button 
-        className={style.btn}   /* ?? вставить переменную в имя класса */
+        className={`${style.btn} ${style[btnStyle]}`} 
         type={btnType}
+        disabled={disabled}
+        onClick={(event) => buttonClick(event)}
         >{btnText}</button> 
     </>
   )

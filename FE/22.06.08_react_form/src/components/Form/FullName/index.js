@@ -1,14 +1,16 @@
 import { useState, useEffect } from 'react';
 import TextInput from '../../../ui-kit/textInput';
 
-function FullName() {
+function FullName(props) {
   const [ name, setName ] = useState('');
   const [ surname, setSurname ] = useState('');
-  const [ fullName, setFullName ] = useState('');
+
+  const fullName = props.fullName;
+  const setFullName = props.setFullName;
 
   useEffect(() => {
-    setFullName(`${name} ${surname}`)
-  })
+    props.setFullName(`${name} ${surname}`)
+  },[name, surname])
 
   return (
     <>

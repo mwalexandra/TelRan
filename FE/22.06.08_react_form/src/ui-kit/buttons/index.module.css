@@ -4,3 +4,11 @@
   background-color: transparent;
   border: 2px solid #cdcdcd;
 }
+
+.submit {
+  background-color: #cdcdcd;
+}
+
+.reset {
+  background-color: #cdcd12;
+}

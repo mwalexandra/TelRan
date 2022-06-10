@@ -1,4 +1,4 @@
-//import { useState } from 'react';
+import { useState } from 'react';
 
 import Select from '../../ui-kit/select';
 import GroupRadioInput from '../../ui-kit/radioInput';
@@ -45,16 +45,40 @@ const radioContent = [
 
 
 function Form() {
+	const [ fullName, setFullName ] = useState('');
+  const [ selectValue, setSelectValue ] = useState('');
+  const [ radioValue, setRadioValue ] = useState(0);
+  const [ checkboxValue, setCheckboxValue ] = useState(false);
+
+
+	function submitForm(event) {
+		event.preventDefault();
+		const formData = {
+			fullName: fullName,
+			select: selectValue,
+			salary: radioValue,
+		}
+		console.log(formData);
+	}
 
   return (
   	<form action="">
 
-  		<FullName />
+  		<FullName 
+				fullName={fullName} 
+  			setFullName={setFullName}
+			/>
 
-  		<Select name="name" options={options}/>
+  		<Select 
+				name="name" 
+				options={options}
+				selectValue={selectValue}
+				setSelectValue={setSelectValue}
+			/>
 
   		<GroupRadioInput
   			radioContent={radioContent}
+				setRadioValue={setRadioValue}
   		/>
 
   		<CheckboxInput 
@@ -62,11 +86,16 @@ function Form() {
   			textLabel="Согласны с обработкой данных?"
   			inputName="checkbox"
   			inputId="checkbox"
+				checkboxValue={checkboxValue}
+				setCheckboxValue={setCheckboxValue}
   		/>
 
   		<Button 
 				btnType = "submit"
 				btnText = "Submit"
+				btnStyle = "submit"
+				disabled={!checkboxValue}
+  			buttonClick={submitForm}
 			/>
 
   	</form>

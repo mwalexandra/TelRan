@@ -7,6 +7,9 @@ function CheckboxInput(props) {
   const inputName = props.inputName;
   const disabled = props.disabled;
 
+  const checkboxValue = props.checkboxValue;
+  const setCheckboxValue = props.setCheckboxValue;
+
   return (
     <div className={style.checkboxInputContainer}>
       { isLabel && <label className={style.checkboxLabel} htmlFor={inputId}>{textLabel}</label> }
@@ -16,6 +19,8 @@ function CheckboxInput(props) {
         name={inputName} 
         type="checkbox" 
         disabled={disabled} 
+        onChange={() => setCheckboxValue(!checkboxValue)}
+        value = {checkboxValue}
       />
     </div>
   );

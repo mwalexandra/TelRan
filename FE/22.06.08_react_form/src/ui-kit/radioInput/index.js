@@ -2,6 +2,8 @@ import style from './index.module.css'
 
 
 function RadioInput(props) {
+  const setRadioValue = props.setRadioValue;
+
   const isLabel = props.isLabel;
   const textLabel = props.textLabel;
   const inputId = props.inputId;
@@ -17,12 +19,15 @@ function RadioInput(props) {
         name={inputName} 
         type="radio" 
         disabled={disabled} 
+        onChange={(event) => setRadioValue(textLabel)}
       />
     </div>
   );
 }
 
 function GroupRadioInput(props) {
+  const setRadioValue = props.setRadioValue;
+
   const radioContent = props.radioContent;
   return (
     <>
@@ -35,6 +40,7 @@ function GroupRadioInput(props) {
             inputId={radioItem.inputId}
             inputName={radioItem.inputName}
             disabled={radioItem.disabled}
+            setRadioValue={setRadioValue}
           />
         ))
       }
