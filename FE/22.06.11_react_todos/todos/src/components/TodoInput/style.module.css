@@ -1,0 +1,21 @@
+.inputWrapper {
+  display: flex;
+  justify-content: center;
+  width: 70%;
+  margin: 1rem auto;
+}
+
+.input {
+  padding: 1.3rem 3rem;
+  width: 100%;
+  font-family: inherit;
+  font-size: 1.3rem;
+  border: none;
+  box-shadow: 5px 5px 15px 5px #c5c5c5;
+}
+
+.input::placeholder {
+  font-style: italic;
+  color: #c5c5c59d;
+  font-weight: 100;
+}
