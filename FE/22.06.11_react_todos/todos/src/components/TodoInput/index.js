@@ -5,9 +5,19 @@ function TodoInput (props){
 
   const value = props.value;
   const setValue = props.setValue;
+  const addTodo = props.addTodo;
+  const toggleAll = props.toggleAll;
+  const setToggleAll = props.setToggleAll;
 
   return(
     <div className={style.inputWrapper}>
+    <span 
+        className={`${style.toggleAll} ${toggleAll ? style.checked : ''}`}
+        onClick={() => setToggleAll(!toggleAll)}
+      >
+        ❯
+      </span>
+      
       <input
         type='text'
         className={style.input}
@@ -15,6 +25,7 @@ function TodoInput (props){
 
         value={value}
         onChange={(event) => setValue(event.target.value)}
+        onKeyPress={addTodo}
         />
     </div>    
   )

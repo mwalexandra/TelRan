@@ -1,4 +1,5 @@
 .inputWrapper {
+  position: relative;
   display: flex;
   justify-content: center;
   width: 70%;
@@ -18,4 +19,20 @@
   font-style: italic;
   color: #c5c5c59d;
   font-weight: 100;
+}
+
+.toggleAll {
+  font-size: 22px;
+  color: #e6e6e6;
+  padding: 10px 27px 10px 27px;
+  position: absolute;
+  left: -5px;
+  top: 10px;
+  transform: rotate(90deg);
+  z-index: 1;
+  cursor: pointer;
+}
+
+.toggleAll.checked {
+  color: #4d4d4d;;
 }
