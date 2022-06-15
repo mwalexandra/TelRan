@@ -4,13 +4,12 @@ import TodoList from './components/TodoList'
 import StatusList from './components/StatusList'
 import style from './style.module.css';
 
-
 function Todos(){
 
   const [value, setValue] = useState('');
   const [todosList, setTodosList] = useState([]);
   const [toggleAll, setToggleAll] = useState(false);
-  const [itemsLeft, setItemsLeft] = useState(todosList.length);
+  const [itemsLeft, setItemsLeft] = useState(0);
 
   useEffect(
     function completedAll(){
@@ -21,17 +20,6 @@ function Todos(){
       setTodosList([...todosList]);
     }, [toggleAll]
   )
-
-  // useEffect(
-  //   function countItemsLeft(){
-  //     let count = todosList.length;
-  //     todosList.forEach((todo, count) => {
-  //       if(todo.completed)
-  //         count--;
-  //     });
-  //     setItemsLeft(count);
-  //   }
-  // )
 
     function addTodo(e){
       if(e.key === 'Enter'){
@@ -72,3 +60,5 @@ function Todos(){
 }
 
 export default Todos;
+
+// для отображения отфильтрованных списков todos можно написать функцию фильтра и и вызывать ее с разным аргументов по клику по каждой из кнопок в меню

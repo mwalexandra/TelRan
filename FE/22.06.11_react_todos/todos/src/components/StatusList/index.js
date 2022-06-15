@@ -12,7 +12,7 @@ function StatusList (props){
   }
 
   return (
-    <div className={style.statusListWrapper}>
+    <div className={`${style.statusListWrapper} ${todosList.length > 0 ? style.statusListActive : ''}`}>
 
       <p className={style.itemsLeftText}>
         {itemsLeft}
