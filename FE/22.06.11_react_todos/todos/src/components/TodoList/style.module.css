@@ -1,10 +1,8 @@
 .todoList {
+  margin: 0;
   padding: 0;
-  width: 70%;
-  margin: 1rem auto;
   background-color: #fff;
   list-style: none;
-  box-shadow: 5px 5px 15px 5px #c5c5c5;
 }
 
 .todoItem {

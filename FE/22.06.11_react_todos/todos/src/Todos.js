@@ -35,27 +35,25 @@ function Todos(){
     }
 
   return (
-    <div className={style.todos}>
-      <h1 className={style.todosHeading}>todos</h1>
-      <TodoInput 
-        value = {value}
-        setValue = {setValue}
-        addTodo = {addTodo}
+    <>
+      <h1 className={style.todosHeading}>todos</h1><div className={style.todos}>
+      <TodoInput
+        value={value}
+        setValue={setValue}
+        addTodo={addTodo}
         toggleAll={toggleAll}
-        setToggleAll={setToggleAll}
-      />
-      <TodoList 
-        todosList = {todosList}
-        setTodosList = {setTodosList}
-        itemsLeft = {itemsLeft}
-        setItemsLeft = {setItemsLeft}
-      />
+        setToggleAll={setToggleAll} />
+      <TodoList
+        todosList={todosList}
+        setTodosList={setTodosList}
+        itemsLeft={itemsLeft}
+        setItemsLeft={setItemsLeft} />
       <StatusList
-        todosList = {todosList}
-        itemsLeft = {itemsLeft}
-        setTodosList = {setTodosList}
-      />
-    </div>
+        todosList={todosList}
+        itemsLeft={itemsLeft}
+        setTodosList={setTodosList} />
+      </div>
+    </>
   )
 }
 

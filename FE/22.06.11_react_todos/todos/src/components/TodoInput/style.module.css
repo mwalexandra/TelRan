@@ -2,8 +2,7 @@
   position: relative;
   display: flex;
   justify-content: center;
-  width: 70%;
-  margin: 1rem auto;
+  border-bottom: 1px solid #c5c5c5b0;
 }
 
 .input {
@@ -12,7 +11,6 @@
   font-family: inherit;
   font-size: 1.3rem;
   border: none;
-  box-shadow: 5px 5px 15px 5px #c5c5c5;
 }
 
 .input::placeholder {

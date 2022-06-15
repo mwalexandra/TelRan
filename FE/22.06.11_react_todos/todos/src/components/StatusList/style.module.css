@@ -1,11 +1,8 @@
 .statusListWrapper {
   display: none;
   justify-content: space-between;
-  width: calc(70% - 2rem);
-  margin: 1rem auto;
   padding: 0 1rem;
   background-color: #fff;
-  box-shadow: 5px 5px 15px 5px #c5c5c5;
 }
 
 .statusListActive {
