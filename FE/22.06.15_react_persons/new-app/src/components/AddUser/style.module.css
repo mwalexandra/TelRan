@@ -1,0 +1,28 @@
+.addForm {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 600px;
+}
+
+.addFormLabel {
+  text-align: center;
+  color: darkseagreen;
+}
+
+.addFormInput {
+  margin-bottom: 1rem;
+  padding: .3rem 1rem;
+  font-family: inherit;
+  border: none;
+  border-radius: 15px;
+}
+
+.addFormSubmit {
+  padding: .3rem 1rem;
+  font-family: inherit;
+  color: aliceblue;
+  background-color: rgb(28, 28, 102);
+  border: none;
+  border-radius: 15px;
+}

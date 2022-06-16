@@ -1,4 +1,5 @@
 import {useState} from 'react'
+import style from './style.module.css'
 
 function AddUser(props){
   const usersList = props.usersList;
@@ -17,9 +18,8 @@ function AddUser(props){
       tel,
       email,
     }
-    usersList.push(user);
-    setUsersList([...usersList]); // ??
-    console.log(usersList);
+    // usersList.push(user);
+    setUsersList([...usersList, user]); // ??
     setName('');
     setSurname('');
     setTel('');
@@ -27,46 +27,59 @@ function AddUser(props){
   }
 
   return (
-    <form>
-      <label htmlFor='name'>Name</label>
+    <form className={style.addForm}>
+      <label 
+        htmlFor='name'
+        className={style.addFormLabel}
+        >Name</label>
       <input 
         name='name' 
         id='name' 
-        placeholder='Name'
         value={name}
         onChange={(e) => setName(e.target.value)}
+        className={style.addFormInput}
       />
 
-      <label htmlFor='surname'>Surame</label>
+      <label 
+        htmlFor='surname'
+        className={style.addFormLabel}
+        >Surame</label>
       <input 
         name='surname' 
         id='surname' 
-        placeholder='Surname'
         value={surname}
         onChange={(e) => setSurname(e.target.value)}
+        className={style.addFormInput}
       />
 
-      <label htmlFor='tel'>Tel</label>
+      <label 
+        htmlFor='tel'
+        className={style.addFormLabel}
+        >Tel</label>
       <input 
         name='tel' 
         id='tel' 
-        placeholder='Tel'
         value={tel}
         onChange={(e) => setTel(e.target.value)}
+        className={style.addFormInput}
         />
 
-      <label htmlFor='email'>Email</label>
+      <label 
+        htmlFor='email'
+        className={style.addFormLabel}
+        >Email</label>
       <input 
         name='email' 
         id='email' 
-        placeholder='Email'
         value={email}
         onChange={(e) => setEmail(e.target.value)}
+        className={style.addFormInput}
       />
 
       <button 
         type='submit'
         onClick={addUser}
+        className={style.addFormSubmit}
         >Add new user</button>
     </form>
   )

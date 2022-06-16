@@ -7,7 +7,6 @@
 
 // Главный компонент хранит States и обновляет их
 // 1. usersList
-// 
 
 // Есть компонент AddUser: возвращает форму для добавления юзера, собирает данные из формы и меняет State usersList. 
 // После этого форма должна очищаться
@@ -16,18 +15,35 @@
 // Компонент UserBox, где inputs уже заполнены и поля недоступны по умолчанию. Будут рендериться внутри листа юзеров. Внутри две кнопки - редактировать(сохранить) и удалить.
   //  Имеет собственные States, согласно инпутам. В стейты распаковываются данные объекта юзера.
 import { useState } from 'react';
-import AddUser from './components/AddUser'
+import style from './style.module.css';
+import AddUser from './components/AddUser';
+import UsersList from './components/UsersList';
 
 function App() {
 
   const [usersList, setUsersList] = useState([]);
 
   return (
-    <AddUser 
-      usersList={usersList}
-      setUsersList={setUsersList}
-    />
+    <main className={style.main}>
+      <AddUser
+        usersList={usersList}
+        setUsersList={setUsersList} />
+      <UsersList 
+        usersList={usersList} 
+        setUsersList={setUsersList}
+        />
+    </main>
   );
 }
 
 export default App;
+
+
+// name = {name}
+// setName = {setName}
+// surname = {surname}
+// setSurname = {setSurname}
+// tel = {tel}
+// setTel = {setTel}
+// email = {email}
+// setEmail = {setEmail}
