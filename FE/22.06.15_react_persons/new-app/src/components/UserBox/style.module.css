@@ -1,6 +1,9 @@
 .userItem {
   display: flex;
   flex-direction: column;
+  padding: 1rem;
+  background: rgb(13, 76, 0);
+  border-radius: 5px;
 }
 
 .userItemInput {
@@ -13,11 +16,29 @@
   color: rgb(245, 160, 160);
 }
 
+.userItemInput[id='name'],
+.userItemInput[id='surname']{
+  font-weight: 700;
+}
+
+.userItemInput[id='tel'],
+.userItemInput[id='email'] {
+  margin: .5rem 0;
+  font-style: italic;
+}
+
 .userItemBtn {
   margin-right: .5rem;
   font-family: inherit;
   color: aliceblue;
-  background-color: rgb(28, 28, 102);
   border: none;
   border-radius: 5px;
+}
+
+.editBtn {
+  background-color: rgb(120, 58, 0);
+}
+
+.deleteBtn {
+  background-color: rgb(115, 0, 0);
 }

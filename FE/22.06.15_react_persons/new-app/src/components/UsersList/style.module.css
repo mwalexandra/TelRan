@@ -1,7 +1,19 @@
 .usersList {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr;
   gap: 1rem;
   max-width: 50%;
   list-style: none;
+}
+
+@media screen and (min-width: 481px) {
+  .usersList{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 769px) {
+  .usersList{
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
