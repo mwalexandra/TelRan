@@ -1,3 +1,4 @@
+import style from './style.module.css'
 import UserBox from '../UserBox'
 
 function UsersList(props){
@@ -5,11 +6,14 @@ function UsersList(props){
   const setUsersList = props.setUsersList;
 
   return (
-    <ul className="usersList">
+    <ul className={style.usersList}>
       {
         usersList.map((user) => {
           return <UserBox 
-                    user = {user}    
+                    key = {user.id}
+                    user = {user}   
+                    setUsersList = {setUsersList} 
+                    usersList = {usersList}
                   />
         })
       }

@@ -12,14 +12,14 @@ function AddUser(props){
 
   function addUser(e){
     e.preventDefault();
-    const user = {
+    const user = [{
+      id: Date.now(),
       name,
       surname,
       tel,
       email,
-    }
-    // usersList.push(user);
-    setUsersList([...usersList, user]); // ??
+    }]
+    setUsersList([...usersList, ...user]);
     setName('');
     setSurname('');
     setTel('');

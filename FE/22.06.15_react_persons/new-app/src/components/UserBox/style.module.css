@@ -1,0 +1,23 @@
+.userItem {
+  display: flex;
+  flex-direction: column;
+}
+
+.userItemInput {
+  color: #000;
+  border: none;
+  background-color: transparent;
+}
+
+.userItemInput:disabled {
+  color: rgb(245, 160, 160);
+}
+
+.userItemBtn {
+  margin-right: .5rem;
+  font-family: inherit;
+  color: aliceblue;
+  background-color: rgb(28, 28, 102);
+  border: none;
+  border-radius: 5px;
+}
