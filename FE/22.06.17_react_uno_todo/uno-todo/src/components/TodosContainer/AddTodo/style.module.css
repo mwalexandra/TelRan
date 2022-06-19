@@ -1,0 +1,29 @@
+.addForm {
+  position: relative;
+}
+.addInput{
+  padding: 10px 50px;
+  width: calc(100% - 100px);
+  font-size: larger;
+  background: rgba(28, 27, 31, 0.16);
+  border: none;
+  border-radius: 20px;
+}
+.addInput::placeholder{
+  color: #ffffff8c;
+}
+
+.addSubmit {
+  position: absolute;
+  left: 16px;
+  top: calc(100% / 2 - 8px);
+  width: 16px;
+  height: 16px;
+  background: url('../../../img/plus.svg') no-repeat;
+  border: none;
+  cursor: pointer;
+}
+
+.addSubmit:active {
+  filter: brightness(30%);
+}

@@ -16,7 +16,7 @@
 .todoDescr h2{
   margin: 0;
   padding: 0;
-  font-family: 'Roboto';
+  font-family: inherit;
   font-style: normal;
   font-weight: 500;
   font-size: 16px;

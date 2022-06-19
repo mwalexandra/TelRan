@@ -1,12 +1,22 @@
-import TodoItem from './TodoItem'
+import TodoBox from './TodoBox'
 import style from './style.module.css'
 
-function TodoList({todos, setTodos}) {
+function TodoList({todos, setTodos, activeTab}) {
+
+  const completedTodos = todos.filter(item => item.isCompleted);
+  let renderTodos = [];
+
+  if(activeTab === 'Completed'){
+    renderTodos = completedTodos;
+  } else {
+    renderTodos = todos;
+  }
+  
   
   return (
     <ul className={style.todoList}>
-      {todos.map(todo => {
-        return <TodoItem
+      {renderTodos.map(todo => {
+        return <TodoBox
                   key={todo.id}
                   todo = {todo}
                 />
