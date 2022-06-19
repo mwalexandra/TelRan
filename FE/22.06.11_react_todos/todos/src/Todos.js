@@ -8,17 +8,35 @@ function Todos(){
 
   const [value, setValue] = useState('');
   const [todosList, setTodosList] = useState([]);
+  const [todosActive, setTodosActive] = useState([]);
+  const [todosCompleted, setTodosCompleted] = useState([]);
   const [toggleAll, setToggleAll] = useState(false);
-  const [itemsLeft, setItemsLeft] = useState(0);
+  const [activeTab, setActiveTab] = useState('All');
 
   useEffect(
     function completedAll(){
       todosList.forEach((todo) => {
         todo.completed = toggleAll;
       })
-      toggleAll ? setItemsLeft(0) : setItemsLeft(todosList.length);
       setTodosList([...todosList]);
     }, [toggleAll]
+  )
+
+  useEffect(
+    function updateTodos() {
+      const activeList = [];
+      const completedList = [];
+      todosList.forEach(todo => {
+        if(!todo.completed){
+          activeList.push(todo) ;
+        } else {
+          completedList.push(todo);
+        }
+      })
+      setTodosActive(activeList);
+      setTodosCompleted(completedList);
+    }, 
+    [todosList]
   )
 
     function addTodo(e){
@@ -28,7 +46,6 @@ function Todos(){
           title: value,
           completed: false,
         });
-        setItemsLeft(itemsLeft+1);
         setTodosList([...todosList]);
         setValue('');
       }
@@ -46,12 +63,21 @@ function Todos(){
       <TodoList
         todosList={todosList}
         setTodosList={setTodosList}
-        itemsLeft={itemsLeft}
-        setItemsLeft={setItemsLeft} />
-      <StatusList
-        todosList={todosList}
-        itemsLeft={itemsLeft}
-        setTodosList={setTodosList} />
+        todosActive = {todosActive}
+        todosCompleted = {todosCompleted}
+        activeTab={activeTab}
+       />
+       {
+        todosList.length ? (
+          <StatusList
+            todosList={todosList}
+            itemsLeft={todosActive.length}
+            setTodosList={setTodosList} 
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+        ) : undefined
+       }
       </div>
     </>
   )

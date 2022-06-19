@@ -1,16 +1,20 @@
 .statusListWrapper {
-  display: none;
+  display: flex;
   justify-content: space-between;
   padding: 0 1rem;
   background-color: #fff;
 }
 
-.statusListActive {
-  display: flex;
-}
-
 .itemsLeftText {
   color: #acacac;
+}
+
+.toggleTabs {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  color: #acacac;
+  cursor: default;
 }
 
 .deleteCompletedBtn {

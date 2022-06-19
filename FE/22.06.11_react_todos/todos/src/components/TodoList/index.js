@@ -5,7 +5,7 @@ function ListItem(props){
   const todo = props.todo;
   const completeToggle = props.completedToggle;
   const deleteTodo = props.deleteTodo;
-
+  
   return (
     <li className={`${style.todoItem} ${todo.completed ? style.checked : ''}`}>
       <span 
@@ -25,14 +25,14 @@ function TodoList(props){
 
   const todosList = props.todosList;
   const setTodosList = props.setTodosList;
-  const itemsLeft = props.itemsLeft;
-  const setItemsLeft = props.setItemsLeft;
+  const activeTab = props.activeTab;
+  const todosActive = props.todosActive;
+  const todosCompleted = props.todosCompleted;
 
   function completeToggle(id){
     todosList.forEach(todo => {
       if(todo.id === id){
         todo.completed = !todo.completed;
-        todo.completed ? setItemsLeft(itemsLeft - 1) : setItemsLeft(itemsLeft + 1);
       }
     });
     setTodosList([...todosList]);
@@ -40,14 +40,23 @@ function TodoList(props){
 
   function deleteTodo(id){
     const newTodoList = todosList.filter(todo => todo.id !== id);
-    setItemsLeft(itemsLeft - 1);
     setTodosList(newTodoList);
+  }
+
+  let renderTodoList = [];
+
+  if(activeTab === 'All') {
+    renderTodoList = todosList;
+  } else if(activeTab === 'Active'){
+    renderTodoList = todosActive;
+  } else if(activeTab === 'Completed'){
+    renderTodoList = todosCompleted;
   }
 
   return (
     <ul className={style.todoList}>
     {
-      todosList.map((todo) => {
+      renderTodoList.map((todo) => {
         return <ListItem 
                   todo = {todo}
                   key = {todo.id}

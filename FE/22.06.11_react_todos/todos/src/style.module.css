@@ -16,3 +16,9 @@ body {
   font-size: 7rem;
   color: #ead7d7;
 }
+
+@media screen and (max-width: 769px){
+  .todos {
+    width: 90%;
+  }
+}
