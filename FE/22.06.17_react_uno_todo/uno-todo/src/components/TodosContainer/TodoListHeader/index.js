@@ -1,13 +1,22 @@
 import { useState } from 'react'
 import style from './style.module.css'
 
-function TodoListHeader (){
+function TodoListHeader ({lists, setLists, selectedList}){
+
 
   const [disabled, setDisabled] = useState(true);
-  const [title, setTitle] = useState('Task List')
+  const [title, setTitle] = useState(selectedList.header);
 
   function changeTodoListHeader(e){
     e.preventDefault();
+    const listsUpdate = [];
+    lists.forEach(list => {
+      if(list.id === selectedList.id){
+        list.header = title;
+      }
+      listsUpdate.push(list)
+    })
+    setLists(listsUpdate);
     setDisabled(true);
   }
 

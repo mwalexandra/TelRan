@@ -2,48 +2,59 @@ import {useEffect, useState} from 'react';
 import SideBar from './components/SideBar';
 import TodosContainer from './components/TodosContainer';
 import style from './style.module.css';
+import {formatDateNow} from './helpers';
+
+
+const listDefault = [
+  {
+  id: Date.now(),
+  header: 'Task list',
+  todos: [
+    {
+      id: Date.now()+1,
+      title: 'Todo 1',
+      note: 'Do something important',
+      date: formatDateNow(),
+      completed: false,
+      important: true,
+    },
+    {
+      id: Date.now()+2,
+      title: 'Todo 2',
+      note: 'Do something important',
+      date: formatDateNow(),
+      completed: true,
+      important: true,
+    },
+    {
+      id: Date.now()+3,
+      title: 'Todo 3',
+      note: 'Do something',
+      date: formatDateNow(),
+      completed: false,
+      important: false,
+    },
+  ]
+},
+]
 
 function UnoTodo() {
 
-  const temp = [
-    {
-      id: 1,
-      title: 'Todo 1',
-      note: 'Do something',
-      date: 'Monday, May 24th',
-      isCompleted: false,
-      isImportant: true,
-    },
-    {
-      id: 2,
-      title: 'Todo 2',
-      note: 'Do something',
-      date: 'Today',
-      isCompleted: true,
-      isImportant: true,
-    },
-    {
-      id: 3,
-      title: 'Todo 3',
-      note: 'Do something',
-      date: 'Friday, May 28th',
-      isCompleted: false,
-      isImportant: false,
-    },
-  ]
-
-  const [todos, setTodos] = useState(temp);
-
+  const [lists, setLists] = useState(listDefault);
+  const [selectedList, setSelectedList] = useState(lists[0]);
 
   return (
     <>
       <SideBar 
-        todos = {todos} 
-        setTodos = {setTodos}
+        lists = {lists} 
+        setLists = {setLists}
+        selectedList={selectedList}
+        setSelectedList={setSelectedList}
       />
       <TodosContainer 
-        todos = {todos}  
-        setTodos = {setTodos}
+        lists = {lists}  
+        setLists = {setLists}
+        selectedList={selectedList}
       />
     </>
   )

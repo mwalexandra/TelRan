@@ -5,14 +5,18 @@ import TodoList from './TodoList'
 import AddTodo from './AddTodo'
 import TodoListHeader from './TodoListHeader'
 
-function TodosContainer({todos, setTodos}) {
+function TodosContainer({lists, setLists, selectedList}) {
 
   const [activeTab, setActiveTab] = useState('Todo');
 
   return (
     <main className={style.todosContainer}>
       <section className={style.todosSection}>
-        <TodoListHeader />
+        <TodoListHeader 
+          lists={lists}
+          setLists={setLists}
+          selectedList={selectedList}
+        />
         <button
           className={`${style.todosBtn} ${activeTab === 'Todo' ? style.active : ''}`}
           onClick={() => setActiveTab('Todo')}
@@ -22,14 +26,15 @@ function TodosContainer({todos, setTodos}) {
           onClick={() => setActiveTab('Completed')}
         >Completed</button>
         <TodoList 
-          todos = {todos}  
-          setTodos = {setTodos}
+          lists = {lists}  
+          setLists = {setLists}
           activeTab = {activeTab}
+          selectedList={selectedList}
         />  
       </section>
       <AddTodo 
-        todos = {todos}  
-        setTodos = {setTodos}
+        lists = {lists}  
+        setLists = {setLists}
       />
     </main>  
   )

@@ -1,8 +1,6 @@
 import style from './style.module.css'
 
-function TodoImportant(props) {
-  const isImportant = props.isImportant;
-  const setIsImportant = props.setIsImportant;
+function TodoImportant({isImportant, setIsImportant}) {
 
   return(
     <span 

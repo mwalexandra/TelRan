@@ -1,9 +1,10 @@
 import TodoBox from './TodoBox'
 import style from './style.module.css'
 
-function TodoList({todos, setTodos, activeTab}) {
+function TodoList({lists, setLists, activeTab, selectedList}) {
+  const todos = selectedList.todos;
 
-  const completedTodos = todos.filter(item => item.isCompleted);
+  const completedTodos = todos.filter(todo => todo.completed);
   let renderTodos = [];
 
   if(activeTab === 'Completed'){
@@ -11,14 +12,16 @@ function TodoList({todos, setTodos, activeTab}) {
   } else {
     renderTodos = todos;
   }
-  
-  
+
   return (
     <ul className={style.todoList}>
       {renderTodos.map(todo => {
         return <TodoBox
                   key={todo.id}
                   todo = {todo}
+                  lists={lists}
+                  setLists={setLists}
+                  selectedList={selectedList}
                 />
       })}
     </ul>
