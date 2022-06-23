@@ -2,8 +2,9 @@ import {useEffect, useState} from 'react';
 import style from './style.module.css';
 import TodoImportant from './TodoImportant';
 import TodoCompleted from './TodoCompleted';
+import TodoDescr from './TodoDescr';
 
-function TodoBox({todo, lists, setLists, selectedList}) {
+function TodoBox({todo, lists, setLists, selectedList, showPanelTodo, setShowPanelTodo}) {
   const id = todo.id;
 
   const [isImportant, setIsImportant] = useState(todo.important);
@@ -24,7 +25,6 @@ function TodoBox({todo, lists, setLists, selectedList}) {
         listUpdate.push(list);
       })
       setLists(listUpdate);
-      console.log(listUpdate);
     }, [isImportant, isCompleted]
   )
 
@@ -35,10 +35,11 @@ function TodoBox({todo, lists, setLists, selectedList}) {
         isCompleted={isCompleted}
         setIsCompleted={setIsCompleted}
       />
-      <div className={style.todoDescr}>
-        <h2>{todo.title}</h2>
-        <p>{todo.note} - {todo.date}</p>
-      </div>
+      <TodoDescr 
+        todo={todo}
+        showPanelTodo={showPanelTodo} 
+        setShowPanelTodo={setShowPanelTodo}
+      />
       <TodoImportant 
         isImportant={isImportant}
         setIsImportant={setIsImportant}

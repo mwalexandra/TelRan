@@ -1,7 +1,7 @@
 import TodoBox from './TodoBox'
 import style from './style.module.css'
 
-function TodoList({lists, setLists, activeTab, selectedList}) {
+function TodoList({lists, setLists, activeTab, selectedList, showPanelTodo, setShowPanelTodo}) {
   const todos = selectedList.todos;
 
   const completedTodos = todos.filter(todo => todo.completed);
@@ -22,6 +22,8 @@ function TodoList({lists, setLists, activeTab, selectedList}) {
                   lists={lists}
                   setLists={setLists}
                   selectedList={selectedList}
+                  showPanelTodo={showPanelTodo} 
+                  setShowPanelTodo={setShowPanelTodo}
                 />
       })}
     </ul>

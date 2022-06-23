@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import SideBar from './components/SideBar';
 import TodosContainer from './components/TodosContainer';
-import style from './style.module.css';
+import './common-styles/reset.css';
 import {formatDateNow} from './helpers';
 
 

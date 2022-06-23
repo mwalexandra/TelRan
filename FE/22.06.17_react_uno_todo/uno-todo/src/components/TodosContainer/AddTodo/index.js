@@ -1,27 +1,19 @@
-import {useState} from 'react';
 import style from './style.module.css'
 
-function AddTodo({todos, setTodos}){
+function AddTodo({showPanelTodo, setShowPanelTodo}){
 
-  const [inputValue, setInputValue] = useState('');
-
-
+  function togglePanelTodo(e){
+    e.preventDefault();
+    setShowPanelTodo(!showPanelTodo);
+  }
 
   return (  
-    <form className={style.addForm}>
-      <input
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-          type='text'
-          className={style.addInput}
-          placeholder='Add a task'
-      />
-      <button 
-        type='submit'
-        className={style.addSubmit}
-        onClick={(e) => e.preventDefault()}
-      ></button>
-    </form>)
+    <button 
+      type='submit'
+      className={style.addButton}
+      onClick={(e) => togglePanelTodo(e)}
+    >Add a task</button>
+  )  
 }
 
 export default AddTodo;

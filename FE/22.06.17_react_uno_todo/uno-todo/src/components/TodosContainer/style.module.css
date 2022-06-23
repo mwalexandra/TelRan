@@ -1,15 +1,16 @@
 .todosContainer {
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  padding: 20px;
-  height: 95vh;
-  background-color: #B0A2F2;
 }
 
-/* .todosSection {
-  
-} */
+.todosSection {
+  flex-grow: 3;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100vh;
+  padding: 20px;
+}
 
 .todosBtn{
   padding: 13px 55px;
