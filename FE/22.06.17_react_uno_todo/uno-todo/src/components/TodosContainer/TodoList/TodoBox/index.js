@@ -1,5 +1,8 @@
 import {useEffect, useState} from 'react';
 import style from './style.module.css';
+
+import { useLists } from '../../../../helpers';
+
 import TodoImportant from './TodoImportant';
 import TodoCompleted from './TodoCompleted';
 import TodoDescr from './TodoDescr';
@@ -10,27 +13,24 @@ function TodoBox({todo, lists, setLists, selectedList, showPanelTodo, setShowPan
   const [isImportant, setIsImportant] = useState(todo.important);
   const [isCompleted, setIsCompleted] = useState(todo.completed);
 
+  const [listsUpdate, setListsUpdate] = useLists([]);
+
   useEffect(
     function updateTodo(){
-      const listUpdate = [];
-      lists.forEach(list => {
-        if(list.id === selectedList.id){
-          list.todos.forEach(todo => {
-            if(todo.id === id){
-              todo.completed = isCompleted;
-              todo.important = isImportant;
-            }
-          })
-        }
-        listUpdate.push(list);
-      })
-      setLists(listUpdate);
+      setListsUpdate(lists, selectedList, id,
+        {
+          changeTodoCompleted: isCompleted,
+          changeTodoImportant: isImportant, 
+        },
+      )
+      setLists(listsUpdate);
     }, [isImportant, isCompleted]
   )
 
 
   return (
-    <li className={style.todoItem}>
+    <li className={style.todoItem}
+        onClick={(e) => setShowPanelTodo(!showPanelTodo)}>
       <TodoCompleted
         isCompleted={isCompleted}
         setIsCompleted={setIsCompleted}

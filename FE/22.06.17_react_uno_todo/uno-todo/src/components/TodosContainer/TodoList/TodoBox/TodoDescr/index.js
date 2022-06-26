@@ -1,11 +1,10 @@
 import style from './style.module.css';
 
-function TodoDescr ({todo, setShowPanelTodo}){
+function TodoDescr ({todo}){
 
   return (
     <div 
-      className={style.todoDescr}
-      onClick={() => setShowPanelTodo(true)}  
+      className={style.todoDescr}  
     >
         <h2>{todo.title}</h2>
         <p>{todo.note} - {todo.date}</p>

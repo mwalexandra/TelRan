@@ -1,80 +1,15 @@
 .todoPanel {
-  display: none;
-  position: relative;
+  display: block;
+  position: absolute;
+  right: -280px;
+  top: 0;
   width: 280px;
   height: 100vh;
   padding: 40px 20px;
   background-color: #fff;
-  transition: all 600ms ease-in-out;
+  transition: right 600ms ease-in-out;
 }
 
 .isShown {
-  animation: scale-how 600ms;
-	animation-fill-mode: both;
-  display: block;
-}
-
-@keyframes scale-how {
-	0% {
-		display: none;
-		opacity: 0;
-		transform: translateX(100%);
-	}
-	90% {
-		display: block;
-		opacity: 0;
-		transform: translateX(50%);
-	}
-	100% {
-		display: block;
-		opacity: 1;
-		transform: translateX(0);
-	}
-}
-
-.todoPanelHeader {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-bottom: 15px;
-  border-bottom: 1px solid #c5c5c5;
-}
-
-.todoPanelDate {
-  padding: 15px 0;
-  border-bottom: 1px solid #c5c5c5;
-}
-
-.todoPanelNote {
-  padding: 15px 0;
-  border-bottom: 1px solid #c5c5c5;
-}
-
-.todoPanelDeleteWrapper {
-  position: absolute;
-  bottom: 30px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  padding-top: 15px;
-}
-
-.todoPanelDeleteWrapper p {
-  font-size: 12px;
-}
-
-.todoPanelDeleteWrapper span {
-  display: inline-block;
-  width: 20px;
-  height: 20px;
-  background-position: center;
-}
-
-.todoPanelArrow {
-  background: url('../../../img/arrow.svg') no-repeat;
-}
-
-.todoPanelDelete {
-  background: url('../../../img/delete.svg') no-repeat;
+  right: 0;
 }

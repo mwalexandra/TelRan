@@ -2,10 +2,15 @@ import style from './style.module.css'
 
 function TodoImportant({isImportant, setIsImportant}) {
 
+  function importantClick(e){
+    e.stopPropagation();
+    setIsImportant(!isImportant)
+  }
+
   return(
     <span 
       className={style.todoImportant}
-      onClick={() => setIsImportant(!isImportant)}>
+      onClick={importantClick}>
       <svg width="20" height="20" viewBox="0 0 20 20" 
         fill="none"
         xmlns="http://www.w3.org/2000/svg">

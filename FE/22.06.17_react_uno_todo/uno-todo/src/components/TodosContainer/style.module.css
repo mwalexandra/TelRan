@@ -1,6 +1,12 @@
 .todosContainer {
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  transition: width 600ms ease-in-out;
+}
+
+.showPanel {
+  width: calc(100% - 280px);
 }
 
 .todosSection {

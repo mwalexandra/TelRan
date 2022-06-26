@@ -1,4 +1,7 @@
 import { useState, useRef, useEffect } from 'react'
+
+import { useLists } from '../../../helpers';
+
 import style from './style.module.css'
 
 function TodoListHeader ({lists, setLists, selectedList}){
@@ -8,28 +11,26 @@ function TodoListHeader ({lists, setLists, selectedList}){
 
   const headerInput = useRef(null);
 
-
-  //TODO переписать как на уроке
-  function changeTodoListHeader(e){
-    e.preventDefault();
-    const listsUpdate = [];
-    lists.forEach(list => {
-      if(list.id === selectedList.id){
-        list.header = title;
-      }
-      listsUpdate.push(list)
-    })
-    setLists(listsUpdate);
-    setDisabled(true);
-  }
+  const [listsUpdate, setListsUpdate] = useLists([]);
 
   useEffect(
-    function onFocus(){
-      if(!disabled){
+    function onFocus() {
+      if(!disabled) {
         headerInput.current.focus();
       }
     }, [disabled]
   )
+
+  function changeTodoListHeader(e){
+    e.preventDefault();
+
+    setListsUpdate(lists, selectedList, undefined, {
+      changelistHeader: title,
+    })
+
+    setLists(listsUpdate);
+    setDisabled(true);
+  }
 
   return (
     <div className={style.headingWrapper}>

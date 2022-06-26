@@ -1,17 +1,18 @@
+import {useState} from 'react';
 import style from './style.module.css'
 
 function AddTodo({showPanelTodo, setShowPanelTodo}){
 
-  function togglePanelTodo(e){
+  function showPanel(e){
     e.preventDefault();
-    setShowPanelTodo(!showPanelTodo);
+    setShowPanelTodo(true);
   }
 
   return (  
     <button 
       type='submit'
       className={style.addButton}
-      onClick={(e) => togglePanelTodo(e)}
+      onClick={showPanel}
     >Add a task</button>
   )  
 }
