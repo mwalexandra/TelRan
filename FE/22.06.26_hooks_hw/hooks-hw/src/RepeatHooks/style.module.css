@@ -1,0 +1,29 @@
+.form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.form *{
+  padding: 0.4rem;
+  width: 50%;
+}
+.inputTextLabel{
+  text-align: center;
+}
+.inputText{}
+.select{}
+.inputCheckbox{}
+.increment{}
+.show{
+  display: none;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: darkblue;
+}
+
+.isShown {
+  display: block;
+}
