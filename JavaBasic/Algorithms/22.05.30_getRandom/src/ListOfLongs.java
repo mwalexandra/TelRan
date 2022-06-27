@@ -6,7 +6,6 @@ import java.util.Random;
 
 public class ListOfLongs<T> {
 
-  Long number;
   List<Long> list;
   Map<Long, Integer> map;
   Random rand = new Random();

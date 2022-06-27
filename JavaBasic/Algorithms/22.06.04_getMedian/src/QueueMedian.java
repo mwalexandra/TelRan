@@ -13,8 +13,15 @@ public class QueueMedian<Integer> {
         this.minHeap = new PriorityQueue<>();
     }
 
-    void add(Integer num) {
-        if (num < getMedian()) {
+    public void add(int num) {
+        if (maxHeap.size() == 0 && minHeap.size() == 0) {
+            minHeap.add(num);
+            return;
+        }
+
+        double median = getMedian();
+
+        if ((double) num < median) {
             if (minHeap.size() > maxHeap.size()) {
                 maxHeap.add(minHeap.poll());
             }
@@ -27,15 +34,12 @@ public class QueueMedian<Integer> {
         }
     }
 
-    double getMedian() {
-
-        int peekOfMaxHeap = (int) maxHeap.peek();
-        int peekOfMinHeap = (int) minHeap.peek();
+    public double getMedian() {
 
         if (maxHeap.size() == minHeap.size()) {
-            return ((double) peekOfMaxHeap + (double) peekOfMinHeap) / 2;
+            return ((double) maxHeap.peek() + (double) minHeap.peek()) / 2;
         }
 
-        return maxHeap.size() > minHeap.size() ? (double) peekOfMaxHeap : (double) peekOfMinHeap;
+        return maxHeap.size() > minHeap.size() ? (double) maxHeap.peek() : (double) minHeap.peek();
     }
 }
