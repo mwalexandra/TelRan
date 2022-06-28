@@ -1,8 +1,9 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, useMemo} from 'react';
 import SideBar from './components/SideBar';
-import TodosContainer from './components/TodosContainer';
+import Todos from './components/Todos';
 import './common-styles/reset.css';
-import {useDate} from './helpers';
+import style from './index.module.css';
+import {useDate, useLists} from './helpers';
 
 
 function UnoTodo() {
@@ -45,6 +46,9 @@ function UnoTodo() {
   const [lists, setLists] = useState(listDefault);
   const [selectedList, setSelectedList] = useState(lists[0]);
 
+  // useMemo(()=>{console.log(lists)},[lists])
+
+
   return (
     <>
       <SideBar 
@@ -53,7 +57,7 @@ function UnoTodo() {
         selectedList={selectedList}
         setSelectedList={setSelectedList}
       />
-      <TodosContainer 
+      <Todos
         lists = {lists}  
         setLists = {setLists}
         selectedList={selectedList}

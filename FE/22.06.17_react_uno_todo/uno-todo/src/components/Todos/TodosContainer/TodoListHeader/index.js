@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 
-import { useLists } from '../../../helpers';
+import { useLists } from '../../../../helpers';
 
 import style from './style.module.css'
 
@@ -11,7 +11,7 @@ function TodoListHeader ({lists, setLists, selectedList}){
 
   const headerInput = useRef(null);
 
-  const [listsUpdate, setListsUpdate] = useLists([]);
+  const [listsUpdate, setListsUpdate] = useLists(lists);
 
   useEffect(
     function onFocus() {

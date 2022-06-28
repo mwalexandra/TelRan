@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import style from './style.module.css';
 
-import { useLists } from '../../../../helpers';
+import { useLists } from '../../../../../helpers';
 
 import TodoImportant from './TodoImportant';
 import TodoCompleted from './TodoCompleted';
@@ -13,7 +13,7 @@ function TodoBox({todo, lists, setLists, selectedList, showPanelTodo, setShowPan
   const [isImportant, setIsImportant] = useState(todo.important);
   const [isCompleted, setIsCompleted] = useState(todo.completed);
 
-  const [listsUpdate, setListsUpdate] = useLists([]);
+  const [listsUpdate, setListsUpdate] = useLists(lists);
 
   useEffect(
     function updateTodo(){

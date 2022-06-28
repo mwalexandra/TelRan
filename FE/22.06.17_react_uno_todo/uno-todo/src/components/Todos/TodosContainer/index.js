@@ -4,7 +4,7 @@ import style from './style.module.css'
 import TodoList from './TodoList'
 import AddTodo from './AddTodo'
 import TodoListHeader from './TodoListHeader'
-import TodoPanel from './TodoPanel'
+import TodoPanel from '../TodoPanel'
 
 function TodosContainer({lists, setLists, selectedList}) {
 

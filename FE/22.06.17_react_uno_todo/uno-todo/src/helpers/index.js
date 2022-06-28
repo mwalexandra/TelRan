@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-
+// контроль даты
 function useDate(timeElapsed){
   const today = new Date(timeElapsed);
   return [ today.toDateString() ];
 }
 
 
-
+// контроль lists
 function useLists(defaultValue) {
 
   const [ value, setValue ] = useState(defaultValue);
@@ -46,10 +46,30 @@ function useLists(defaultValue) {
     })
 
     setValue([...value])
-
   }
 
   return [ value, setListsUpdate ];
 }
 
-export { useDate, useLists };
+// контроль textInput
+function useTextInput(defaultValue){
+  const [value, setValue] = useState(defaultValue);
+  const bind = {
+    value,
+    onChange: (e) => setValue(e.target.value)
+  }
+  return [value, setValue, bind]
+}
+
+// контроль checked
+function useCheckboxInput(defaultValue){
+  const [value, setValue] = useState(defaultValue);
+  const bind = {
+    value,
+    onChange: (e) => setValue(!value),
+    checked: value,
+  }
+  return [value, setValue, bind]
+}
+
+export { useDate, useLists, useTextInput, useCheckboxInput };
