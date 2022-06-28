@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef, useMemo } from 'react';
+import { useEffect, useState, useRef, useMemo } from 'react'
 import style from './style.module.css'
 import ThemeButton from './ThemeButton'
-import {theme, ThemeContext} from '../colors/theme.js';
+import {theme, ThemeContext} from '../colors/theme.js'
+import {useInput, useSelect, useCheckboxInput} from '../CustomHooks'
 
 function RepeatHooks() {
 
@@ -10,13 +11,13 @@ function RepeatHooks() {
 	// 1 возьмите под контроль react этои jsx элементы (input text, select, input checkbox) c помощью useState
 	// 2 вместо отправки формы по submit отобразите в элементе c классом show значения элементов формы
 
-  const [ inputValue, setInputValue ] = useState('');
-  const [ selectValue, setSelectValue ] = useState('dark');
-  const [ checkboxValue, setCheckboxValue ] = useState(false);
+  const [ inputValue, resetInputValue, bindInputValue ] = useInput('');
+  const [ selectValue, resetSelectValue, bindSelectValue  ] = useSelect('dark');
+  const [ checkboxValue, setCheckboxValue, bindCheckboxValue ] = useCheckboxInput(false);
 
   const [ shownValues, setShownValues] = useState(false);
 
-  function showValues(e){
+  function submit(e){
     e.preventDefault();
     setShownValues(true);
   }
@@ -50,12 +51,12 @@ function RepeatHooks() {
 	// мемоизируйте функцию расчета изменений, исключив из неё события изменения чекбокса
 
   const [changeCalc, setChangeCalc] = useState(0);
+
   useMemo(() => {
       setChangeCalc(changeCalc+1);
     }, [inputValue, selectValue]
   )
 
-//TODO 
 	// custom hooks
 	// придумайте или найдите в сети возможности улучшить ваш код с помощью кастомных хуков
 
@@ -63,7 +64,7 @@ function RepeatHooks() {
 		<>
 			<form
         className={style.form}
-        onSubmit={(e) => showValues(e)}
+        onSubmit={(e) => submit(e)}
       >
 
 				<label
@@ -71,9 +72,7 @@ function RepeatHooks() {
           onClick={onLabelClick}
         >input</label>
 				<input 
-          value={inputValue}
-          onChange={(e) => {
-            setInputValue(e.target.value)}}
+          {...bindInputValue}
           type="text" 
           className={style.inputText}
           ref = {inputRef}
@@ -82,9 +81,7 @@ function RepeatHooks() {
         <ThemeContext.Provider value={theme[selectValue]}>
           <select
             className={style.select}
-            value={selectValue}
-            onChange={(e) => {
-              setSelectValue(e.target.value)}}
+            {...bindSelectValue}
           >
             <option value="dark">dark</option>
             <option value="light">light</option>
@@ -93,12 +90,12 @@ function RepeatHooks() {
 				<input 
           type='checkbox' 
           className={style.inputCheckbox}
-          onChange={() => setCheckboxValue(!checkboxValue)}
+          {...bindCheckboxValue}
           />
 
           {/* <ThemeContext.Consumer> */} 
             <ThemeButton 
-              onClick={(e) => showValues(e)}
+              onClick={(e) => submit(e)}
             />
           {/* </ThemeContext.Consumer>   */}
         </ThemeContext.Provider>  

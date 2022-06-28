@@ -27,3 +27,10 @@
 .isShown {
   display: block;
 }
+
+.increment {
+  margin-top: 2rem;
+  text-align: center;
+  font-weight: 700;
+  color: red;
+}
