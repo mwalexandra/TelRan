@@ -7,7 +7,7 @@ import style from './style.module.css'
 
 function Todos({lists, setLists, selectedList}) {
   const [showPanelTodo, setShowPanelTodo] = useState(false);
-  const [selectedTodo, setSelectedTodo] = useState({});
+  const [selectedTodo, setSelectedTodo] = useState(null);
 
 
   return (

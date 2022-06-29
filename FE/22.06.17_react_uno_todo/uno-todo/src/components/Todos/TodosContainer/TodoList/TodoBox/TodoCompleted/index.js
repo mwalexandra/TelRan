@@ -1,14 +1,12 @@
 import style from './style.module.css'
 
-function TodoCompleted({isCompleted, setIsCompleted}) {
+function TodoCompleted({isCompleted, setIsCompleted, bindCompleted}) {
 
   return(
     <input 
         type='checkbox'
         onClick={(e) => e.stopPropagation()}
-        onChange= {() => setIsCompleted(!isCompleted)}
-        checked={isCompleted}
-        value={isCompleted}
+        {...bindCompleted}
       />
   )
 }

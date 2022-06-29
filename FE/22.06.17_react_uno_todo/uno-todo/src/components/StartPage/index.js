@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import style from './style.module.css'
 
 
@@ -13,9 +15,9 @@ function StartPage(){
           <h1>Welcome to Uno To Do!</h1>
           <p>Start using the best to-do app, you can create and manage your To Do lists to improve your organisation.</p>
         </div>
-        <button
+        <Link to='/uno-todo'
           className={style.startedBtn}
-        >Get started</button>
+        >Get started</Link>
       </div>
 
       <div className={style.startBack}></div>

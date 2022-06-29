@@ -1,17 +1,15 @@
 import { useState, useRef, useEffect } from 'react'
 
-import { useLists } from '../../../../helpers';
+import { useTextInput } from '../../../../helpers';
 
 import style from './style.module.css'
 
 function TodoListHeader ({lists, setLists, selectedList}){
 
   const [disabled, setDisabled] = useState(true);
-  const [title, setTitle] = useState(selectedList.header);
+  const [title, setTitle, bindTitle] = useTextInput(lists[selectedList].header);
 
   const headerInput = useRef(null);
-
-  const [listsUpdate, setListsUpdate] = useLists(lists);
 
   useEffect(
     function onFocus() {
@@ -24,11 +22,10 @@ function TodoListHeader ({lists, setLists, selectedList}){
   function changeTodoListHeader(e){
     e.preventDefault();
 
-    setListsUpdate(lists, selectedList, undefined, {
+    setLists(lists, selectedList, undefined, {
       changelistHeader: title,
     })
 
-    setLists(listsUpdate);
     setDisabled(true);
   }
 
@@ -40,8 +37,7 @@ function TodoListHeader ({lists, setLists, selectedList}){
         <input 
             type='text'
             className={style.todosHeading}
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
+            {...bindTitle}
             disabled={disabled}
             ref={headerInput}
         />

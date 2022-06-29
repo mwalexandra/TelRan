@@ -4,12 +4,18 @@ import style from './style.module.css'
 import TodoList from './TodoList'
 import AddTodo from './AddTodo'
 import TodoListHeader from './TodoListHeader'
-import TodoPanel from '../TodoPanel'
 
-function TodosContainer({lists, setLists, selectedList}) {
+function TodosContainer({
+  lists, 
+  setLists, 
+  selectedList,
+  showPanelTodo,
+  setShowPanelTodo,
+  setSelectedTodo,
+  selectedTodo,
+}) {
 
   const [activeTab, setActiveTab] = useState('Todo');
-  const [showPanelTodo, setShowPanelTodo] = useState(false);
 
   return (
     <>
@@ -39,21 +45,17 @@ function TodosContainer({lists, setLists, selectedList}) {
             selectedList={selectedList}
             showPanelTodo={showPanelTodo}
             setShowPanelTodo={setShowPanelTodo}
+            setSelectedTodo={setSelectedTodo}
+            selectedTodo={selectedTodo}
           />
 
           <AddTodo 
           lists = {lists}  
           setLists = {setLists}
-          showPanelTodo={showPanelTodo}
           setShowPanelTodo={setShowPanelTodo}
           />
         </section>
       </main>
-
-      <TodoPanel 
-        showPanelTodo={showPanelTodo}
-        setShowPanelTodo={setShowPanelTodo}
-      />
     </>
   )
 }

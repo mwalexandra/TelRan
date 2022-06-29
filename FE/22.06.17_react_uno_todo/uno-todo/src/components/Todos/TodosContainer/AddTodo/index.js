@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import style from './style.module.css'
 
-function AddTodo({showPanelTodo, setShowPanelTodo}){
+function AddTodo({todos, setTodos, setShowPanelTodo}){
 
   function showPanel(e){
     e.preventDefault();

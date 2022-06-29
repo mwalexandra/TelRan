@@ -1,15 +1,57 @@
 import style from './style.module.css'
+
 import TodoPanelDate from './TodoPanelDate'
 import TodoPanelDelete from './TodoPanelDelete'
 import TodoPanelHeader from './TodoPanelHeader'
 import TodoPanelNote from './TodoPanelNote'
 
-function TodoPanel({showPanelTodo, setShowPanelTodo}){
+import { useState,useMemo,useEffect } from 'react'
 
+function TodoPanel(
+  {
+    showPanelTodo, setShowPanelTodo, 
+    selectedList,
+    lists, setLists,
+    selectedTodo, setSelectedTodo,
+    setSelectedList
+  }
+){
+
+  const [title, setTitle] = useState('');
+  const [important, setImportant] = useState(false);
+  const [completed, setCompleted] = useState(false);
+
+  // useMemo(function() {
+  //   lists[selectedList].todos.forEach((todo)=>{
+  //     if (todo.id === selectedTodo) {
+  //       setTitle(todo.title);
+  //       setImportant(todo.important);
+  //       setCompleted(todo.completed);
+  //     }
+  //   })
+  // },[selectedTodo])
+
+
+  // useEffect(function updateTodo(){
+  //     setLists(lists, selectedList, selectedTodo,
+  //       {
+  //         changeTodoCompleted: completed,
+  //         changeTodoImportant: important, 
+  //         changeTodoTitle: title, 
+  //       },
+  //     )
+  // },[completed,important,title])
 
   return (
     <section className={`${style.todoPanel} ${showPanelTodo ? style.isShown : ''}`}>
-      <TodoPanelHeader />
+      <TodoPanelHeader 
+        title={title}
+        setTitle={setTitle}
+      	important={important}
+        setImportant={setImportant}
+      	completed={completed}
+        setCompleted={setCompleted}
+      />
       <TodoPanelDate />
       <TodoPanelNote />
       <TodoPanelDelete />

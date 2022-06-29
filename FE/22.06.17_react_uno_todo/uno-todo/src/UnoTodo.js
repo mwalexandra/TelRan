@@ -2,7 +2,6 @@ import {useEffect, useState, useMemo} from 'react';
 import SideBar from './components/SideBar';
 import Todos from './components/Todos';
 import './common-styles/reset.css';
-import style from './index.module.css';
 import {useDate, useLists} from './helpers';
 
 
@@ -43,8 +42,8 @@ function UnoTodo() {
   },
   ]
 
-  const [lists, setLists] = useState(listDefault);
-  const [selectedList, setSelectedList] = useState(lists[0]);
+  const [lists, setLists] = useLists(listDefault);
+  const [selectedList, setSelectedList] = useState(0);
 
   // useMemo(()=>{console.log(lists)},[lists])
 
