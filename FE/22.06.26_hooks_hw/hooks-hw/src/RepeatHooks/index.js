@@ -57,6 +57,11 @@ function RepeatHooks() {
     }, [inputValue, selectValue]
   )
 
+  useMemo(() => {
+    setShownValues(false);
+    }, [inputValue, selectValue, checkboxValue]
+  )
+
 	// custom hooks
 	// придумайте или найдите в сети возможности улучшить ваш код с помощью кастомных хуков
 

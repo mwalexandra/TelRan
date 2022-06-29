@@ -36,4 +36,4 @@ const useCheckboxInput = (defaultValue) => {
   return [value, setValue, bind]
 }
 
-export default {useInput, useSelect, useCheckboxInput};
+export {useInput, useSelect, useCheckboxInput};
