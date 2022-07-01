@@ -1,19 +1,20 @@
-
-import {useState} from 'react';
-import style from './style.module.css'
+import { useState } from 'react';
+import style from './index.module.css'
 import TodoList from './TodoList'
 import AddTodo from './AddTodo'
 import TodoListHeader from './TodoListHeader'
 
-function TodosContainer({
-  lists, 
-  setLists, 
-  selectedList,
-  showPanelTodo,
-  setShowPanelTodo,
-  setSelectedTodo,
-  selectedTodo,
-}) {
+
+function TodosContainer(
+  {
+    lists, 
+    setLists, 
+    selectedList,
+    showPanelTodo,
+    setShowPanelTodo,
+    setSelectedTodo,
+    selectedTodo,
+  }) {
 
   const [activeTab, setActiveTab] = useState('Todo');
 
@@ -39,20 +40,19 @@ function TodosContainer({
           </div>
 
           <TodoList 
-            lists = {lists}  
-            setLists = {setLists}
-            activeTab = {activeTab}
+            lists={lists}  
+            setLists={setLists}
+            activeTab={activeTab}
             selectedList={selectedList}
             showPanelTodo={showPanelTodo}
             setShowPanelTodo={setShowPanelTodo}
             setSelectedTodo={setSelectedTodo}
             selectedTodo={selectedTodo}
           />
-
           <AddTodo 
-          lists = {lists}  
-          setLists = {setLists}
-          setShowPanelTodo={setShowPanelTodo}
+            lists = {lists}  
+            setLists = {setLists}
+            setShowPanelTodo = {setShowPanelTodo}
           />
         </section>
       </main>

@@ -1,9 +1,7 @@
 import { useState } from 'react';
-
+import style from './index.module.css';
 import TodosContainer from './TodosContainer'
 import TodoPanel from './TodoPanel'
-
-import style from './style.module.css'
 
 function Todos({lists, setLists, selectedList}) {
   const [showPanelTodo, setShowPanelTodo] = useState(false);
@@ -21,15 +19,15 @@ function Todos({lists, setLists, selectedList}) {
         selectedTodo={selectedTodo}
         setSelectedTodo={setSelectedTodo}
       /> 
-      <TodoPanel 
-        showPanelTodo={showPanelTodo} 
-        setShowPanelTodo={setShowPanelTodo}
-        lists={lists} 
-        setLists={setLists} 
-        selectedList={selectedList}
-        selectedTodo={selectedTodo}
-        setSelectedTodo={setSelectedTodo}
-      />
+        <TodoPanel 
+          showPanelTodo={showPanelTodo} 
+          setShowPanelTodo={setShowPanelTodo}
+          lists={lists} 
+          setLists={setLists} 
+          selectedList={selectedList}
+          selectedTodo={selectedTodo}
+          setSelectedTodo={setSelectedTodo}
+        />
     </div>
   )
 }

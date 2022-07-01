@@ -12,11 +12,13 @@ function AppRouter() {
   return (
     <Router>
       <Routes>
-        <Route path='/uno-todo' element={<UnoTodo/>} />
-        <Route path='/' element={<StartPage/>} />
-        <Route path='*' element={<h1>404<br/>Нет такой страницы</h1>}/>
+        <Route path="/uno-todo" element={<UnoTodo/>} />
+        <Route path="/" element={<StartPage/>} />
+        <Route path="*" element={<h1>404<br/>Нет такой страницы</h1>} />
       </Routes>
     </Router>
   )
 }
+
+
 export default AppRouter;

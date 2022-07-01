@@ -1,13 +1,13 @@
 import TodoBox from './TodoBox'
-import style from './style.module.css'
+import style from './index.module.css'
 
 function TodoList({
   lists, 
   setLists, 
   activeTab, 
   selectedList, 
+  setShowPanelTodo, 
   showPanelTodo, 
-  setShowPanelTodo,
   setSelectedTodo,
   selectedTodo,
 }) {
@@ -31,8 +31,8 @@ function TodoList({
                   lists={lists}
                   setLists={setLists}
                   selectedList={selectedList}
-                  showPanelTodo={showPanelTodo} 
-                  setShowPanelTodo={setShowPanelTodo}
+                  showPanelTodo = {showPanelTodo}
+                  setShowPanelTodo = {setShowPanelTodo}
                   setSelectedTodo={setSelectedTodo}
                   selectedTodo={selectedTodo}
                 />

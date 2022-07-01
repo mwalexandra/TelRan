@@ -1,4 +1,4 @@
-function SideBar({lists, setLists, selectedList, setSelectedList}) {
+function SideBar({ lists, setLists, selectedList }) {
   return (
     <>
       

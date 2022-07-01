@@ -1,20 +1,20 @@
 import {useState} from 'react';
-import style from './style.module.css'
+import style from './index.module.css'
 
 function AddTodo({todos, setTodos, setShowPanelTodo}){
 
-  function showPanel(e){
-    e.preventDefault();
-    setShowPanelTodo(true);
-  }
+	function showPanel(e) {
+		e.preventDefault();
+		setShowPanelTodo(true);
+	}
 
   return (  
-    <button 
-      type='submit'
-      className={style.addButton}
-      onClick={showPanel}
-    >Add a task</button>
-  )  
+      <button 
+        type='submit'
+        className={style.addButton}
+        onClick={showPanel}
+      >Add a task</button>
+    )
 }
 
 export default AddTodo;

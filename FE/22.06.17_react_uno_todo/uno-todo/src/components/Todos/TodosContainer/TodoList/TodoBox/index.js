@@ -1,37 +1,21 @@
-import {useEffect, useState} from 'react';
-import style from './style.module.css';
 
-import { useCheckboxInput } from '../../../../../helpers';
+import style from './index.module.css';
 
 import TodoImportant from './TodoImportant';
 import TodoCompleted from './TodoCompleted';
-import TodoDescr from './TodoDescr';
+import TodoDesc from './TodoDesc';
 
 function TodoBox({
   todo, 
   lists, 
   setLists, 
   selectedList, 
-  showPanelTodo, 
-  setShowPanelTodo,
+  setShowPanelTodo, 
+  showPanelTodo,
   setSelectedTodo,
   selectedTodo,
 }) {
   const id = todo.id;
-
-  const [isImportant, setIsImportant] = useState(todo.important);
-  const [isCompleted, setIsCompleted, bindCompleted] = useCheckboxInput(todo.completed);
-
-  useEffect(
-    function updateTodo(){
-      setLists(lists, selectedList, id,
-        {
-          changeTodoCompleted: isCompleted,
-          changeTodoImportant: isImportant, 
-        },
-      )
-    }, [isImportant, isCompleted]
-  )
 
   function editTodo(todo) {
     setSelectedTodo(todo.id);
@@ -43,19 +27,32 @@ function TodoBox({
     }
   }
 
+  function setIsCompleted(value){
+    setLists(lists, selectedList, id,
+      {
+        changeTodoCompleted: value,
+      },
+    )
+  }
+
+  function setIsImportant(value){
+    setLists(lists, selectedList, id,
+      {
+        changeTodoImportant: value, 
+      },
+    )
+  }
+
+
   return (
-    <li className={style.todoItem}
-        onClick={(e) => editTodo(todo)}>
+    <li className={style.todoItem} onClick={(e) => editTodo(todo)}>
       <TodoCompleted
-        isCompleted={isCompleted}
+        isCompleted={todo.completed}
         setIsCompleted={setIsCompleted}
-        bindCompleted={bindCompleted}
       />
-      <TodoDescr 
-        todo={todo}
-      />
+      <TodoDesc todo={todo} />
       <TodoImportant 
-        isImportant={isImportant}
+        isImportant={todo.important}
         setIsImportant={setIsImportant}
       />
     </li>
