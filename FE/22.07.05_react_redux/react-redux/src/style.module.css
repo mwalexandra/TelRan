@@ -1,0 +1,16 @@
+.btnsWrapper{
+  display:flex;
+  justify-content: center;
+  gap: 1rem;
+}
+.btn{
+  padding: .5rem 1rem;
+  font-size: 1.3rem;
+  background-color: rgba(233, 129, 129, 0.563);
+  border:none;
+  border-radius: 15px;
+}
+.output{
+  text-align: center;
+  font-size: 2rem;
+}
