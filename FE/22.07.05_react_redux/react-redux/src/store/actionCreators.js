@@ -1,23 +1,19 @@
 import { INCR_BY_ONE, DECR_BY_ONE, RESET } from './actions.js'
-import store from './store';
-
-
-const { dispatch } = store;
 
 function incrementByOne(){
-  dispatch ({
+  return ({
     type: INCR_BY_ONE,
   })
 }
 
 function descrementByOne(){
-  dispatch ({
+  return ({
     type: DECR_BY_ONE,
   })
 }
 
 function reset () {
-  dispatch ({
+  return ({
     type: RESET,
   })
 }  
