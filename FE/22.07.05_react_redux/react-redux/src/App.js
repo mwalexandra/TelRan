@@ -1,15 +1,16 @@
 import { incrementByOne, descrementByOne, reset } from './store/actionCreators'
 import store from './store/store';
+import { useSelector } from 'react-redux';
 
 import style from './style.module.css'
 
 function App() {
-  
-  const { subscribe, getState } = store;
+   
+  const { getState } = store;
+  const counter = useSelector(() => getState())
 
-  subscribe(() => {
-    console.log(getState());
-  })
+  //TODO 
+  // Вынести dispatch через useDispatch 
 
   return (
     <>
@@ -28,7 +29,7 @@ function App() {
       >reset</button>
     </div>
     <p className={style.output}>
-    {getState()}
+    {counter}
     </p>
     </>
   );
