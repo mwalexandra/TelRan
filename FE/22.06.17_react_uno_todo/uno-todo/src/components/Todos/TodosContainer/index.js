@@ -10,6 +10,7 @@ function TodosContainer(
     lists, 
     setLists, 
     selectedList,
+    selectedListId,
     showPanelTodo,
     setShowPanelTodo,
     setSelectedTodo,
@@ -44,6 +45,7 @@ function TodosContainer(
             setLists={setLists}
             activeTab={activeTab}
             selectedList={selectedList}
+            selectedListId={selectedListId}
             showPanelTodo={showPanelTodo}
             setShowPanelTodo={setShowPanelTodo}
             setSelectedTodo={setSelectedTodo}

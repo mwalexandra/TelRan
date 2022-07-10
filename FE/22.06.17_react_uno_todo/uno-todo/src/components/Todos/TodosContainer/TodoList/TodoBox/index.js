@@ -4,56 +4,62 @@ import style from './index.module.css';
 import TodoImportant from './TodoImportant';
 import TodoCompleted from './TodoCompleted';
 import TodoDesc from './TodoDesc';
+import { useDispatch, useSelector } from 'react-redux';
+import {todoSelected} from '../../../../../storage/content/actionsCreator.js'
+import {showPanelTodo} from '../../../../../storage/interface/actionsCreator.js'
 
 function TodoBox({
-  todo, 
-  lists, 
-  setLists, 
-  selectedList, 
-  setShowPanelTodo, 
-  showPanelTodo,
-  setSelectedTodo,
-  selectedTodo,
+
+  todo, // всё, что должно остаться в TodoBox
+  // lists, // уже не нужно
+  // setLists,  // уже не нужно
+  // selectedList,  // уже не нужно
+  // setShowPanelTodo,  // нужно убрать (в интерфейс)
+  // showPanelTodo, // нужно убрать (в интерфейс)
+
+  //setSelectedTodo, // нужно убрать (контент - dispatch todoSelected(listId, todoId))
+  //selectedTodo, // нужно убрать (контент - todo:{...todo, selected: true})
+
+  // selectedListId, // уже не нужно
+
 }) {
-  const id = todo.id;
+  const dispatch = useDispatch();
+
+  const selectedListId = useSelector(
+    state => state.lists.content.find(list => list.selected).id
+  )
+
+  const selectedTodoId = useSelector(
+    state => 
+      state.lists.content
+        .find( list =>  list.id === selectedListId)
+        .todos.find( todoItem => todoItem.selected).id
+  )
+
+const isShownPanelTodo = useSelector(state => state.interface.show);
 
   function editTodo(todo) {
-    setSelectedTodo(todo.id);
+    dispatch(todoSelected(selectedListId, todo.id))
+    console.log(isShownPanelTodo);
 
-    if (selectedTodo === todo.id) {
-      setShowPanelTodo(!showPanelTodo);
+    if (selectedTodoId === todo.id) {
+      dispatch(showPanelTodo(!isShownPanelTodo));
+      console.log(isShownPanelTodo);
     } else {
-      setShowPanelTodo(true);
+      dispatch(showPanelTodo(true));
     }
   }
 
-  function setIsCompleted(value){
-    setLists(lists, selectedList, id,
-      {
-        changeTodoCompleted: value,
-      },
-    )
-  }
-
-  function setIsImportant(value){
-    setLists(lists, selectedList, id,
-      {
-        changeTodoImportant: value, 
-      },
-    )
-  }
-
-
   return (
-    <li className={style.todoItem} onClick={(e) => editTodo(todo)}>
+    <li className={style.todoItem} onClick={() => editTodo(todo)}>
       <TodoCompleted
-        isCompleted={todo.completed}
-        setIsCompleted={setIsCompleted}
+        todoId={todo.id}
       />
-      <TodoDesc todo={todo} />
+      <TodoDesc 
+        todoId={todo.id} 
+      />
       <TodoImportant 
-        isImportant={todo.important}
-        setIsImportant={setIsImportant}
+        todoId={todo.id}
       />
     </li>
   )

@@ -3,7 +3,7 @@ import style from './index.module.css';
 import TodosContainer from './TodosContainer'
 import TodoPanel from './TodoPanel'
 
-function Todos({lists, setLists, selectedList}) {
+function Todos({lists, setLists, selectedList, selectedListId}) {
   const [showPanelTodo, setShowPanelTodo] = useState(false);
   const [selectedTodo, setSelectedTodo] = useState(null);
 
@@ -14,6 +14,7 @@ function Todos({lists, setLists, selectedList}) {
         lists={lists} 
         setLists={setLists} 
         selectedList={selectedList} 
+        selectedListId={selectedListId}
         showPanelTodo={showPanelTodo} 
         setShowPanelTodo={setShowPanelTodo}
         selectedTodo={selectedTodo}
@@ -25,6 +26,7 @@ function Todos({lists, setLists, selectedList}) {
           lists={lists} 
           setLists={setLists} 
           selectedList={selectedList}
+          selectedListId={selectedListId}
           selectedTodo={selectedTodo}
           setSelectedTodo={setSelectedTodo}
         />

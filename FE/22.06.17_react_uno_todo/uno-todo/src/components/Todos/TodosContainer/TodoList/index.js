@@ -6,6 +6,7 @@ function TodoList({
   setLists, 
   activeTab, 
   selectedList, 
+  selectedListId,
   setShowPanelTodo, 
   showPanelTodo, 
   setSelectedTodo,
@@ -31,6 +32,7 @@ function TodoList({
                   lists={lists}
                   setLists={setLists}
                   selectedList={selectedList}
+                  selectedListId={selectedListId}
                   showPanelTodo = {showPanelTodo}
                   setShowPanelTodo = {setShowPanelTodo}
                   setSelectedTodo={setSelectedTodo}

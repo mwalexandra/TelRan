@@ -1,11 +1,26 @@
 import style from './index.module.css'
+import { todoImportant } from '../../../../../../storage/content/actionsCreator.js';
+import { useDispatch, useSelector } from 'react-redux';
 
-function TodoImportant({isImportant, setIsImportant}) {
+function TodoImportant({todoId}) {
+
+  const dispatch = useDispatch();
+
+  const selectedListId = useSelector(
+    state => state.lists.content.find(list => list.selected).id
+  )
 
   function importantClick(e) {
     e.stopPropagation();
-    setIsImportant(!isImportant)
+    dispatch(todoImportant(selectedListId, todoId))
   }
+
+  const important = useSelector(
+    state => 
+      state.lists.content
+        .find( list =>  list.id === selectedListId)
+        .todos.find( todoItem => todoId === todoItem.id)?.important
+  )
 
   return(
     <span 
@@ -18,7 +33,7 @@ function TodoImportant({isImportant, setIsImportant}) {
       >
         <path fillRule="evenodd" clipRule="evenodd" d="M11.6886 9L10 3.4407L8.31136 9H3.12293L7.34894 12.0156L5.70765 17.3166L9.99951 14.0543L14.3036 17.3206L12.6612 12.0162L16.8812 9H11.6886ZM20 8L13.83 12.41L16.18 20L10 15.31L3.83 20L6.18 12.41L0 8H7.57L10 0L12.43 8H20Z" 
           className={
-            isImportant ? style.isImportant : style.notImportant
+            important ? style.isImportant : style.notImportant
           } 
           fillOpacity="0.38"
         />

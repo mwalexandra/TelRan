@@ -5,14 +5,18 @@ import TodoPanelDate from './TodoPanelDate'
 import TodoPanelNote from './TodoPanelNote'
 import TodoPanelDelete from './TodoPanelDelete'
 import { useMemo } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
 
 function TodoPanel({
-  showPanelTodo, setShowPanelTodo, 
+  // showPanelTodo, setShowPanelTodo, 
   selectedList,
   lists, setLists,
   selectedTodo, setSelectedTodo,
   setSelectedList
 }){
+
+  const isShownPanelTodo = useSelector(state => state.interface.show);
 
   const todo = useMemo(
     () => {
@@ -84,7 +88,7 @@ function TodoPanel({
   }
 
   return (
-    <section className={`${style.todoPanel} ${showPanelTodo ? style.isShown : ''}`}>
+    <section className={`${style.todoPanel} ${isShownPanelTodo ? style.isShown : ''}`}>
       <TodoPanelHeader
       	title={todo.title}
         setTitle={setTitle}
@@ -103,7 +107,6 @@ function TodoPanel({
       />
       <TodoPanelDelete 
         createTodoDate={todo.createDate}
-        setShowPanelTodo={setShowPanelTodo}
         setLists={setLists}
         selectedList={selectedList}
         lists={lists}

@@ -2,43 +2,42 @@ import {useEffect, useState,useMemo } from 'react';
 import SideBar from './components/SideBar';
 import Todos from './components/Todos';
 import './common-styles/reset.css';
-import { useDate, useLists, useCreateDate } from './helpers';
+import { useDate, useLists, CreateDate } from './helpers';
 
+import { useSelector } from 'react-redux';
 
 function UnoTodo() {
 
-
-  const [ dateNow ] = useDate(Date.now());
-
   const listDefault = [
     {
-      id: Date.now(),
+      id: '44444',
       header: 'Task list',
+      selected: true,
       todos: [
         {
-          id: Date.now()+1,
+          id: '11111',
           title: 'Todo 1',
           note: 'Do something important',
-          date: useCreateDate(),
-          createDate: useCreateDate(),
+          date: CreateDate(),
+          createDate: CreateDate(),
           completed: true,
           important: true,
         },
         {
-          id: Date.now()+2,
+          id: '22222',
           title: 'Todo 2',
           note: 'Do something important',
-          date: useCreateDate(),
-          createDate: useCreateDate(),
+          date: CreateDate(),
+          createDate: CreateDate(),
           completed: true,
           important: true,
         },
         {
-          id: Date.now()+3,
+          id: '33333',
           title: 'Todo 3',
           note: 'Do something',
-          date: useCreateDate(),
-          createDate: useCreateDate(),
+          date: CreateDate(),
+          createDate: CreateDate(),
           completed: true,
           important: true,
         },
@@ -48,6 +47,8 @@ function UnoTodo() {
 
   const [lists, setLists] = useLists(listDefault);
   const [selectedList, setSelectedList] = useState(0);
+
+  const selectedListId = useSelector(state => state.lists.content[0].id);
 
 
   // useMemo(()=>{console.log(lists)},[lists])
@@ -64,6 +65,7 @@ function UnoTodo() {
         lists = {lists}  
         setLists = {setLists}
         selectedList={selectedList}
+        selectedListId={selectedListId}
       />
     </>
   )

@@ -1,14 +1,20 @@
 import style from './index.module.css'
 import {useShowDate} from '../../../../helpers'
 
+import {showPanelTodo} from '../../../../storage/interface/actionsCreator.js'
+import { useDispatch } from 'react-redux';
+
 function TodoPanelDelete({
   createTodoDate,
-  setShowPanelTodo, 
+  // setShowPanelTodo, 
   selectedList,
   lists,
   selectedTodo,
   setLists,
 }){
+
+  const dispatch = useDispatch();
+
 
   function deleteTodo(){
     setLists(
@@ -19,7 +25,7 @@ function TodoPanelDelete({
         deleteTodo: true,
       }
     )
-    setShowPanelTodo(false);
+    dispatch(showPanelTodo(false));
   }
 
   //console.log(createTodoDate);
@@ -28,7 +34,7 @@ function TodoPanelDelete({
     <div className={style.todoPanelDeleteWrapper}>
       <span 
         className={style.todoPanelArrow}
-        onClick={() => setShowPanelTodo(false)}
+        onClick={() => dispatch(showPanelTodo(false))}
       ></span>
       <p>Created {useShowDate(createTodoDate)}</p>
       <span 

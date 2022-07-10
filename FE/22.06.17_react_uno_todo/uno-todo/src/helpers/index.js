@@ -8,7 +8,7 @@ function useDate(timeElapsed){
   return [ today.toDateString() ];
 }
 
-function useCreateDate(){
+function CreateDate(){
   const date = new Date();
   const year = date.getFullYear();
   const month = date.getMonth()+1;
@@ -128,4 +128,4 @@ function useShowDate(value){
 }
 // console.log(uTestShownDate());
 
-export { useDate, useLists, useTextInput, useCheckboxInput, useCreateDate, useShowDate };
+export { useDate, useLists, useTextInput, useCheckboxInput, CreateDate, useShowDate };
