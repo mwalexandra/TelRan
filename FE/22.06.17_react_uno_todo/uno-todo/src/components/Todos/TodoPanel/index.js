@@ -9,11 +9,9 @@ import { useDispatch, useSelector } from 'react-redux'
 
 
 function TodoPanel({
-  // showPanelTodo, setShowPanelTodo, 
   selectedList,
   lists, setLists,
-  selectedTodo, setSelectedTodo,
-  setSelectedList
+  selectedTodo,
 }){
 
   const isShownPanelTodo = useSelector(state => state.interface.show);

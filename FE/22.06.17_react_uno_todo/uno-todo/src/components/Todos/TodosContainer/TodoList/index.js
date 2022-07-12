@@ -1,23 +1,32 @@
 import TodoBox from './TodoBox'
 import style from './index.module.css'
+import { useSelector } from 'react-redux';
 
-function TodoList({
-  lists, 
-  setLists, 
-  activeTab, 
-  selectedList, 
-  selectedListId,
-  setShowPanelTodo, 
-  showPanelTodo, 
-  setSelectedTodo,
-  selectedTodo,
-}) {
-  const todos = lists[selectedList].todos;
+function TodoList() {
 
-  const completedTodos = todos.filter(todo => todo.completed);
+  const selectedListId = useSelector(
+    state => state.lists.content.find( list => list.selected ).id
+  )
+
+  const todos = useSelector(
+    state => 
+      state.lists
+        .content.find( list =>  list.id === selectedListId)
+        .todos
+  )
+
+  const tab = useSelector(state => state.interface.tab);
+
+  const completedTodos = useSelector(
+    state => 
+      state.lists
+        .content.find( list =>  list.id === selectedListId)
+        .todos.filter(todo => todo.completed)
+  )
+
   let renderTodos = [];
 
-  if(activeTab === 'Completed'){
+  if(tab === 'Completed'){
     renderTodos = completedTodos;
   } else {
     renderTodos = todos;
@@ -28,15 +37,7 @@ function TodoList({
       {renderTodos.map(todo => {
         return <TodoBox
                   key={todo.id}
-                  todo = {todo}
-                  lists={lists}
-                  setLists={setLists}
-                  selectedList={selectedList}
-                  selectedListId={selectedListId}
-                  showPanelTodo = {showPanelTodo}
-                  setShowPanelTodo = {setShowPanelTodo}
-                  setSelectedTodo={setSelectedTodo}
-                  selectedTodo={selectedTodo}
+                  todoId = {todo.id}
                 />
       })}
     </ul>

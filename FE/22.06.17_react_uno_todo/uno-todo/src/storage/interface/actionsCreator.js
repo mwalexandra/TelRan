@@ -1,4 +1,4 @@
-import { SHOW_PANEL_TODO } from './actions';
+import { SHOW_PANEL_TODO, SELECT_TODO_ID, SELECT_LIST_ID, SET_ACTIVE_TAB  } from './actions';
 
 function showPanelTodo(show) {
   return {
@@ -6,7 +6,34 @@ function showPanelTodo(show) {
     payload: {
       show,
     }
+  }  
+}
+
+function selectTodoId(id) {
+  return {
+    type: SELECT_TODO_ID,
+    payload: {
+      id,
+    }
   }
 }
 
-export {showPanelTodo};
+function selectListId(id) {
+  return {
+    type: SELECT_LIST_ID,
+    payload: {
+      id,
+    }
+  }
+}
+
+function setActiveTab(tab) {
+  return {
+    type: SET_ACTIVE_TAB,
+    payload: {
+      tab,
+    }
+  }
+}
+
+export {showPanelTodo, selectTodoId, selectListId, setActiveTab}

@@ -1,14 +1,29 @@
 import { useState, useRef, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
 
 import { useTextInput } from '../../../../helpers'
+import {changeHeader} from '../../../../storage/content/actionsCreator'
 
 import style from './index.module.css'
 
-function TodoListHeader ({lists, setLists, selectedList}){
+function TodoListHeader (){
   const headerInput = useRef(null);
-
+  const dispatch = useDispatch();
   const [disabled, setDisabled] = useState(true);
-  const [title, setTitle, bindTitle] = useTextInput(lists[selectedList].header);
+
+
+  const selectedListId = useSelector(
+    state => state.lists.content.find( list => list.selected ).id
+  )
+  
+  const header = useSelector(
+    state => 
+      state.lists
+        .content.find( list =>  list.id === selectedListId).header
+  )
+
+  const [title, setTitle, bindTitle] = useTextInput(header);
+
 
   useEffect(
     function onFocus() {
@@ -22,9 +37,7 @@ function TodoListHeader ({lists, setLists, selectedList}){
   function changeTodoListHeader(e){
     e.preventDefault();
 
-    setLists(lists, selectedList, undefined, {
-      changelistHeader: title,
-    })
+    dispatch(changeHeader(selectedListId, title));
 
     setDisabled(true);
   }

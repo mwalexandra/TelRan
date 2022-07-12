@@ -1,4 +1,5 @@
-import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED } from './actions';
+import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED, 
+				CHANGE_HEADER, CHANGE_DATE } from './actions';
 
 function todoComplete(listId, todoId) {
   return {
@@ -30,4 +31,25 @@ function todoSelected(listId, todoId) {
 	}
 }
 
-export {todoComplete, todoImportant, todoSelected};
+function changeHeader(listId, header) {
+	return {
+		type: CHANGE_HEADER,
+		payload: {
+			listId,
+			header,
+		}
+	}
+}
+
+function changeDate(listId, todoId, date) {
+	return {
+		type: CHANGE_DATE,
+		payload: {
+			listId,
+			todoId,
+			date,
+		}
+	}
+}
+
+export {todoComplete, todoImportant, todoSelected, changeHeader, changeDate };

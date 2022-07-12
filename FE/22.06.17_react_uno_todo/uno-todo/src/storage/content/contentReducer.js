@@ -1,11 +1,11 @@
-import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED } from './actions';
+import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED, CHANGE_HEADER, CHANGE_DATE } from './actions';
 import { CreateDate } from '../../helpers';
 
 
 const initialState = {
   content: [
     {
-      id: '44444',
+      id: 44444,
       header: 'Task list',
       selected: true,
       todos: [
@@ -17,7 +17,7 @@ const initialState = {
           createDate: CreateDate(),
           completed: true,
           important: true,
-          selected: true,
+          selected: false,
         },
         {
           id: '22222',
@@ -95,6 +95,33 @@ function contentReducer(state = initialState, {type, payload}) {
             return list;
           })
         }    
+
+      case CHANGE_HEADER:
+        return {
+          ...state,
+            content: state.content.map(list => {
+              if(list.id === payload.listId) {
+                
+                list.header = payload.header
+              }
+              return list;
+            })
+          }    
+
+      case CHANGE_DATE:
+        return {
+          ...state,
+            content: state.content.map(list => {
+              if(list.id === payload.listId) {
+                list.todos.map(todo => {
+                  if(todo.id === payload.todoId){
+                    todo.date = payload.date;
+                  }
+                })
+              }
+              return list;
+            })
+          } 
 
     default: return state;    
   }

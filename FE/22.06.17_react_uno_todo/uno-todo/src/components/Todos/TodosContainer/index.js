@@ -1,61 +1,38 @@
-import { useState } from 'react';
 import style from './index.module.css'
 import TodoList from './TodoList'
 import AddTodo from './AddTodo'
 import TodoListHeader from './TodoListHeader'
+import { useDispatch, useSelector } from 'react-redux';
+import {setActiveTab} from '../../../storage/interface/actionsCreator'
 
+function TodosContainer() {
 
-function TodosContainer(
-  {
-    lists, 
-    setLists, 
-    selectedList,
-    selectedListId,
-    showPanelTodo,
-    setShowPanelTodo,
-    setSelectedTodo,
-    selectedTodo,
-  }) {
+  const dispatch = useDispatch();
 
-  const [activeTab, setActiveTab] = useState('Todo');
+  const tab = useSelector(state => state.interface.tab);
+  const showPanelTodo = useSelector(state => state.interface.show);
+
 
   return (
     <>
       <main className={`${style.todosContainer} ${showPanelTodo ? style.showPanel : ''}`}>
         <section className={style.todosSection}>
-          <TodoListHeader 
-            lists={lists}
-            setLists={setLists}
-            selectedList={selectedList}
-          />
+          <TodoListHeader />
 
           <div>
+          {/* TODO вынести в отдельный компонент switcher */}
             <button
-              className={`${style.todosBtn} ${activeTab === 'Todo' ? style.active : ''}`}
-              onClick={() => setActiveTab('Todo')}
+              className={`${style.todosBtn} ${tab === 'Todo' ? style.active : ''}`}
+              onClick={() => dispatch(setActiveTab('Todo'))}
             >To Do</button>
             <button
-              className={`${style.todosBtn} ${activeTab === 'Completed' ? style.active : ''}`}
-              onClick={() => setActiveTab('Completed')}
+              className={`${style.todosBtn} ${tab === 'Completed' ? style.active : ''}`}
+              onClick={() => dispatch(setActiveTab('Completed'))}
             >Completed</button>
           </div>
 
-          <TodoList 
-            lists={lists}  
-            setLists={setLists}
-            activeTab={activeTab}
-            selectedList={selectedList}
-            selectedListId={selectedListId}
-            showPanelTodo={showPanelTodo}
-            setShowPanelTodo={setShowPanelTodo}
-            setSelectedTodo={setSelectedTodo}
-            selectedTodo={selectedTodo}
-          />
-          <AddTodo 
-            lists = {lists}  
-            setLists = {setLists}
-            setShowPanelTodo = {setShowPanelTodo}
-          />
+          <TodoList />
+          <AddTodo />
         </section>
       </main>
     </>

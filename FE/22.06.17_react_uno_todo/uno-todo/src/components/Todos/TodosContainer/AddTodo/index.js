@@ -1,11 +1,15 @@
-import {useState} from 'react';
 import style from './index.module.css'
+import { useDispatch } from 'react-redux';
+import {showPanelTodo} from '../../../../storage/interface/actionsCreator.js'
 
-function AddTodo({todos, setTodos, setShowPanelTodo}){
+
+function AddTodo(){
+
+  const dispatch = useDispatch();
 
 	function showPanel(e) {
 		e.preventDefault();
-		setShowPanelTodo(true);
+		dispatch(showPanelTodo(true));
 	}
 
   return (  
