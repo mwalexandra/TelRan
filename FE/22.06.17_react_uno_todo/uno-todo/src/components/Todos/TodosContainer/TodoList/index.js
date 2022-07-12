@@ -5,23 +5,20 @@ import { useSelector } from 'react-redux';
 function TodoList() {
 
   const selectedListId = useSelector(
-    state => state.lists.content.find( list => list.selected ).id
+    state => state.interface.listId
   )
 
   const todos = useSelector(
     state => 
-      state.lists
-        .content.find( list =>  list.id === selectedListId)
-        .todos
+      state.lists.content.find(list => list.id === selectedListId).todos
   )
 
   const tab = useSelector(state => state.interface.tab);
 
   const completedTodos = useSelector(
     state => 
-      state.lists
-        .content.find( list =>  list.id === selectedListId)
-        .todos.filter(todo => todo.completed)
+      state.lists.content.find( list =>  list.id === selectedListId)
+      .todos.filter(todo => todo.completed)
   )
 
   let renderTodos = [];

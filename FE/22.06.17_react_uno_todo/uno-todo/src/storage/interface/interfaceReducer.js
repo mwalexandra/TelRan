@@ -8,6 +8,7 @@ const initialState = {
 };
 
 function iterfaceReducer(state = initialState, {type, payload}) {
+
   switch(type){
 
     case SHOW_PANEL_TODO:

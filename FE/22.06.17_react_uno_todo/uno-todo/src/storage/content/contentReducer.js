@@ -1,4 +1,5 @@
-import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED, CHANGE_HEADER, CHANGE_DATE } from './actions';
+import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED, TODO_DELETE,
+        CHANGE_HEADER, CHANGE_DATE, CHANGE_NOTE } from './actions';
 import { CreateDate } from '../../helpers';
 
 
@@ -65,7 +66,7 @@ function contentReducer(state = initialState, {type, payload}) {
     case TODO_IMPORTANT:
       return {
         ...state,
-        ontent: state.content.map(list => {
+        сontent: state.content.map(list => {
             if(list.id === payload.listId) {
               list.todos.map(todo => {
                 if(todo.id === payload.todoId){
@@ -80,21 +81,32 @@ function contentReducer(state = initialState, {type, payload}) {
     case TODO_SELECTED:
       return {
         ...state,
+        content: state.content.map(list => {
+          if(list.id === payload.listId) {
+            list.todos.map(todo => {
+              if(todo.id === payload.todoId){
+                todo.selected = true;
+              } else {
+                todo.selected = false;
+              }
+            })
+          } else {
+            list.todos.map(todo => todo.selected = false)
+          }
+          return list;
+        })
+      } 
+      
+      case TODO_DELETE:
+        return {
+          ...state,
           content: state.content.map(list => {
             if(list.id === payload.listId) {
-              list.todos.map(todo => {
-                if(todo.id === payload.todoId){
-                  todo.selected = true;
-                } else {
-                  todo.selected = false;
-                }
-              })
-            } else {
-              list.todos.map(todo => todo.selected = false)
-            }
+              list.todos = list.todos.filter(todo => todo.id !== payload.todoId)
+            } 
             return list;
           })
-        }    
+        } 
 
       case CHANGE_HEADER:
         return {
@@ -122,6 +134,21 @@ function contentReducer(state = initialState, {type, payload}) {
               return list;
             })
           } 
+
+      case CHANGE_NOTE:
+        return {
+          ...state,
+            content: state.content.map(list => {
+              if(list.id === payload.listId) {
+                list.todos.map(todo => {
+                  if(todo.id === payload.todoId){
+                    todo.note = payload.note;
+                  }
+                })
+              }
+              return list;
+            })
+          }     
 
     default: return state;    
   }

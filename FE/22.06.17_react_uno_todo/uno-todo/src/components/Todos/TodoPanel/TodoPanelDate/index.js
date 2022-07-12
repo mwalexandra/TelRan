@@ -14,14 +14,12 @@ function TodoPanelDate(){
     state => state.interface.todoId
   )
 
-
   const date = useSelector(
     state => 
       state.lists
         .content.find( list =>  list.id === selectedListId)
         .todos.find( todoItem => selectedTodoId === todoItem.id)?.date
   )
-
 
   return (
     <div className={style.todoPanelDate}>

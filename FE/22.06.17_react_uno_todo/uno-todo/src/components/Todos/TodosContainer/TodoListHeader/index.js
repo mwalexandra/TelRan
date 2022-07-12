@@ -13,13 +13,13 @@ function TodoListHeader (){
 
 
   const selectedListId = useSelector(
-    state => state.lists.content.find( list => list.selected ).id
+    state => state.interface.listId
   )
   
   const header = useSelector(
     state => 
       state.lists
-        .content.find( list =>  list.id === selectedListId).header
+        .content.find( list =>  list.id === selectedListId)?.header
   )
 
   const [title, setTitle, bindTitle] = useTextInput(header);

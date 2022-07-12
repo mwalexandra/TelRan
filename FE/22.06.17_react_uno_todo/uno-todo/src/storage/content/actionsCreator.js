@@ -1,5 +1,15 @@
-import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED, 
-				CHANGE_HEADER, CHANGE_DATE } from './actions';
+import { TODO_ADD, TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED, TODO_DELETE,
+				CHANGE_HEADER, CHANGE_DATE, CHANGE_TITLE, CHANGE_NOTE } from './actions';
+
+// function todoAdd(listId, ) {
+//   return {
+//     type: TODO_COMPLETE, 
+//     payload: {
+//       listId,
+//       todoId,
+//     }
+//   }
+// }
 
 function todoComplete(listId, todoId) {
   return {
@@ -31,6 +41,16 @@ function todoSelected(listId, todoId) {
 	}
 }
 
+function todoDelete(listId, todoId) {
+	return {
+		type: TODO_DELETE,
+		payload: {
+			listId,
+			todoId,
+		}
+	}
+}
+
 function changeHeader(listId, header) {
 	return {
 		type: CHANGE_HEADER,
@@ -52,4 +72,27 @@ function changeDate(listId, todoId, date) {
 	}
 }
 
-export {todoComplete, todoImportant, todoSelected, changeHeader, changeDate };
+function changeTitle(listId, todoId, title) {
+	return {
+		type: CHANGE_TITLE,
+		payload: {
+			listId,
+			todoId,
+			title,
+		}
+	}
+}
+
+function changeNote(listId, todoId, note) {
+	return {
+		type: CHANGE_NOTE,
+		payload: {
+			listId,
+			todoId,
+			note,
+		}
+	}
+}
+
+export {todoComplete, todoImportant, todoSelected, todoDelete, 
+				changeHeader, changeDate, changeTitle, changeNote};

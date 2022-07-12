@@ -1,34 +1,27 @@
 import style from './index.module.css'
-import {useShowDate} from '../../../../helpers'
+import { useShowDate } from '../../../../helpers'
 
-import {showPanelTodo} from '../../../../storage/interface/actionsCreator.js'
-import { useDispatch } from 'react-redux';
+import { showPanelTodo, selectTodoId } from '../../../../storage/interface/actionsCreator'
+import { todoDelete } from '../../../../storage/content/actionsCreator'
+import { useDispatch, useSelector } from 'react-redux';
 
-function TodoPanelDelete({
-  createTodoDate,
-  // setShowPanelTodo, 
-  selectedList,
-  lists,
-  selectedTodo,
-  setLists,
-}){
+function TodoPanelDelete(){
 
   const dispatch = useDispatch();
 
+  const selectedListId = useSelector(state => state.interface.listId)
+
+  const todoId = useSelector(state => state.interface.todoId)  
+
+  const createTodoDate = useSelector(state => state.lists
+                                        .content.find(list => list.id === selectedListId)
+                                        .todos.find(todo => todo.id === todoId)?.createDate)
 
   function deleteTodo(){
-    setLists(
-      lists,
-      selectedList,
-      selectedTodo,
-      {
-        deleteTodo: true,
-      }
-    )
+    dispatch(todoDelete(selectedListId, todoId));
+    dispatch(selectTodoId(0));
     dispatch(showPanelTodo(false));
   }
-
-  //console.log(createTodoDate);
 
   return (
     <div className={style.todoPanelDeleteWrapper}>
@@ -39,7 +32,7 @@ function TodoPanelDelete({
       <p>Created {useShowDate(createTodoDate)}</p>
       <span 
         className={style.todoPanelDelete}
-        onClick={() => {deleteTodo()}}
+        onClick={deleteTodo}
         ></span>
     </div>
   )
