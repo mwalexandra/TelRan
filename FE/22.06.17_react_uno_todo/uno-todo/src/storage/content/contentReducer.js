@@ -1,5 +1,5 @@
 import { TODO_COMPLETE, TODO_IMPORTANT, TODO_SELECTED, TODO_DELETE,
-        CHANGE_HEADER, CHANGE_DATE, CHANGE_NOTE } from './actions';
+        CHANGE_HEADER, CHANGE_DATE, CHANGE_NOTE, CHANGE_TITLE } from './actions';
 import { CreateDate } from '../../helpers';
 
 
@@ -149,6 +149,22 @@ function contentReducer(state = initialState, {type, payload}) {
               return list;
             })
           }     
+
+      case CHANGE_TITLE:
+        return {
+          ...state,
+          сontent: state.content.map(list => {
+              if(list.id === payload.listId) {
+                list.todos.map(todo => {
+                  if(todo.id === payload.todoId){
+                    todo.title = payload.title;
+                  }
+                  return todo;
+                })
+              }
+              return list;
+            })
+          }
 
     default: return state;    
   }
