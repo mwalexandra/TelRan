@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
-import {changeActiveUser} from '../../storage/actionsCreator'
+import {changeActiveUser} from '../../../storage/actionsCreator'
 
 function UserItem ({user}){
 
