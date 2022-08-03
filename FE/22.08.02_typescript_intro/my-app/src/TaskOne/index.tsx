@@ -46,14 +46,14 @@ function TaskOne(){
           </nav>
         </header>
         <Routes>
-          <Route path=':weather' element={
+          <Route path='weather' element={
             <Weather
               light={weather.light}
               sky={weather.sky}
               cold={weather.cold}
               temperature={weather.temperature}
             />}/>
-          <Route path=':city' element={
+          <Route path='city' element={
             <CityComponent 
               name={city.name}
               country={city.country}
@@ -61,7 +61,7 @@ function TaskOne(){
               europe={city.europe}
             />
             }/>
-          <Route path=':user' element={
+          <Route path='user' element={
             <User
               name={user.name}
               surname={user.surname}
