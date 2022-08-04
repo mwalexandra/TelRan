@@ -5,11 +5,12 @@ interface UserProps {
   age: number,
 }
 
-function getFullName(user: UserProps) {
-  return `${user.name} ${user.surname}`
-}
 
 function User(props : UserProps){
+  
+  function getFullName(user: UserProps) {
+    return `${user.name} ${user.surname}`
+  }
 
   let fullName = getFullName(props);
 

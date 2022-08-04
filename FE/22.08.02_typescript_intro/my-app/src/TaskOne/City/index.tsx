@@ -2,7 +2,7 @@ interface CityProps {
   name: string, 
   country: string, 
   population: number, 
-  europe: boolean | string,
+  europe: boolean | 'Yes' | 'No',
 }
 
 function CityComponent(props : CityProps){
