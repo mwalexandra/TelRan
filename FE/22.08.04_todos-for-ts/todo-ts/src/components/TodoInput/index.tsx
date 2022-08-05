@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import style from './style.module.css'
 
 function TodoInput (props){
