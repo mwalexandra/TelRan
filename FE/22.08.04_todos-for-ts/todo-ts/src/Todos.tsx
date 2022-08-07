@@ -4,12 +4,20 @@ import TodoList from './components/TodoList'
 import StatusList from './components/StatusList'
 import style from './style.module.css';
 
+export interface Todo {
+  title: string,
+  id: number,
+  completed: boolean,
+}
+
+export type TodosList = Array<Todo>;
+
 function Todos(){
 
   const [value, setValue] = useState('');
-  const [todosList, setTodosList] = useState([]);
-  const [todosActive, setTodosActive] = useState([]);
-  const [todosCompleted, setTodosCompleted] = useState([]);
+  const [todosList, setTodosList] = useState<TodosList>([]);
+  const [todosActive, setTodosActive] = useState<TodosList>([]);
+  const [todosCompleted, setTodosCompleted] = useState<TodosList>([]);
   const [toggleAll, setToggleAll] = useState(false);
   const [activeTab, setActiveTab] = useState('All');
 
@@ -24,8 +32,8 @@ function Todos(){
 
   useEffect(
     function updateTodos() {
-      const activeList = [];
-      const completedList = [];
+      const activeList: TodosList = [];
+      const completedList: TodosList = [];
       todosList.forEach(todo => {
         if(!todo.completed){
           activeList.push(todo) ;
@@ -39,7 +47,7 @@ function Todos(){
     [todosList]
   )
 
-    function addTodo(e){
+    function addTodo(e: any){
       if(e.key === 'Enter'){
         todosList.push({
           id: Date.now(),

@@ -1,7 +1,7 @@
-// import style from './style.module.css'
 import style from './style.module.css'
+import { Todo } from '../../Todos'
 
-function ListItem(props){
+function ListItem(props: any){
 
   const todo = props.todo;
   const completeToggle = props.completedToggle;
@@ -22,7 +22,7 @@ function ListItem(props){
   )
 }
 
-function TodoList(props){
+function TodoList(props: any){
 
   const todosList = props.todosList;
   const setTodosList = props.setTodosList;
@@ -30,8 +30,8 @@ function TodoList(props){
   const todosActive = props.todosActive;
   const todosCompleted = props.todosCompleted;
 
-  function completeToggle(id){
-    todosList.forEach(todo => {
+  function completeToggle(id: number){
+    todosList.forEach((todo: Todo) => {
       if(todo.id === id){
         todo.completed = !todo.completed;
       }
@@ -39,8 +39,8 @@ function TodoList(props){
     setTodosList([...todosList]);
   }
 
-  function deleteTodo(id){
-    const newTodoList = todosList.filter(todo => todo.id !== id);
+  function deleteTodo(id: number){
+    const newTodoList = todosList.filter((todo: Todo) => todo.id !== id);
     setTodosList(newTodoList);
   }
 
@@ -57,7 +57,7 @@ function TodoList(props){
   return (
     <ul className={style.todoList}>
     {
-      renderTodoList.map((todo) => {
+      renderTodoList.map((todo: Todo) => {
         return <ListItem 
                   todo = {todo}
                   key = {todo.id}

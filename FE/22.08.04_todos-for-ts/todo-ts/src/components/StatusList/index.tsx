@@ -1,15 +1,15 @@
 import style from './style.module.css'
+import { Todo } from '../../Todos'
 
-function StatusList (props){
+function StatusList (props: any){
 
   const itemsLeft = props.itemsLeft;
   const todosList = props.todosList;
   const setTodosList = props.setTodosList;
-  const activeTab = props.activeTab;
   const setActiveTab = props.setActiveTab;
 
   function deleteCompleted(){
-    const newTodosList = todosList.filter(todo => !todo.completed)
+    const newTodosList = todosList.filter((todo: Todo) => !todo.completed)
     setTodosList(newTodosList);
   }
 

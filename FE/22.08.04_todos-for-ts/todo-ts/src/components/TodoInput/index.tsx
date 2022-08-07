@@ -1,6 +1,6 @@
 import style from './style.module.css'
 
-function TodoInput (props){
+function TodoInput (props: any){
 
   const value = props.value;
   const setValue = props.setValue;
