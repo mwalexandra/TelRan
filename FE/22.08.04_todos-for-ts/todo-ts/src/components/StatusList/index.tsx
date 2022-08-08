@@ -1,7 +1,16 @@
 import style from './style.module.css'
-import { Todo } from '../../Todos'
+import { Todo, TodosList } from '../../Todos'
+import React from 'react';
 
-function StatusList (props: any){
+interface FCStatusList {
+  todosList: TodosList,
+  itemsLeft: number,
+  setTodosList: React.Dispatch<React.SetStateAction<TodosList>>,
+  activeTab: string,
+  setActiveTab: React.Dispatch<React.SetStateAction<string>>,
+}
+
+function StatusList<T extends FCStatusList>(props: T ) {
 
   const itemsLeft = props.itemsLeft;
   const todosList = props.todosList;

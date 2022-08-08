@@ -1,6 +1,14 @@
 import style from './style.module.css'
+// React.VFC<FCTodoinput>
+interface FCTodoInput {
+  value: string,
+  setValue: React.Dispatch<React.SetStateAction<string>>,
+  addTodo: (e: React.KeyboardEvent) => void,
+  toggleAll: boolean,
+  setToggleAll: React.Dispatch<React.SetStateAction<boolean>>,
+}
 
-function TodoInput (props: any){
+function TodoInput (props: FCTodoInput){
 
   const value = props.value;
   const setValue = props.setValue;

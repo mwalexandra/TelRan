@@ -1,7 +1,24 @@
 import style from './style.module.css'
-import { Todo } from '../../Todos'
+import { Todo, TodosList } from '../../Todos'
 
-function ListItem(props: any){
+interface FCTodoList {
+  todosList: TodosList,
+  setTodosList: React.Dispatch<React.SetStateAction<TodosList>>,
+  todosActive: TodosList,
+  todosCompleted: TodosList, 
+  activeTab: string,
+}
+
+interface FCListItem {
+  todo: Todo, 
+  key: number,
+  todosList: TodosList, 
+  setTodosList: React.Dispatch<React.SetStateAction<TodosList>>,
+  completedToggle: (id: number) => void,
+  deleteTodo: (id: number) => void,
+}
+
+function ListItem(props: FCListItem){
 
   const todo = props.todo;
   const completeToggle = props.completedToggle;
@@ -22,7 +39,7 @@ function ListItem(props: any){
   )
 }
 
-function TodoList(props: any){
+function TodoList(props: FCTodoList){
 
   const todosList = props.todosList;
   const setTodosList = props.setTodosList;
@@ -31,7 +48,7 @@ function TodoList(props: any){
   const todosCompleted = props.todosCompleted;
 
   function completeToggle(id: number){
-    todosList.forEach((todo: Todo) => {
+    todosList.forEach((todo) => {
       if(todo.id === id){
         todo.completed = !todo.completed;
       }
@@ -40,11 +57,11 @@ function TodoList(props: any){
   }
 
   function deleteTodo(id: number){
-    const newTodoList = todosList.filter((todo: Todo) => todo.id !== id);
+    const newTodoList = todosList.filter((todo) => todo.id !== id);
     setTodosList(newTodoList);
   }
 
-  let renderTodoList = [];
+  let renderTodoList: TodosList = [];
 
   if(activeTab === 'All') {
     renderTodoList = todosList;

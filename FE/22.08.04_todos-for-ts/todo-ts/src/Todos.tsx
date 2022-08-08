@@ -1,4 +1,5 @@
 import {useEffect, useState} from 'react';
+import React from 'react'
 import TodoInput from './components/TodoInput'
 import TodoList from './components/TodoList'
 import StatusList from './components/StatusList'
@@ -27,7 +28,7 @@ function Todos(){
         todo.completed = toggleAll;
       })
       setTodosList([...todosList]);
-    }, [toggleAll]
+    }, [toggleAll] // исправить ошибку в реакт
   )
 
   useEffect(
@@ -47,7 +48,8 @@ function Todos(){
     [todosList]
   )
 
-    function addTodo(e: any){
+    function addTodo(e: React.KeyboardEvent): void{
+      
       if(e.key === 'Enter'){
         todosList.push({
           id: Date.now(),
