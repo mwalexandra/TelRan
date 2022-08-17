@@ -5,7 +5,7 @@ interface People {
 }
 
 interface Celebrity extends People {
-  name: 'Famous guy',
+  profession: string,
 }
 
 interface Related extends People {
@@ -23,7 +23,7 @@ let serena = {
 
 function App() {
 
-  function printName<T>(T: People) : String {
+  function printName<T extends People>(T: Celebrity) : String {
     return(`My name is ${T.name}`);
   }
 
