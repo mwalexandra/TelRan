@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #000;
+  color: rgb(243, 243, 243);
+}
+
+header {
+  width: 90%;
+  margin: 0 auto;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  background-color: rgba(0, 0, 0, 0.576);
+}
+
+header span {
+  font-size: 2rem;
+  color: rgba(255, 20, 145, 0.481);
+}
+
+nav a {
+  padding: 0 .5rem;
+  text-decoration: none;
+  color: aliceblue;
+}
+
+nav a:hover {
+  color:deeppink;
+}
+
+nav a:active {
+  color:rgba(255, 20, 145, 0.481);
+}
+
+form input {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid rgba(255, 20, 145, 0.481);
+  border-radius: 5px;
+  color: inherit;
+}
+
+form input:focus {
+  outline: 1px solid rgb(255, 20, 145);
+}
+
+form button {
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 20, 145, 0.481);
+  border: none;
+  border-radius: 5px;
+  color: inherit;
+}
+
+form button:hover {
+  background-color: rgb(255, 20, 145);
+}
+
+main {
+  padding: 1rem 0;
+  text-align: center;
+}
+
+p {
+  margin: 2rem auto;
+  max-width: 35%;
+  padding: 0.5rem 1rem;
+  color: #000;
+  background-color: rgba(255, 20, 145, 0.481);
+  border-radius: 5px;
+}
+
+ul {
+  padding: 1rem 0;
+}
+
+ul li {
+  padding: 0.3rem 0;
+}
